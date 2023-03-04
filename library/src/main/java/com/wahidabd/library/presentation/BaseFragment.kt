@@ -39,6 +39,10 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         initAction()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
     abstract fun initAction()
     abstract fun initObservers()
     abstract fun initProcess()
