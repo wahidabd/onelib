@@ -13,6 +13,7 @@ class TestFragment : BaseFragment<FragmentTestBinding>() {
         attachRoot: Boolean
     ): FragmentTestBinding = FragmentTestBinding.inflate(layoutInflater)
 
+
     override fun initAction() {
     }
 
