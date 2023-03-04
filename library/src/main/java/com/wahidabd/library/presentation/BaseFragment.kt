@@ -44,4 +44,9 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     abstract fun initProcess()
     abstract fun initUI()
 
+    interface Callback {
+        abstract fun onFragmentAttached()
+        abstract fun onFragmentDetached(tag: String)
+    }
+
 }
