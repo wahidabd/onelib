@@ -1,4 +1,4 @@
-package com.wahidabd.library.presentation
+package com.wahidabd.library.presentation.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -39,9 +39,6 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         initAction()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
 
     abstract fun initAction()
     abstract fun initObservers()

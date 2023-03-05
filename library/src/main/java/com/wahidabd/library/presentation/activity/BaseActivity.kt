@@ -1,10 +1,12 @@
-package com.wahidabd.library.presentation
+package com.wahidabd.library.presentation.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.wahidabd.library.presentation.BaseView
+import com.wahidabd.library.presentation.fragment.BaseFragment
 
 abstract class BaseActivity <VB: ViewBinding> : AppCompatActivity(), BaseView, BaseFragment.Callback {
 

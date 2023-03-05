@@ -2,7 +2,7 @@ package com.wahidabd.onelibrary.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.wahidabd.library.presentation.BaseFragment
+import com.wahidabd.library.presentation.fragment.BaseFragment
 import com.wahidabd.onelibrary.databinding.FragmentTestBinding
 
 class TestFragment : BaseFragment<FragmentTestBinding>() {
