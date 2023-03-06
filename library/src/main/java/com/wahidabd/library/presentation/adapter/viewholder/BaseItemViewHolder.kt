@@ -10,12 +10,11 @@ import com.wahidabd.library.presentation.adapter.BaseRecyclerAdapter.*
 
 abstract class BaseItemViewHolder<T>(
     context: Context?,
-    binding: ViewBinding,
+    val binding: ViewBinding,
     val mItemClickListener: OnItemClickListener?,
     private val mLongItemClickListener: OnLongItemClickListener?,
     private val isHeader: Boolean? = false
 ) : ViewHolder(binding.root), OnClickListener, OnLongClickListener {
-
 
     abstract fun bind(data: T)
 
