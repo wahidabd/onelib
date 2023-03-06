@@ -40,10 +40,10 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     }
 
 
-    abstract fun initAction()
-    abstract fun initObservers()
-    abstract fun initProcess()
     abstract fun initUI()
+    abstract fun initAction()
+    abstract fun initProcess()
+    abstract fun initObservers()
 
     interface Callback {
         abstract fun onFragmentAttached()

@@ -12,10 +12,8 @@
         android:theme="@style/Theme.OneLibrary"
         tools:targetApi="31">
         <activity
-            android:name=".BaseRecyclerActivity"
-            android:exported="false"
-            android:label="@string/title_activity_base_recycler"
-            android:theme="@style/Theme.OneLibrary.NoActionBar" />
+            android:name=".presentation.AsyncRecyclerActivity"
+            android:exported="false" />
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true">

@@ -66,9 +66,9 @@ abstract class BaseActivity <VB: ViewBinding> : AppCompatActivity(), BaseView, B
 
     override fun onFragmentDetached(tag: String) {}
 
-    abstract fun initAction()
-    abstract fun initObservers()
-    abstract fun initProcess()
     abstract fun initUI()
+    abstract fun initAction()
+    abstract fun initProcess()
+    abstract fun initObservers()
 
 }

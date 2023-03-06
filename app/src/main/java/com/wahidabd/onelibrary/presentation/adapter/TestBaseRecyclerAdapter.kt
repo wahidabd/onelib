@@ -1,4 +1,4 @@
-package com.wahidabd.onelibrary.presentation.recycler
+package com.wahidabd.onelibrary.presentation.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.wahidabd.library.presentation.adapter.BaseRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseItemViewHolder
+import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.onelibrary.data.TestModel
 import com.wahidabd.onelibrary.databinding.ItemRecyclerBinding
 
@@ -16,7 +17,7 @@ class TestBaseRecyclerAdapter(
 ) : BaseRecyclerAdapter<TestModel, TestBaseRecyclerAdapter.ViewHolder>(context, items) {
 
     override fun getViewBinding(parent: ViewGroup, viewType: Int): ViewBinding =
-        ItemRecyclerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        ItemRecyclerBinding.inflate(LayoutInflater.from(context), parent, false)
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -32,7 +33,7 @@ class TestBaseRecyclerAdapter(
 
     inner class ViewHolder(
         mContext: Context,
-        private val binding: ViewBinding,
+        binding: ViewBinding,
         itemClickListener: OnItemClickListener?,
         longItemClickListener: OnLongItemClickListener?
     ) : BaseItemViewHolder<TestModel>(mContext, binding, itemClickListener, longItemClickListener) {
@@ -41,7 +42,7 @@ class TestBaseRecyclerAdapter(
             with(binding as ItemRecyclerBinding) {
                 tvTitle.text = data.title
 
-                root.setOnClickListener {
+                root.onClick {
                     onItemClicked?.invoke(data)
                 }
             }
