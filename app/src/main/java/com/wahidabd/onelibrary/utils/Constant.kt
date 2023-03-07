@@ -8,13 +8,18 @@ object Constant {
          listOf(
             TestModel(
                 1,
+                "Recycler Activity",
                 "Base Recycler",
-                "Recycler Activity"
             ),
              TestModel(
                  2,
+                 "Async Recycler Activity",
                  "Async Base Recycler",
-                 "Async Recycler Activity"
+             ),
+             TestModel(
+                 3,
+                 "View Pager 2",
+                 "Base View Pager 2",
              ),
         )
 

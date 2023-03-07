@@ -55,6 +55,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun navigate(data: TestModel){
         when(data.id){
             2 -> startActivity(Intent(this, AsyncRecyclerActivity::class.java))
+            3 -> startActivity(Intent(this, ViewPagerActivity::class.java))
         }
     }
 
