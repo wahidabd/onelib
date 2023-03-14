@@ -24,19 +24,15 @@ fun <T: Any> getSingleApiError(): SingleApiErrorOperator<T, ApiError> =
         mapObject = {it.toApiError()}
     )
 
+fun <T: Any> getFlowableApiError(): FlowableApiErrorOperator<T, ApiError> =
+    FlowableApiErrorOperator(
+        errorClazz = ApiError::class.java,
+        mapObject = {it.toApiError()}
+    )
+
 fun ApiError.toApiError(): ApiError =
     ApiError(statusCode, message, errorCode)
 
-//
-//fun <T> flowableApiError() {}
-//
-//fun <T> maybeApiError() {}
-//
-//fun <T : Any> singleApiError() =
-//    SingleApiErrorOperator<T, ApiError>()
-//
-//fun <T : Any> observableApiError() =
-//    ObservableApiErrorOperator<T, ApiError>()
 
 fun <T, R> handleErrorResponseToApiException(
     response: Response<T>,

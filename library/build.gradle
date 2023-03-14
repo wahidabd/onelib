@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
     id 'maven-publish'
 }
 
@@ -63,6 +64,13 @@ dependencies {
     // rxjava
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
     implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
+
+    // rx permission
+    implementation 'com.github.tbruyelle:rxpermissions:0.12'
+
+    // image loader
+    implementation 'com.github.bumptech.glide:glide:4.15.0'
+    kapt 'com.github.bumptech.glide:compiler:4.15.0'
 }
 
 afterEvaluate {
