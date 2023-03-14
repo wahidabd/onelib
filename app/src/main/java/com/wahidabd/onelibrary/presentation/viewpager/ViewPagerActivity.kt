@@ -1,4 +1,4 @@
-package com.wahidabd.onelibrary.presentation
+package com.wahidabd.onelibrary.presentation.viewpager
 
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
@@ -7,8 +7,6 @@ import com.wahidabd.library.presentation.adapter.BaseViewPagerFragmentStateAdapt
 import com.wahidabd.library.presentation.fragment.BaseFragment
 import com.wahidabd.library.utils.exts.fallback
 import com.wahidabd.onelibrary.databinding.ActivityViewPagerBinding
-import com.wahidabd.onelibrary.presentation.viewpager.FirstViewPagerFragment
-import com.wahidabd.onelibrary.presentation.viewpager.SecondViewPagerFragment
 
 class ViewPagerActivity : BaseActivity<ActivityViewPagerBinding>() {
 

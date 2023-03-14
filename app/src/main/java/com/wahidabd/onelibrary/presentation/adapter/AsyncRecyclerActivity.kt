@@ -1,10 +1,8 @@
-package com.wahidabd.onelibrary.presentation
+package com.wahidabd.onelibrary.presentation.adapter
 
-import android.provider.ContactsContract.Data
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wahidabd.library.presentation.activity.BaseActivity
 import com.wahidabd.onelibrary.databinding.ActivityAsyncRecyclerBinding
-import com.wahidabd.onelibrary.presentation.adapter.TestBaseAsyncRecyclerAdapter
 import com.wahidabd.onelibrary.utils.Constant
 
 class AsyncRecyclerActivity : BaseActivity<ActivityAsyncRecyclerBinding>() {

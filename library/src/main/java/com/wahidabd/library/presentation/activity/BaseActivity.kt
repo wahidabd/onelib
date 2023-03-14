@@ -1,6 +1,10 @@
 package com.wahidabd.library.presentation.activity
 
+import android.content.Context
 import android.os.Bundle
+import android.os.PersistableBundle
+import android.util.AttributeSet
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -17,11 +21,7 @@ abstract class BaseActivity <VB: ViewBinding> : AppCompatActivity(), BaseView, B
         super.onCreate(savedInstanceState)
         binding = getViewBinding()
         setContentView(binding.root)
-
-        initUI()
-        initProcess()
-        initObservers()
-        initAction()
+        onReady()
     }
 
     fun setFragment(viewRes: Int, fragment: Fragment, addToBackStack: Boolean){
@@ -56,6 +56,13 @@ abstract class BaseActivity <VB: ViewBinding> : AppCompatActivity(), BaseView, B
         val actionBar = supportActionBar
         actionBar?.title = title
         actionBar?.setDisplayHomeAsUpEnabled(isChild)
+    }
+
+    private fun onReady(){
+        initUI()
+        initAction()
+        initProcess()
+        initObservers()
     }
 
     override fun showLoading() {}

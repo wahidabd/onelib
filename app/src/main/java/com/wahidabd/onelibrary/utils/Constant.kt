@@ -21,6 +21,11 @@ object Constant {
                  "View Pager 2",
                  "Base View Pager 2",
              ),
+             TestModel(
+                 4,
+                 "Api with RxJava",
+                 "Base implement api with rx",
+             ),
         )
 
     fun dataList(): List<String> =
