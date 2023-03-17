@@ -22,10 +22,6 @@ android {
         viewBinding true
     }
 
-//    packagingOptions {
-//        exclude 'META-INF/rxjava.properties'
-//    }
-
     buildTypes {
         release {
             minifyEnabled false
