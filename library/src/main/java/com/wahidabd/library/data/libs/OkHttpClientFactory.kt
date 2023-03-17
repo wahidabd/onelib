@@ -8,7 +8,7 @@ object OkHttpClientFactory {
 
     private const val DEFAULT_MAX_REQUEST = 30
 
-    fun onCreate(
+    fun create(
         interceptors: List<Interceptor>,
         authenticator: Authenticator?,
         certificatePinner: CertificatePinner?,

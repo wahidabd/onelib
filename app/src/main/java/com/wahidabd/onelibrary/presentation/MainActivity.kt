@@ -7,7 +7,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.wahidabd.library.presentation.activity.BaseActivity
 import com.wahidabd.onelibrary.data.TestModel
 import com.wahidabd.onelibrary.databinding.ActivityMainBinding
+import com.wahidabd.onelibrary.presentation.adapter.AsyncRecyclerActivity
 import com.wahidabd.onelibrary.presentation.adapter.TestBaseRecyclerAdapter
+import com.wahidabd.onelibrary.presentation.movie.MovieActivity
+import com.wahidabd.onelibrary.presentation.viewpager.ViewPagerActivity
 import com.wahidabd.onelibrary.utils.Constant
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -55,6 +58,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun navigate(data: TestModel){
         when(data.id){
             2 -> startActivity(Intent(this, AsyncRecyclerActivity::class.java))
+            3 -> startActivity(Intent(this, ViewPagerActivity::class.java))
+            4 -> startActivity(Intent(this, MovieActivity::class.java))
         }
     }
 
