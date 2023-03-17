@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorDarkMint">#4dbb6c</color>
+    <color name="colorErrorMessage">#E87850</color>
+    <color name="colorGray">#918D8D</color>
+    <color name="colorGrey">#E6E6E6</color>
+    <color name="colorRed">#E42323</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <dimen name="dimen_0dp">0dp</dimen>
+    <dimen name="dimen_10dp">10dp</dimen>
+    <dimen name="dimen_14dp">14dp</dimen>
+    <dimen name="dimen_20dp">20dp</dimen>
+    <dimen name="dimen_22dp">22dp</dimen>
+    <dimen name="dimen_28dp">28dp</dimen>
+    <dimen name="dimen_40dp">40dp</dimen>
+    <dimen name="dimen_6dp">6dp</dimen>
+    <dimen name="dimen_8dp">8dp</dimen>
+    <dimen name="text_size_12sp">12sp</dimen>
+    <dimen name="text_size_16sp">16sp</dimen>
+    <dimen name="text_size_18sp">18sp</dimen>
+    <dimen name="text_size_20sp">20sp</dimen>
+    <dimen name="text_size_24sp">24sp</dimen>
+    <string name="action_resend_code_sec">Kirim Ulang Kode Dalam %s</string>
+    <string name="action_verification">Verifikasi</string>
+    <string name="app_name">core</string>
+    <string name="error">An error ocurred, check your internet connection and try again</string>
+    <string name="label_change_context">Ubah</string>
+    <string name="label_ok">OK</string>
+    <string name="label_resend_code">Kirim Ulang</string>
+    <string name="label_verification_code">Kode Verifikasi</string>
+    <string name="label_verification_description">Silakan masukkan kode verifikasi yang telah kami kirimkan ke handphone Anda :</string>
+    <string name="please_wait">Please Wait</string>
+    <string name="sample_email">No Handphone</string>
+    <style name="BaseBottomSheet" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+    <style name="BaseBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BaseBottomSheet</item>
+    </style>
+    <style name="BaseDialogFragmentTheme" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowNoTitle">false</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+    <declare-styleable name="CircleImageView">
+        <attr format="dimension" name="civ_border_width"/>
+        <attr format="color" name="civ_border_color"/>
+        <attr format="boolean" name="civ_border_overlay"/>
+        <attr format="color" name="civ_fill_color"/>
+    </declare-styleable>
+    <declare-styleable name="CurrencyEditText">
+        <attr format="string" name="currency_prefix"/>
+    </declare-styleable>
+    <declare-styleable name="CurrencyTextInputEditText">
+        <attr format="string" name="currency_text_input_prefix"/>
+    </declare-styleable>
+    <declare-styleable name="CustomPrefixEditText">
+        <attr format="color" name="tag_text_color"/>
+    </declare-styleable>
+    <declare-styleable name="DecoradoImageView">
+        <attr format="reference" name="img_src"/>
+        <attr format="string" name="error_message"/>
+        <attr name="android:scaleType"/>
+        <attr format="reference" name="img_default"/>
+        <attr format="integer" name="img_height_default"/>
+        <attr format="integer" name="img_width_default"/>
+        <attr format="boolean" name="need_default_image"/>
+    </declare-styleable>
+    <declare-styleable name="EllipseView">
+        <attr format="integer" name="ellipse_stroke_color"/>
+        <attr format="integer" name="ellipse_stroke_width"/>
+        <attr format="dimension" name="ellipse_corner_radius"/>
+        <attr format="color" name="ellipse_background_color"/>
+        <attr format="boolean" name="ellipse_disable"/>
+    </declare-styleable>
+    <declare-styleable name="HorizontalKeyValueTextView">
+        <attr format="color|reference" name="key_text_color"/>
+        <attr format="color|reference" name="value_text_color"/>
+        <attr format="dimension" name="key_text_size"/>
+        <attr format="dimension" name="value_text_size"/>
+        <attr format="string" name="key_text"/>
+        <attr format="string" name="value_text"/>
+    </declare-styleable>
+    <declare-styleable name="RatioImageView">
+        <attr format="integer" name="width_ratio"/>
+        <attr format="integer" name="height_ratio"/>
+    </declare-styleable>
+    <declare-styleable name="ValidacionAutoCompleteTextView">
+        <attr format="string" name="actv_error_message"/>
+        <attr format="string" name="actv_hint"/>
+        <attr format="color|reference" name="actv_error_message_color"/>
+        <attr format="dimension" name="actv_error_message_size"/>
+    </declare-styleable>
+    <declare-styleable name="ValidacionCheckBoxGroup">
+        <attr format="string" name="vcbg_error_message"/>
+        <attr format="color|reference" name="vcbg_error_message_color"/>
+        <attr format="dimension" name="vcbg_error_message_size"/>
+    </declare-styleable>
+    <declare-styleable name="ValidacionRadioGroup">
+        <attr format="string" name="vrg_error_message"/>
+        <attr format="color|reference" name="vrg_error_message_color"/>
+        <attr format="dimension" name="vrg_error_message_size"/>
+    </declare-styleable>
+    <declare-styleable name="ValidacionSpinnerView">
+        <attr format="string" name="vsv_error_message"/>
+        <attr format="color|reference" name="vsv_error_message_color"/>
+        <attr format="dimension" name="vsv_error_message_size"/>
+    </declare-styleable>
+</resources>
