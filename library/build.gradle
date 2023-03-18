@@ -98,7 +98,7 @@ afterEvaluate {
 
                 groupId = 'com.github.wahidabd'
                 artifactId = 'one-library'
-                version = '1.0.4'
+                version = '1.0.5'
             }
         }
     }
