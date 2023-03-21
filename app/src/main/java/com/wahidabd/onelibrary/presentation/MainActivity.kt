@@ -9,7 +9,9 @@ import com.wahidabd.onelibrary.data.TestModel
 import com.wahidabd.onelibrary.databinding.ActivityMainBinding
 import com.wahidabd.onelibrary.presentation.adapter.AsyncRecyclerActivity
 import com.wahidabd.onelibrary.presentation.adapter.TestBaseRecyclerAdapter
+import com.wahidabd.onelibrary.presentation.imagepicker.ImagePickerActivity
 import com.wahidabd.onelibrary.presentation.movie.MovieActivity
+import com.wahidabd.onelibrary.presentation.permission.PermissionActivity
 import com.wahidabd.onelibrary.presentation.viewpager.ViewPagerActivity
 import com.wahidabd.onelibrary.utils.Constant
 
@@ -20,7 +22,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             context = this,
             items = arrayListOf(),
             onItemClicked = {
-                showToast(it.title)
                 navigate(it)
             }
         )
@@ -60,6 +61,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             2 -> startActivity(Intent(this, AsyncRecyclerActivity::class.java))
             3 -> startActivity(Intent(this, ViewPagerActivity::class.java))
             4 -> startActivity(Intent(this, MovieActivity::class.java))
+            5 -> ImagePickerActivity.start(this)
+            6 -> PermissionActivity.start(this)
         }
     }
 

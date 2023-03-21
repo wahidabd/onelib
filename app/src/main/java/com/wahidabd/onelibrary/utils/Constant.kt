@@ -26,6 +26,16 @@ object Constant {
                  "Api with RxJava",
                  "Base implement api with rx",
              ),
+             TestModel(
+                 5,
+                 "Image Picker",
+                 "Base image picker with imagepickerutils"
+             ),
+             TestModel(
+                 6,
+                 "Permission",
+                 "Test base permission"
+             )
         )
 
     fun dataList(): List<String> =
