@@ -35,6 +35,11 @@ object Constant {
                  6,
                  "Permission",
                  "Test base permission"
+             ),
+             TestModel(
+                 7,
+                 "Notification",
+                 "Base notification"
              )
         )
 

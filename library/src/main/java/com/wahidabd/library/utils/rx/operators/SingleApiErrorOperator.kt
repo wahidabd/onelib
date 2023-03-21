@@ -19,7 +19,6 @@ class SingleApiErrorOperator<T : Any, R>(
 ) : SingleOperator<T, Response<T>> {
 
 
-
     override fun apply(observer: SingleObserver<in T>): SingleObserver<in Response<T>> =
         object : SingleObserver<Response<T>> {
             override fun onSubscribe(d: Disposable) {

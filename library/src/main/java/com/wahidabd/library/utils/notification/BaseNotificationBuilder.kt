@@ -63,9 +63,9 @@ fun showNotification(
     title: String,
     body: String,
     intent: PendingIntent,
-    imgUrl: String
+    imgUrl: String? = null
 ) {
-    if (imgUrl.isNotEmpty()){
+    if (imgUrl?.isNotEmpty() == true){
         Glide.with(context)
             .asBitmap()
             .load(imgUrl)

@@ -26,3 +26,14 @@ fun <T> genericErrorHandler(e: Throwable, result: MutableLiveData<Result<T>>) {
         else -> result.value = Result.fail(e, "An unknown error occurred")
     }
 }
+
+fun <T> coroutineErrorHandler(e: Throwable): Result<T> =
+    when(e){
+        is ApiException -> Result.fail(e, e.apiError.message)
+        is SocketTimeoutException -> Result.fail(e, "Connection Time Out")
+        is SSLHandshakeException -> Result.fail(e, "SSL Certificate not matched")
+        is SSLPeerUnverifiedException ->  Result.fail(e, "SSL Certificate not matched")
+        is IOException ->  Result.fail(e, "Connection IOException")
+        is JsonSyntaxException -> Result.fail(e, "JSON Exception")
+        else -> Result.fail(e, "An unknown error occurred")
+    }
