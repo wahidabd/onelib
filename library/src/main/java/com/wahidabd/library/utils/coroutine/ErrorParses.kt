@@ -1,4 +1,4 @@
-package com.wahidabd.library.base.coroutine
+package com.wahidabd.library.utils.coroutine
 
 import com.wahidabd.library.data.model.ApiError
 import okhttp3.ResponseBody

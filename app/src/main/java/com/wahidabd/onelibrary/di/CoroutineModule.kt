@@ -1,6 +1,6 @@
 package com.wahidabd.onelibrary.di
 
-import com.wahidabd.library.base.coroutine.ErrorParses
+import com.wahidabd.library.utils.coroutine.ErrorParses
 import org.koin.dsl.module
 
 
