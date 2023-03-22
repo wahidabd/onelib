@@ -47,7 +47,7 @@ dependencies {
 
     implementation project(":library")
 
-//    implementation "com.github.wahidabd:one-library:1.0.3"
+//    implementation "com.github.wahidabd:one-library:1.0.5"
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'

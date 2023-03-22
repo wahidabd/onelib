@@ -24,7 +24,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -107,7 +107,7 @@ afterEvaluate {
 
                 groupId = 'com.github.wahidabd'
                 artifactId = 'one-library'
-                version = '1.0.7'
+                version = '1.0'
             }
         }
     }
