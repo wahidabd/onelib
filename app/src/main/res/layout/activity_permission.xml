@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.permission.PermissionActivity">
+
+    <TextView
+        android:id="@+id/tv_camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:text="Permission camera"
+        android:textSize="@dimen/text_size_16sp"
+        android:layout_marginHorizontal="@dimen/dimen_20dp"/>
+
+
+    <TextView
+        android:id="@+id/tv_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:text="Permission fine location"
+        android:textSize="@dimen/text_size_16sp"
+        android:layout_marginHorizontal="@dimen/dimen_20dp"/>
+
+
+    <TextView
+        android:id="@+id/tv_storage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:text="Permission external storage"
+        android:layout_marginHorizontal="@dimen/dimen_20dp"
+        android:textSize="@dimen/text_size_16sp" />
+
+
+    <Button
+        android:id="@+id/btn_send_request"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:text="Request Permission" />
+
+</LinearLayout>

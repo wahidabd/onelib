@@ -62,6 +62,15 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
     implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
 
+    // room
+    implementation "androidx.room:room-runtime:2.5.0"
+    kapt "androidx.room:room-compiler:2.5.0"
+    kapt "androidx.lifecycle:lifecycle-compiler:2.5.0"
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    api "androidx.lifecycle:lifecycle-livedata-ktx:2.6.0"
+
     // rxjava
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
     implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
@@ -98,7 +107,7 @@ afterEvaluate {
 
                 groupId = 'com.github.wahidabd'
                 artifactId = 'one-library'
-                version = '1.0.6'
+                version = '1.0.7'
             }
         }
     }

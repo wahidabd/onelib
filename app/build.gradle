@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -75,4 +76,27 @@ dependencies {
 
     // timber
     implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    // rx permission
+    implementation 'com.github.tbruyelle:rxpermissions:0.12'
+
+    // image loader
+    implementation 'com.github.bumptech.glide:glide:4.15.0'
+    kapt 'com.github.bumptech.glide:compiler:4.15.0'
+
+    // image picker
+    implementation 'com.github.esafirm:android-image-picker:2.4.5'
+
+    // compress image and crop
+    implementation 'id.zelory:compressor:2.1.1'
+    implementation 'com.github.yalantis:ucrop:2.2.6'
+
+    // lib phone number
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.13.7'
+
+    // google play core
+    implementation 'com.google.android.play:app-update-ktx:2.0.1'
+
+    // multi state view
+    implementation  'com.github.Kennyc1012:MultiStateView:2.2.0'
 }
