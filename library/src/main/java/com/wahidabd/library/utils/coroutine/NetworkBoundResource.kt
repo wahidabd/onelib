@@ -1,6 +1,6 @@
 package com.wahidabd.library.utils.coroutine
 
-import com.wahidabd.library.data.Result
+import com.wahidabd.library.data.Resource
 import kotlinx.coroutines.flow.*
 
 /**
@@ -10,35 +10,35 @@ import kotlinx.coroutines.flow.*
 
 abstract class NetworkBoundResource<Response, Request> {
 
-    private var result: Flow<Result<Response>> = flow {
-        emit(Result.loading())
+    private var resource: Flow<Resource<Response>> = flow {
+        emit(Resource.loading())
         val dbSource = loadFromDB().first()
         if (shouldFetch(dbSource)) {
-            emit(Result.loading())
+            emit(Resource.loading())
             when (val response = createCall().first()) {
-                is Result.Default -> {}
-                is Result.Loading -> {}
-                is Result.Empty -> {}
-                is Result.Failure -> {
+                is Resource.Default -> {}
+                is Resource.Loading -> {}
+                is Resource.Empty -> {}
+                is Resource.Failure -> {
                     onFetchFailed()
-                    emit(Result.fail(response.message))
+                    emit(Resource.fail(response.message))
                 }
-                is Result.Success -> {
+                is Resource.Success -> {
                     saveCallRequest(response.data)
                     emitAll(loadFromDB().map {
-                        Result.success(it)
+                        Resource.success(it)
                     })
                 }
             }
         }else{
-            emitAll(loadFromDB().map { Result.success(it) })
+            emitAll(loadFromDB().map { Resource.success(it) })
         }
     }
 
     protected open fun onFetchFailed() {}
     protected abstract fun loadFromDB(): Flow<Response>
     protected abstract fun shouldFetch(data: Response?): Boolean
-    protected abstract suspend fun createCall(): Flow<Result<Request>>
+    protected abstract suspend fun createCall(): Flow<Resource<Request>>
     protected abstract suspend fun saveCallRequest(data: Request)
-    fun asFlow(): Flow<Result<Response>> = result
+    fun asFlow(): Flow<Resource<Response>> = resource
 }

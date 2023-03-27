@@ -1,31 +1,61 @@
 package com.wahidabd.library.utils.exts
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
-import com.wahidabd.library.data.Result
+import com.wahidabd.library.data.Resource
 
-fun <T> LiveData<Result<T>>.observerLiveData(
+fun <T> LiveData<Resource<T>>.observerLiveData(
     owner: LifecycleOwner,
     onLoading: (() -> Unit)?,
     onSuccess: (T) -> Unit,
     onEmpty: (() -> Unit)?,
     onFailure: (Throwable?, String?) -> Unit
-){
+) {
     this.observe(owner) {
-        when(it){
-            is Result.Loading -> {
+        when (it) {
+            is Resource.Loading -> {
                 onLoading?.invoke()
             }
-            is Result.Success -> {
+            is Resource.Success -> {
                 onSuccess.invoke(it.data)
             }
-            is Result.Empty -> {
+            is Resource.Empty -> {
                 onEmpty?.invoke()
             }
-            is Result.Failure -> {
+            is Resource.Failure -> {
                 onFailure.invoke(it.throwable, it.message)
             }
-            is Result.Default -> {}
+            is Resource.Default -> {}
+        }
+    }
+
+}
+
+@Composable
+fun <T> LiveData<Resource<T>>.observerLiveDataState(
+    onLoading: @Composable (() -> Unit)?,
+    onSuccess: @Composable (T) -> Unit,
+    onEmpty: @Composable (() -> Unit)?,
+    onFailure: @Composable (Throwable?, String?) -> Unit
+) {
+    this.observeAsState().value.let {
+        when (it) {
+            is Resource.Default -> {}
+            is Resource.Loading -> {
+                onLoading?.invoke()
+            }
+            is Resource.Empty -> {
+                onEmpty?.invoke()
+            }
+            is Resource.Failure -> {
+                onFailure.invoke(it.throwable, it.message)
+            }
+            is Resource.Success -> {
+                onSuccess.invoke(it.data)
+            }
+            else -> {}
         }
     }
 

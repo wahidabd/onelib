@@ -22,4 +22,7 @@ class MovieApi(private val apiClient: MovieApiClient) : WebApi, MovieApiClient {
     override fun getCast(id: Int): Single<Response<CastDataResponse<CastResultResponse>>> =
         apiClient.getCast(id)
 
+    override suspend fun getNowPlaying(): Response<MovieDataResponse<MovieResultResponse>> =
+        apiClient.getNowPlaying()
+
 }

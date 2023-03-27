@@ -2,7 +2,7 @@ package com.wahidabd.onelibrary.presentation.movie
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.wahidabd.library.data.Result
+import com.wahidabd.library.data.Resource
 import com.wahidabd.library.presentation.BaseViewModel
 import com.wahidabd.library.utils.exts.addTo
 import com.wahidabd.library.utils.rx.apihandlers.genericErrorHandler
@@ -16,20 +16,20 @@ class MovieViewModel(
     disposable: CompositeDisposable
 ) : BaseViewModel(disposable){
 
-    private val _movies = MutableLiveData<Result<Pair<List<Movie>, List<Movie>>>>()
-    val movies: LiveData<Result<Pair<List<Movie>, List<Movie>>>> get() = _movies
+    private val _movies = MutableLiveData<Resource<Pair<List<Movie>, List<Movie>>>>()
+    val movies: LiveData<Resource<Pair<List<Movie>, List<Movie>>>> get() = _movies
 
     init {
-        _movies.value = Result.default()
+        _movies.value = Resource.default()
     }
 
     fun getMovies(){
-        _movies.value = Result.loading()
+        _movies.value = Resource.loading()
 
         movieUseCase.getMovies()
             .compose(singleScheduler())
             .subscribe({
-                _movies.value = Result.success(it)
+                _movies.value = Resource.success(it)
             }, { genericErrorHandler(it, _movies) })
             .addTo(disposable)
     }
