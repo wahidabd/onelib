@@ -28,4 +28,7 @@ interface MovieApiClient {
         @Path("id") id: Int
     ): Single<Response<CastDataResponse<CastResultResponse>>>
 
+    @GET("movie/now_playing")
+    suspend fun getNowPlaying(): Response<MovieDataResponse<MovieResultResponse>>
+
 }

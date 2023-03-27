@@ -65,6 +65,10 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
 
+    // livedata compose
+    implementation "androidx.lifecycle:lifecycle-runtime-compose:2.6.1"
+    implementation 'androidx.compose.runtime:runtime-livedata:1.5.0-alpha01'
+
     // koin
     implementation "io.insert-koin:koin-android:3.3.3"
     implementation "io.insert-koin:koin-androidx-workmanager:3.3.3"

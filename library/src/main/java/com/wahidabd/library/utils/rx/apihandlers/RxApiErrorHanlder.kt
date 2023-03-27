@@ -2,7 +2,7 @@ package com.wahidabd.library.utils.rx.apihandlers
 
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.JsonSyntaxException
-import com.wahidabd.library.data.Result
+import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.exception.ApiException
 import okio.IOException
 import java.net.SocketTimeoutException
@@ -15,25 +15,25 @@ import javax.net.ssl.SSLPeerUnverifiedException
  * Github wahidabd.
  */
 
-fun <T> genericErrorHandler(e: Throwable, result: MutableLiveData<Result<T>>) {
+fun <T> genericErrorHandler(e: Throwable, resource: MutableLiveData<Resource<T>>) {
     when (e){
-        is ApiException -> result.value = Result.fail(e, e.apiError.message)
-        is SocketTimeoutException -> result.value = Result.fail(e, "Connection Time Out")
-        is SSLHandshakeException -> result.value = Result.fail(e, "SSL Certificate not matched")
-        is SSLPeerUnverifiedException -> result.value = Result.fail(e, "SSL Certificate not matched")
-        is IOException -> result.value = Result.fail(e, "Connection IOException")
-        is JsonSyntaxException -> result.value = Result.fail(e, "JSON Exception")
-        else -> result.value = Result.fail(e, "An unknown error occurred")
+        is ApiException -> resource.value = Resource.fail(e, e.apiError.message)
+        is SocketTimeoutException -> resource.value = Resource.fail(e, "Connection Time Out")
+        is SSLHandshakeException -> resource.value = Resource.fail(e, "SSL Certificate not matched")
+        is SSLPeerUnverifiedException -> resource.value = Resource.fail(e, "SSL Certificate not matched")
+        is IOException -> resource.value = Resource.fail(e, "Connection IOException")
+        is JsonSyntaxException -> resource.value = Resource.fail(e, "JSON Exception")
+        else -> resource.value = Resource.fail(e, "An unknown error occurred")
     }
 }
 
-fun <T> coroutineErrorHandler(e: Throwable): Result<T> =
+fun <T> coroutineErrorHandler(e: Throwable): Resource<T> =
     when(e){
-        is ApiException -> Result.fail(e, e.apiError.message)
-        is SocketTimeoutException -> Result.fail(e, "Connection Time Out")
-        is SSLHandshakeException -> Result.fail(e, "SSL Certificate not matched")
-        is SSLPeerUnverifiedException ->  Result.fail(e, "SSL Certificate not matched")
-        is IOException ->  Result.fail(e, "Connection IOException")
-        is JsonSyntaxException -> Result.fail(e, "JSON Exception")
-        else -> Result.fail(e, "An unknown error occurred")
+        is ApiException -> Resource.fail(e, e.apiError.message)
+        is SocketTimeoutException -> Resource.fail(e, "Connection Time Out")
+        is SSLHandshakeException -> Resource.fail(e, "SSL Certificate not matched")
+        is SSLPeerUnverifiedException ->  Resource.fail(e, "SSL Certificate not matched")
+        is IOException ->  Resource.fail(e, "Connection IOException")
+        is JsonSyntaxException -> Resource.fail(e, "JSON Exception")
+        else -> Resource.fail(e, "An unknown error occurred")
     }
