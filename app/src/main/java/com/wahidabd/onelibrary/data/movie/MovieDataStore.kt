@@ -16,9 +16,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class MovieDataStore(
-    api: MovieApi,
-    private val safeCall: SafeCall,
-    private val converter: ErrorParses
+    api: MovieApi
 ) : MovieRepository {
 
     override val dbService: LocalDb? = null
