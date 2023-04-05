@@ -4,7 +4,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Update
 import com.wahidabd.library.base.Model
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 
 
 /**
@@ -20,11 +20,13 @@ interface RxLocalDb<T: Model> : LocalDb {
     @Update
     abstract fun update(vararg response: T)
 
-    abstract fun get(intId: Int? = null): Single<T>
+    abstract fun get(intId: Int?): Single<T>
 
     abstract fun getList(): Single<List<T>>
 
     @Delete
     abstract fun remove(vararg response: T)
+
+    abstract fun remove(intId: Int?)
 
 }

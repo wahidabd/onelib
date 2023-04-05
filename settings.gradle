@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "One Library"
-include ':app'
+include ':sample'
 include ':library'

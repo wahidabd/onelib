@@ -1,26 +1,28 @@
 plugins {
-    id 'com.android.library'
+    id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-    id 'kotlin-parcelize'
-    id 'maven-publish'
 }
 
 android {
-    namespace 'com.wahidabd.library'
+    namespace 'com.wahidabd.onelibrary'
     compileSdk 33
 
     defaultConfig {
+        applicationId "com.wahidabd.onelibrary"
         minSdk 23
         targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+        buildConfigField("String", "API_KEY", "\"24149183601d3608dcc2154306619711\"")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildFeatures {
         viewBinding true
-        compose true
     }
 
     buildTypes {
@@ -36,17 +38,17 @@ android {
     kotlinOptions {
         jvmTarget = '11'
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion compose_version
-    }
     packagingOptions {
-        resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
-        }
+        exclude 'META-INF/rxjava.properties'
     }
 }
 
 dependencies {
+
+    implementation project(":library")
+
+//    implementation "com.github.wahidabd:one-library:1.1.1"
+
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
@@ -65,36 +67,28 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
 
-    // livedata compose
-    implementation "androidx.lifecycle:lifecycle-runtime-compose:2.6.1"
-    implementation 'androidx.compose.runtime:runtime-livedata:1.5.0-alpha01'
-
-    // koin
+    // Koin
     implementation "io.insert-koin:koin-android:3.3.3"
     implementation "io.insert-koin:koin-androidx-workmanager:3.3.3"
     implementation "io.insert-koin:koin-androidx-navigation:3.3.3"
 
-    // logging
-    implementation "com.jakewharton.timber:timber:5.0.1"
-
-    // retrofit
+    // Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
-    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
 
     // room
     implementation "androidx.room:room-runtime:2.5.1"
+    implementation "androidx.room:room-rxjava3:2.5.1"
     kapt "androidx.room:room-compiler:2.5.1"
     kapt "androidx.lifecycle:lifecycle-compiler:2.6.1"
-
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
-    api "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
 
     // rxjava
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
     implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
+
+    // timber
+    implementation 'com.jakewharton.timber:timber:5.0.1'
 
     // rx permission
     implementation 'com.github.tbruyelle:rxpermissions:0.12'
@@ -118,18 +112,4 @@ dependencies {
 
     // multi state view
     implementation  'com.github.Kennyc1012:MultiStateView:2.2.0'
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-
-                groupId = 'com.github.wahidabd'
-                artifactId = 'one-library'
-                version = '1.0'
-            }
-        }
-    }
 }

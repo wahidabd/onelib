@@ -15,19 +15,19 @@ fun <T> LiveData<Resource<T>>.observerLiveData(
 ) {
     this.observe(owner) {
         when (it) {
+            is Resource.Default -> {}
             is Resource.Loading -> {
                 onLoading?.invoke()
-            }
-            is Resource.Success -> {
-                onSuccess.invoke(it.data)
-            }
-            is Resource.Empty -> {
-                onEmpty?.invoke()
             }
             is Resource.Failure -> {
                 onFailure.invoke(it.throwable, it.message)
             }
-            is Resource.Default -> {}
+            is Resource.Empty -> {
+                onEmpty?.invoke()
+            }
+            is Resource.Success -> {
+                onSuccess.invoke(it.data)
+            }
         }
     }
 
