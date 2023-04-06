@@ -13,6 +13,9 @@ class MovieApi(private val apiClient: MovieApiClient) : WebApi, MovieApiClient {
     override fun getPopularMovie(): Single<Response<MovieDataResponse<MovieResultResponse>>> =
         apiClient.getPopularMovie()
 
+    override fun getPaging(page: Int): Single<Response<MovieDataResponse<MovieResultResponse>>> =
+        apiClient.getPaging(page)
+
     override fun getUpcomingMovie(): Single<Response<MovieDataResponse<MovieResultResponse>>> =
         apiClient.getUpcomingMovie()
 

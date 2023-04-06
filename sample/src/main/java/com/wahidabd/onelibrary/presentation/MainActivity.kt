@@ -16,6 +16,7 @@ import com.wahidabd.onelibrary.presentation.imagepicker.ImagePickerActivity
 import com.wahidabd.onelibrary.presentation.movie.MovieActivity
 import com.wahidabd.onelibrary.presentation.multistateview.MultiStateViewActivity
 import com.wahidabd.onelibrary.presentation.notification.NotificationActivity
+import com.wahidabd.onelibrary.presentation.paging.PagingActivity
 import com.wahidabd.onelibrary.presentation.permission.PermissionActivity
 import com.wahidabd.onelibrary.presentation.rxdatabase.NoteActivity
 import com.wahidabd.onelibrary.presentation.viewpager.ViewPagerActivity
@@ -71,6 +72,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             7 -> NotificationActivity.start(this)
             8 -> NoteActivity.start(this)
             9 -> MultiStateViewActivity.start(this)
+            10 -> PagingActivity.start(this)
         }
     }
 

@@ -50,6 +50,11 @@ object Constant {
                  9,
                  "Multi State View",
                  "Multi State View"
+             ),
+             TestModel(
+                 10,
+                 "Rx Paging",
+                 "Base RxPagingAdapter"
              )
         )
 

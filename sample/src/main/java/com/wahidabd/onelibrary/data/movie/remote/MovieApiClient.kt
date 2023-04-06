@@ -9,11 +9,17 @@ import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface MovieApiClient {
 
     @GET("movie/popular")
     fun getPopularMovie(): Single<Response<MovieDataResponse<MovieResultResponse>>>
+
+    @GET("movie/popular")
+    fun getPaging(
+        @Query("page") page: Int
+    ): Single<Response<MovieDataResponse<MovieResultResponse>>>
 
     @GET("movie/upcoming")
     fun getUpcomingMovie(): Single<Response<MovieDataResponse<MovieResultResponse>>>

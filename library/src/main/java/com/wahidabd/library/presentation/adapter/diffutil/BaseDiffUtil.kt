@@ -1,6 +1,7 @@
-package com.wahidabd.library.presentation.adapter
+package com.wahidabd.library.presentation.adapter.diffutil
 
 import androidx.recyclerview.widget.DiffUtil
+import com.wahidabd.library.presentation.adapter.Pager
 
 abstract class BaseDiffUtil <T> (val oldItem: List<Pager<T>>, val newItem: List<Pager<T>>) : DiffUtil.Callback() {
 
