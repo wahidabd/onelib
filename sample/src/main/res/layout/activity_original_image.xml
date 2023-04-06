@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".presentation.imagepicker.OriginalImageActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Get original image from camera" />
+
+    <ImageView
+        android:id="@+id/imgOriginalImageCamera"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginTop="18dp"
+        android:background="@android:color/darker_gray"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Get original image from gallery" />
+
+    <ImageView
+        android:id="@+id/imgOriginalImageGallery"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginTop="18dp"
+        android:background="@android:color/darker_gray"
+        android:scaleType="fitCenter" />
+
+</LinearLayout>

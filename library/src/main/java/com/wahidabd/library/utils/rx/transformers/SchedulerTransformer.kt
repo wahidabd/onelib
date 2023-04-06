@@ -33,7 +33,7 @@ fun <T : Any> maybeScheduler(
 ): MaybeSchedulerTransformer<T> =
     MaybeSchedulerTransformer(subscriberScheduler, observerScheduler)
 
-fun completableScheduler(
+fun <T: Any> completableScheduler(
     subscriberScheduler: Scheduler = Schedulers.io(),
     observerScheduler: Scheduler = AndroidSchedulers.mainThread()
 ): CompletableSchedulerTransformer =

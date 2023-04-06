@@ -28,9 +28,8 @@ object OkHttpClientFactory {
         }
 
         if (showDebugLog){
-            val interceptor = HttpLoggingInterceptor().apply {
-                HttpLoggingInterceptor.Level.BODY
-            }
+            val interceptor = HttpLoggingInterceptor()
+            interceptor.level = HttpLoggingInterceptor.Level.BODY
             okHttpClient.addInterceptor(interceptor).build()
         }
 
