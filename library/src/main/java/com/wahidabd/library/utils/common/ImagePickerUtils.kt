@@ -66,11 +66,11 @@ class ImagePickerUtils {
         }
     }
 
-    fun getOriginalImage(data: Intent): ResultImage {
+    fun getOriginalImage(data: Intent?): ResultImage {
         return if (VERSION.SDK_INT >= 29) {
-            getOriginalImageForQ(data)
+            getOriginalImageForQ(data!!)
         } else {
-            getOriginalImageBelowQ(data)
+            getOriginalImageBelowQ(data!!)
         }
     }
 

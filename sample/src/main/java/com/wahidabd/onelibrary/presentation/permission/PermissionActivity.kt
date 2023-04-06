@@ -37,9 +37,9 @@ class PermissionActivity : BaseActivity<ActivityPermissionBinding>() {
                 when (permission) {
                     android.Manifest.permission.CAMERA -> binding.tvCamera.text =
                         "Camera permission is granted"
-                    android.Manifest.permission.ACCESS_FINE_LOCATION -> binding.tvCamera.text =
+                    android.Manifest.permission.ACCESS_FINE_LOCATION -> binding.tvLocation.text =
                         "Fine location permission is granted"
-                    android.Manifest.permission.READ_EXTERNAL_STORAGE -> binding.tvCamera.text =
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE -> binding.tvStorage.text =
                         "External storage permission is granted"
                 }
             },
@@ -63,9 +63,9 @@ class PermissionActivity : BaseActivity<ActivityPermissionBinding>() {
                 when (permission) {
                     android.Manifest.permission.CAMERA -> binding.tvCamera.text =
                         "Camera cannot be use, you need to allow"
-                    android.Manifest.permission.ACCESS_FINE_LOCATION -> binding.tvCamera.text =
+                    android.Manifest.permission.ACCESS_FINE_LOCATION -> binding.tvLocation.text =
                         "Fine location cannot be use, you need to allow"
-                    android.Manifest.permission.READ_EXTERNAL_STORAGE -> binding.tvCamera.text =
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE -> binding.tvStorage.text =
                         "External storage cannot be use, you need to allow"
                 }
             },

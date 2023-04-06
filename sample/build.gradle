@@ -87,6 +87,9 @@ dependencies {
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
     implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
 
+    // image picker
+    implementation 'com.github.esafirm:android-image-picker:3.0.0'
+
     // timber
     implementation 'com.jakewharton.timber:timber:5.0.1'
 
