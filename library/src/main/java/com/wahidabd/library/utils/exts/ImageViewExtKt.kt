@@ -30,6 +30,34 @@ fun ImageView.setImageUrl(context: Context, imageUrl: String, isCenterCrop: Bool
     }
 }
 
+@SuppressLint("CheckResult")
+fun ImageView.setImageUrl(context: Context, imageUrl: String, placeholder: Int, isCenterCrop: Boolean = false){
+    if (context.isValidContext()){
+        val options = RequestOptions()
+        options.error(placeholder)
+        if (isCenterCrop) options.centerCrop()
+        Glide.with(context)
+            .load(imageUrl)
+            .apply(options)
+            .into(this)
+    }
+}
+
+@SuppressLint("CheckResult")
+fun ImageView.setImageUrl(context: Context, imageUrl: String, placeholder: Int, error: Int, isCenterCrop: Boolean = false){
+    if (context.isValidContext()){
+        val options = RequestOptions()
+        options
+            .placeholder(placeholder)
+            .error(error)
+        if (isCenterCrop) options.centerCrop()
+        Glide.with(context)
+            .load(imageUrl)
+            .apply(options)
+            .into(this)
+    }
+}
+
 fun Context.isValidContext(): Boolean {
     val activity = if (this is Activity) this as Activity? else null
     return if (activity != null) (!activity.isDestroyed && !activity.isFinishing) else true

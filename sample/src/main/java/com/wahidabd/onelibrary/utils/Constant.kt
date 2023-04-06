@@ -45,6 +45,11 @@ object Constant {
                  8,
                  "Rx Local Database",
                  "Base Local Database With Rx"
+             ),
+             TestModel(
+                 9,
+                 "Multi State View",
+                 "Multi State View"
              )
         )
 

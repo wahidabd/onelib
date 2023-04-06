@@ -10,7 +10,7 @@ class Validation (private val view: View, private val rules: List<Rule>) {
     private var isValid = false
     private var ruleNotPassedIndex = -1
     private var validationResultHistory = Pair(false, false)
-
+    var getView = view
 
     fun getPreviousValidationResult(): Boolean =
         validationResultHistory.second

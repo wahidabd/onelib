@@ -2,11 +2,14 @@ package com.wahidabd.library.utils.extensions
 
 import android.graphics.drawable.Drawable
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.viewbinding.ViewBinding
 import com.kennyc.view.MultiStateView
 import com.wahidabd.library.R
+import com.wahidabd.library.utils.exts.onClick
+import com.wahidabd.library.utils.exts.visible
 
 fun MultiStateView.setContentLayout(binding: ViewBinding) {
     this.addView(binding.root)
@@ -34,7 +37,7 @@ fun MultiStateView.showEmptyState(action: (View) -> Unit) {
     view?.let { action.invoke(it) }
 }
 
-fun MultiStateView.showEmptyState(emptyMessage: String?, drawable: Drawable?, title: String?) {
+fun MultiStateView.showEmptyState(emptyMessage: String? = null, drawable: Drawable? = null, title: String? = null) {
     val state = this.getView(MultiStateView.ViewState.EMPTY)
 
     if (emptyMessage != null){
@@ -59,12 +62,12 @@ fun MultiStateView.showErrorState(action: ((View) -> Unit)) {
     view?.let { action.invoke(view) }
 }
 
-fun MultiStateView.showErrorState(emptyMessage: String?, drawable: Drawable?, title: String?) {
+fun MultiStateView.showErrorState(errorMessage: String? = null, title: String? = null, drawable: Drawable? = null, errorButton: Pair<String, () -> Unit>? = null) {
     val state = this.getView(MultiStateView.ViewState.ERROR)
 
-    if (emptyMessage != null){
+    if (errorMessage != null){
         val error: TextView? = state?.findViewById(R.id.tv_error)
-        if (error != null) error.text = emptyMessage
+        if (error != null) error.text = errorMessage
     }
 
     if (title != null){
@@ -74,6 +77,17 @@ fun MultiStateView.showErrorState(emptyMessage: String?, drawable: Drawable?, ti
 
     if (drawable != null) {
         state?.findViewById<ImageView?>(R.id.img_error)?.setImageDrawable(drawable)
+    }
+
+    if (errorButton != null){
+        val btnError = state?.findViewById<Button>(R.id.btn_error)
+        btnError?.apply {
+            text = errorButton.first
+            visible()
+            onClick {
+                errorButton.second.invoke()
+            }
+        }
     }
 }
 

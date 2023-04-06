@@ -1,7 +1,14 @@
 package com.wahidabd.library.utils.exts
 
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.CompoundButton
+import android.widget.EditText
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doOnTextChanged
+import com.google.android.material.textfield.TextInputLayout
 
 fun View.onClick(action: (View) -> Unit) {
     this.setOnClickListener(action)
@@ -36,4 +43,16 @@ fun CompoundButton.check(){
 
 fun CompoundButton.uncheck(){
     this.isChecked = false
+}
+
+fun EditText.onTextChange(doOnChange: (String) -> Unit){
+    this.doAfterTextChanged {
+        doOnChange.invoke(it.toString())
+    }
+}
+
+fun TextInputLayout.onTextChange(doOnChange: (String) -> Unit){
+    this.onTextChange {
+        doOnChange.invoke(it)
+    }
 }
