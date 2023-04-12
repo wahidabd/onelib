@@ -1,9 +1,7 @@
 package com.wahidabd.library.utils.rx.transformers
 
-import io.reactivex.rxjava3.core.Maybe
-import io.reactivex.rxjava3.core.MaybeSource
-import io.reactivex.rxjava3.core.MaybeTransformer
-import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.rxjava3.core.*
+import org.reactivestreams.Publisher
 
 /**
  * Created by Wahid on 3/13/2023.
@@ -13,9 +11,9 @@ import io.reactivex.rxjava3.core.Scheduler
 class FlowableSchedulerTransformer<T: Any>(
     private val subscriberScheduler: Scheduler,
     private val observerScheduler: Scheduler
-) : MaybeTransformer<T, T>{
+) : FlowableTransformer<T, T>{
 
-    override fun apply(upstream: Maybe<T>): MaybeSource<T> =
+    override fun apply(upstream: Flowable<T>): Publisher<T> =
         upstream.subscribeOn(subscriberScheduler).observeOn(observerScheduler)
 
 }
