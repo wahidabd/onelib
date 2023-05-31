@@ -10,7 +10,7 @@ import com.wahidabd.onelibrary.databinding.ItemRecyclerBinding
 
 class TestBaseAsyncRecyclerAdapter(
     private val context: Context,
-    items: List<String>,
+    items: ArrayList<String> = arrayListOf(),
     private val onItemClicked: ((String) -> Unit)?
 ) : BaseAsyncRecyclerAdapter<String, TestBaseAsyncRecyclerAdapter.ViewHolder>(items){
 

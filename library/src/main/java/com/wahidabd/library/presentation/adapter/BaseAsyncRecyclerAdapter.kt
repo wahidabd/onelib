@@ -10,7 +10,7 @@ import androidx.viewbinding.ViewBinding
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
 
 abstract class BaseAsyncRecyclerAdapter<T, H : BaseAsyncItemViewHolder<T>>(
-    private val data: List<T>
+    private val data: ArrayList<T>
 ) : RecyclerView.Adapter<H>() {
 
     private val differCallback = object : DiffUtil.ItemCallback<T>() {
@@ -38,5 +38,9 @@ abstract class BaseAsyncRecyclerAdapter<T, H : BaseAsyncItemViewHolder<T>>(
     }
 
     override fun getItemCount(): Int = setData.size
+
+    fun clear(){
+        setData.toMutableList().clear()
+    }
 
 }
