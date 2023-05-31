@@ -10,7 +10,7 @@ class AsyncRecyclerActivity : BaseActivity<ActivityAsyncRecyclerBinding>() {
     private val asyncAdapter: TestBaseAsyncRecyclerAdapter by lazy {
         TestBaseAsyncRecyclerAdapter(
             context = this,
-            items = mutableListOf(),
+            items = arrayListOf(),
             onItemClicked = {}
         )
     }

@@ -37,6 +37,12 @@ fun View.invisible() {
     this.visibility = View.INVISIBLE
 }
 
+fun View.visibleIf(condition: () -> Boolean){
+    if (this.visibility != View.FOCUSABLES_ALL && condition.invoke()){
+        this.visible()
+    }
+}
+
 fun CompoundButton.check(){
     this.isChecked = true
 }
