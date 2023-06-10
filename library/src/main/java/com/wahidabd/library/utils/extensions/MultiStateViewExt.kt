@@ -38,6 +38,7 @@ fun MultiStateView.showEmptyState(action: (View) -> Unit) {
 }
 
 fun MultiStateView.showEmptyState(emptyMessage: String? = null, drawable: Drawable? = null, title: String? = null) {
+    viewState = MultiStateView.ViewState.EMPTY
     val state = this.getView(MultiStateView.ViewState.EMPTY)
 
     if (emptyMessage != null){
@@ -57,12 +58,13 @@ fun MultiStateView.showEmptyState(emptyMessage: String? = null, drawable: Drawab
 }
 
 fun MultiStateView.showErrorState(action: ((View) -> Unit)) {
-    viewState = MultiStateView.ViewState.EMPTY
+    viewState = MultiStateView.ViewState.ERROR
     val view = getView(MultiStateView.ViewState.EMPTY)
     view?.let { action.invoke(view) }
 }
 
 fun MultiStateView.showErrorState(errorMessage: String? = null, title: String? = null, drawable: Drawable? = null, errorButton: Pair<String, () -> Unit>? = null) {
+    viewState = MultiStateView.ViewState.ERROR
     val state = this.getView(MultiStateView.ViewState.ERROR)
 
     if (errorMessage != null){

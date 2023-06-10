@@ -36,6 +36,7 @@ private fun getParameterInterceptor(): Interceptor {
 
 private fun getHeaderInterceptor(): Interceptor {
     val headers = HashMap<String, String>()
+    headers["Accept"] = "application/json"
     headers["Content-Type"] = "application/json"
 
     return HeaderInterceptor(headers)

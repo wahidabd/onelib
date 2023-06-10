@@ -21,15 +21,15 @@ class PagingViewModel(
     disposable: CompositeDisposable
 ) : BaseViewModel(disposable) {
 
-    private val _paging = MutableLiveData<PagingData<Movie>>()
-    val paging: LiveData<PagingData<Movie>> get() = _paging
-
-    fun paging() {
-        movieUseCase.getPaging()
-            .subscribe {
-                _paging.value = it
-            }
-            .addTo(disposable)
-    }
+//    private val _paging = MutableLiveData<PagingData<Movie>>()
+//    val paging: LiveData<PagingData<Movie>> get() = _paging
+//
+//    fun paging() {
+//        movieUseCase.getPaging()
+//            .subscribe {
+//                _paging.value = it
+//            }
+//            .addTo(disposable)
+//    }
 
 }

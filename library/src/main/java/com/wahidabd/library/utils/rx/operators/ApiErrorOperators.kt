@@ -43,7 +43,7 @@ fun <T, R> handleErrorResponseToApiException(
     val errorResponse = errorBody?.toString()
 
     val apiException: ApiException = if (errorClazz == null && mabObject == null){
-        UnsuccessfulResponseHandler.getApiError(errorResponse.toString(), response)
+        UnsuccessfulResponseHandler.INSTANCE.getApiError(errorResponse.toString(), response)
     }else{
         if (errorClazz == null){
             throw IllegalArgumentException("errorClazz can not be null")
@@ -53,7 +53,7 @@ fun <T, R> handleErrorResponseToApiException(
             throw IllegalArgumentException("mapObject can not be null")
         }
 
-        val parsing = UnsuccessfulResponseHandler.parseCustomApiErrorResponse(errorResponse.toString(), errorClazz)
+        val parsing = UnsuccessfulResponseHandler.INSTANCE.parseCustomApiErrorResponse(errorResponse.toString(), errorClazz)
         ApiException(mabObject.invoke(parsing), response)
     }
 

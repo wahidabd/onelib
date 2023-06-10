@@ -53,4 +53,15 @@ object ApiService {
         return retrofit.create(serviceClass)
     }
 
+    fun createService(okHttpClient: OkHttpClient, baseUrl: String): Retrofit {
+        val gson = GsonBuilder().create()
+        return Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+
+//        return retrofit.create(serviceClass)
+    }
+
 }

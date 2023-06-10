@@ -27,24 +27,24 @@ class FirstViewPagerFragment : BaseFragment<FragmentFirstViewPagerBinding>() {
     }
 
     override fun initProcess() {
-        viewModel.getMovies()
+//        viewModel.getMovies()
     }
 
     override fun initObservers() {
-        viewModel.movies.observerLiveData(viewLifecycleOwner,
-            onLoading = {
-                Timber.d("LOADING")
-            },
-            onEmpty = {
-                Timber.d("EMPTY")
-            },
-            onFailure = {throwable, message ->
-                Timber.e("ERROR: $throwable --> $message")
-            },
-            onSuccess = {
-                Timber.d("SUCCESS: ${it.first}")
-            }
-        )
+//        viewModel.movies.observerLiveData(viewLifecycleOwner,
+//            onLoading = {
+//                Timber.d("LOADING")
+//            },
+//            onEmpty = {
+//                Timber.d("EMPTY")
+//            },
+//            onFailure = {throwable, message ->
+//                Timber.e("ERROR: $throwable --> $message")
+//            },
+//            onSuccess = {
+//                Timber.d("SUCCESS: ${it.first}")
+//            }
+//        )
     }
 
 }

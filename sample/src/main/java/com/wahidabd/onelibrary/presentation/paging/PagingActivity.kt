@@ -27,13 +27,13 @@ class PagingActivity : BaseActivity<ActivityPagingBinding>() {
     }
 
     override fun initProcess() {
-        viewModel.paging()
+//        viewModel.paging()
     }
 
     override fun initObservers() {
-        viewModel.paging.observe(this) {
-            mAdapter.submitData(lifecycle, it)
-        }
+//        viewModel.paging.observe(this) {
+//            mAdapter.submitData(lifecycle, it)
+//        }
     }
 
     companion object {
