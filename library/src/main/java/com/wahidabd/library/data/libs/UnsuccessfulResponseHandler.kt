@@ -3,6 +3,7 @@ package com.wahidabd.library.data.libs
 import com.google.gson.Gson
 import com.wahidabd.library.data.model.ApiError
 import com.wahidabd.library.utils.exception.ApiException
+import com.wahidabd.library.utils.extensions.debug
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -15,6 +16,7 @@ import retrofit2.Response
  */
 object UnsuccessfulResponseHandler {
 
+    val INSTANCE = UnsuccessfulResponseHandler
     val gson = Gson()
 
     fun <T> getApiError(errorResponse: String?, response: Response<T>): ApiException {
@@ -31,8 +33,9 @@ object UnsuccessfulResponseHandler {
         }
     }
 
-    fun <T> parseCustomApiErrorResponse(errorResponse: String, clazz: Class<T>): T =
-        gson.fromJson(errorResponse, clazz)
+    fun <T> parseCustomApiErrorResponse(errorResponse: String, clazz: Class<T>): T {
+        return gson.fromJson(errorResponse, clazz)
+    }
 
     private fun isValidJsonObject(errorResponse: String): Boolean =
         try {

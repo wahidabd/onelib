@@ -25,12 +25,11 @@ class MovieActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initProcess() {
         Timber.d("INIT: PROCESS")
-        movieViewModel.getMovies()
     }
 
     override fun initObservers() {
         Timber.d("INIT: OBSERVERS")
-        movieViewModel.movies.observerLiveData(this,
+        movieViewModel.detail(0).observerLiveData(this,
             onLoading = {
                 Timber.d("LOADING")
             },
@@ -41,7 +40,7 @@ class MovieActivity : BaseActivity<ActivityMainBinding>() {
                 Timber.e("ERROR: $throwable --> $message")
             },
             onSuccess = {
-                Timber.d("SUCCESS: ${it.first}")
+                Timber.d("SUCCESS: ${it}")
             }
         )
     }

@@ -19,7 +19,7 @@ class App : BaseApplication() {
             rxModule,
             coroutineModule,
             movieModule,
-            noteModule
+            noteModule,
         )
 
     override fun initApp() {
