@@ -11,22 +11,9 @@ import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
 
 class MovieApi(private val apiClient: MovieApiClient) : WebApi, MovieApiClient {
-//    override fun getPopularMovie(): Single<Response<MovieDataResponse<MovieResultResponse>>> =
-//        apiClient.getPopularMovie()
-//
-//    override fun getPaging(page: Int): Single<Response<MovieDataResponse<MovieResultResponse>>> =
-//        apiClient.getPaging(page)
-//
-//    override fun getUpcomingMovie(): Single<Response<MovieDataResponse<MovieResultResponse>>> =
-//        apiClient.getUpcomingMovie()
 
     override suspend fun getDetailMovie(id: Int): Response<MovieDetailResultResponse> =
         apiClient.getDetailMovie(id)
 
-//    override fun getCast(id: Int): Response<CastDataResponse<CastResultResponse>> =
-//        apiClient.getCast(id)
-//
-//    override suspend fun getNowPlaying(): Response<MovieDataResponse<MovieResultResponse>> =
-//        apiClient.getNowPlaying()
 
 }

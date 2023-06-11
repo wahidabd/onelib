@@ -16,7 +16,7 @@ sealed class Resource <T> {
         fun <T> fail(message: String?): Resource<T> =
             Failure(throwable = null, message = message)
 
-        fun <T> fail(throwable: Throwable, message: String?): Resource<T> =
+        fun <T> fail(throwable: Throwable?, message: String?): Resource<T> =
             Failure(throwable = throwable, message = message)
 
         fun <T> loading(): Resource<T> =

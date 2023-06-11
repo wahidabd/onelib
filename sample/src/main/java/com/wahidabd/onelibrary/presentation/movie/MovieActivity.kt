@@ -1,9 +1,12 @@
 package com.wahidabd.onelibrary.presentation.movie
 
 
+import androidx.lifecycle.lifecycleScope
 import com.wahidabd.library.presentation.activity.BaseActivity
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.onelibrary.databinding.ActivityMainBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -24,12 +27,15 @@ class MovieActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initProcess() {
+       lifecycleScope.launch(Dispatchers.Main){
+           movieViewModel.detail(676)
+       }
         Timber.d("INIT: PROCESS")
     }
 
     override fun initObservers() {
         Timber.d("INIT: OBSERVERS")
-        movieViewModel.detail(0).observerLiveData(this,
+        movieViewModel.detail.observerLiveData(this,
             onLoading = {
                 Timber.d("LOADING")
             },
@@ -40,7 +46,7 @@ class MovieActivity : BaseActivity<ActivityMainBinding>() {
                 Timber.e("ERROR: $throwable --> $message")
             },
             onSuccess = {
-                Timber.d("SUCCESS: ${it}")
+                Timber.d("SUCCESS: $it")
             }
         )
     }
