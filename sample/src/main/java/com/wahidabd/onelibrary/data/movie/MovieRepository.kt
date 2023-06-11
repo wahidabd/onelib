@@ -14,13 +14,7 @@ import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository : BaseRepository {
-//
-//    fun getPopularMovie(): Single<MovieDataResponse<MovieResultResponse>>
-//    fun getUpcomingMovie(): Single<MovieDataResponse<MovieResultResponse>>
+
     suspend fun getDetailMovie(id: Int): Flow<Resource<MovieDetailResultResponse>>
-//    fun getCast(id: Int): Flow<Resource<CastDataResponse<CastResultResponse>>>
-//    fun getPaging(): Flowable<PagingData<MovieResultResponse>>
-//
-//    suspend fun getNowPlaying(): Flow<MovieDataResponse<MovieResultResponse>>
 
 }

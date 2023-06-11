@@ -14,8 +14,5 @@ import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.flow.Flow
 
 interface MovieUseCase {
-//    fun getMovies(): Single<Pair<List<Movie>, List<Movie>>>
-    fun getDetailMovie(id: Int): Flow<Resource<MovieDetail>>
-//    fun getDetailMovie(id: Int): Observable<Pair<MovieDetail, List<Cast>>>
-//    fun getPaging(): Flowable<PagingData<Movie>>
+    suspend fun getDetailMovie(id: Int): Flow<Resource<MovieDetail>>
 }
