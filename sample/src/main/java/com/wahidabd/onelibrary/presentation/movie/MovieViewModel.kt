@@ -35,7 +35,7 @@ class MovieViewModel(
     private val _detail = MutableLiveData<Resource<MovieDetail>> ()
     val detail: LiveData<Resource<MovieDetail>> get() = _detail
 
-    suspend fun detail(id: Int){
+    fun detail(id: Int){
         viewModelScope.launch {
             movieUseCase.getDetailMovie(id).collectLatest {
                 _detail.value = it

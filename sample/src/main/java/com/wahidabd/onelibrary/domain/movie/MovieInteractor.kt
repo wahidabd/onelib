@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 
 class MovieInteractor(private val repository: MovieRepository) : MovieUseCase {
 
-    override suspend fun getDetailMovie(id: Int): Flow<Resource<MovieDetail>> {
+    override fun getDetailMovie(id: Int): Flow<Resource<MovieDetail>> {
         return object : InternetBoundResource<MovieDetail, MovieDetailResultResponse>() {
 
             override suspend fun createCall(): Flow<Resource<MovieDetailResultResponse>> {

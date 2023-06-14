@@ -27,9 +27,7 @@ class MovieActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initProcess() {
-       lifecycleScope.launch(Dispatchers.Main){
-           movieViewModel.detail(676)
-       }
+        movieViewModel.detail(676)
         Timber.d("INIT: PROCESS")
     }
 

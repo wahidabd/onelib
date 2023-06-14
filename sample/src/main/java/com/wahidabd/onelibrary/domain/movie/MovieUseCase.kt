@@ -14,5 +14,5 @@ import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.flow.Flow
 
 interface MovieUseCase {
-    suspend fun getDetailMovie(id: Int): Flow<Resource<MovieDetail>>
+    fun getDetailMovie(id: Int): Flow<Resource<MovieDetail>>
 }
