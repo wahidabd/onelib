@@ -17,7 +17,7 @@ import retrofit2.Response
 suspend fun <T> enqueue(
     converter: (ResponseBody) -> ApiError?,
     call: suspend () -> Response<T>,
-    onEmit: ((Resource<T>) -> Unit)
+    onEmit: suspend ((Resource<T>) -> Unit)
 ) {
     try {
         val response = call()
@@ -80,6 +80,37 @@ suspend fun <T, R, S> enqueue(
 ) {
     try {
         val response = call(req1, req2)
+        val body = response.body()
+        val errBody = response.errorBody()
+
+        if (response.isSuccessful && body != null) {
+            onEmit.invoke(Resource.success(body))
+        } else if (errBody != null) {
+            val parsedError = converter(errBody)
+            if (parsedError != null) {
+                onEmit.invoke(Resource.fail(parsedError.message))
+            } else {
+                onEmit.invoke(Resource.fail("An unknown error occurred"))
+            }
+        } else {
+            onEmit.invoke(Resource.fail("An unknown error occurred"))
+        }
+    } catch (e: Exception) {
+        onEmit.invoke(coroutineErrorHandler(e))
+    }
+}
+
+
+suspend fun <T, R, S,U> enqueue(
+    req1: R,
+    req2: S,
+    req3: U,
+    converter: (ResponseBody) -> ApiError?,
+    call: suspend (R, S, U) -> Response<T>,
+    onEmit: suspend ((Resource<T>) -> Unit)
+) {
+    try {
+        val response = call(req1, req2, req3)
         val body = response.body()
         val errBody = response.errorBody()
 
