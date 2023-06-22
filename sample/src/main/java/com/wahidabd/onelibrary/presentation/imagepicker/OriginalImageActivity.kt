@@ -9,15 +9,11 @@ import com.esafirm.imagepicker.features.ReturnMode
 import com.esafirm.imagepicker.features.cameraonly.CameraOnlyConfig
 import com.esafirm.imagepicker.features.registerImagePicker
 import com.wahidabd.library.presentation.activity.BaseActivity
-import com.wahidabd.library.utils.common.ImagePickerUtils
 import com.wahidabd.library.utils.exts.onClick
-import com.wahidabd.library.utils.exts.setImageUrl
 import com.wahidabd.onelibrary.databinding.ActivityOriginalImageBinding
 
 
 class OriginalImageActivity : BaseActivity<ActivityOriginalImageBinding>() {
-
-    private val imagePicker by lazy { ImagePickerUtils() }
 
     override fun getViewBinding(): ActivityOriginalImageBinding =
         ActivityOriginalImageBinding.inflate(layoutInflater)

@@ -59,6 +59,6 @@ fun ImageView.setImageUrl(context: Context, imageUrl: String, placeholder: Int, 
 }
 
 fun Context.isValidContext(): Boolean {
-    val activity = if (this is Activity) this as Activity? else null
+    val activity = if (this is Activity) this else null
     return if (activity != null) (!activity.isDestroyed && !activity.isFinishing) else true
 }

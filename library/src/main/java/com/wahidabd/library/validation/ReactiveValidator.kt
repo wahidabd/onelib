@@ -3,6 +3,7 @@ package com.wahidabd.library.validation
 import android.widget.EditText
 import androidx.core.widget.doOnTextChanged
 import com.wahidabd.library.utils.exts.onTextChange
+import com.wahidabd.library.validation.view.ValidationAutoCompleteTextView
 
 
 /**
@@ -25,10 +26,11 @@ class ReactiveValidator(validations: MutableList<Validation>): Validator {
     override fun addValidation(validation: Validation) {
        val view = validation.getView
         if (view is EditText){
-           view.onTextChange {
-
+           view.onTextChange{
+               executeValidation(validation)
            }
-       }
+       }else if (view is ValidationAutoCompleteTextView){
+        }
     }
 
     override fun setListener(listener: ValidationListener) {
