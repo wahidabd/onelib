@@ -4,6 +4,7 @@ plugins {
     id("org.jetbrains.kotlin.kapt")
     id("org.jetbrains.kotlin.plugin.parcelize")
     id("maven-publish")
+    id("com.google.gms.google-services")
 }
 
 val composeVersion = rootProject.extra.get("compose_version") as String
@@ -74,6 +75,10 @@ dependencies {
     // livedata compose
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.1")
     implementation("androidx.compose.runtime:runtime-livedata:1.5.0-beta02")
+
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.1.0"))
+    implementation("com.google.firebase:firebase-database-ktx:20.2.2")
 
     // koin
     implementation("io.insert-koin:koin-android:3.3.3")
