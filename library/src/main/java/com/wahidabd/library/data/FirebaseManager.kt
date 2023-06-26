@@ -3,7 +3,6 @@ package com.wahidabd.library.data
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 
@@ -14,7 +13,6 @@ import com.google.firebase.database.ValueEventListener
 
 
 abstract class FirebaseManager {
-    private val database = FirebaseDatabase.getInstance()
     protected abstract val databaseRef: DatabaseReference
 
     fun setValue(
@@ -34,7 +32,7 @@ abstract class FirebaseManager {
         onSuccess: (() -> Unit)? = null,
         onError: ((error: Exception) -> Unit)? = null
     ) {
-        databaseRef.updateChildren(value)
+        databaseRef.child(child).updateChildren(value)
             .addOnSuccessListener { onSuccess?.invoke() }
             .addOnFailureListener { error -> onError?.invoke(error) }
     }
@@ -45,7 +43,7 @@ abstract class FirebaseManager {
         onSuccess: (() -> Unit)? = null,
         onError: ((error: Exception) -> Unit)? = null
     ) {
-        databaseRef.removeValue()
+        databaseRef.child(child).removeValue()
             .addOnSuccessListener { onSuccess?.invoke() }
             .addOnFailureListener { error -> onError?.invoke(error) }
     }
@@ -74,7 +72,7 @@ abstract class FirebaseManager {
                     onError?.invoke(error.toException())
                 }
             })
-        }catch (e: Exception){
+        } catch (e: Exception) {
             onError?.invoke(e)
         }
     }
