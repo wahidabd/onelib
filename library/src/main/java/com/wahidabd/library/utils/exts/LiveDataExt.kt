@@ -10,7 +10,7 @@ fun <T> LiveData<Resource<T>>.observerLiveData(
     owner: LifecycleOwner,
     onLoading: (() -> Unit)?,
     onSuccess: (T) -> Unit,
-    onEmpty: (() -> Unit)?,
+    onEmpty: (() -> Unit)? = null,
     onFailure: (Throwable?, String?) -> Unit
 ) {
     this.observe(owner) {

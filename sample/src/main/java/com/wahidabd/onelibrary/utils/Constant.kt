@@ -55,6 +55,11 @@ object Constant {
                  10,
                  "Rx Paging",
                  "Base RxPagingAdapter"
+             ),
+             TestModel(
+                 11,
+                 "Firestore",
+                 "Base Firestore Database"
              )
         )
 

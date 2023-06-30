@@ -1,4 +1,4 @@
-package com.wahidabd.library.data
+package com.wahidabd.library.utils.firebase
 
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -12,11 +12,11 @@ import com.google.firebase.database.ValueEventListener
  */
 
 
-abstract class FirebaseManager {
+abstract class FirebaseRealtimeManager {
     protected abstract val databaseRef: DatabaseReference
 
     fun setValue(
-        value: HashMap<String, Any>,
+        value: Any,
         child: String,
         onSuccess: (() -> Unit)? = null,
         onError: ((error: Exception) -> Unit)? = null
@@ -27,7 +27,7 @@ abstract class FirebaseManager {
     }
 
     fun updateChildren(
-        value: Map<String, Any>,
+        value: HashMap<String, Any>,
         child: String,
         onSuccess: (() -> Unit)? = null,
         onError: ((error: Exception) -> Unit)? = null
@@ -38,7 +38,6 @@ abstract class FirebaseManager {
     }
 
     fun removeValue(
-        value: String,
         child: String,
         onSuccess: (() -> Unit)? = null,
         onError: ((error: Exception) -> Unit)? = null
@@ -48,7 +47,7 @@ abstract class FirebaseManager {
             .addOnFailureListener { error -> onError?.invoke(error) }
     }
 
-    fun <T> addValueEventListener(
+    fun <T> addListValueEventListener(
         clazz: Class<T>,
         child: String,
         onSuccess: ((data: List<T>) -> Unit)? = null,
@@ -76,5 +75,33 @@ abstract class FirebaseManager {
             onError?.invoke(e)
         }
     }
+
+    fun <T> addValueEventListener(
+        clazz: Class<T>,
+        child: String,
+        onSuccess: ((data: T) -> Unit)? = null,
+        onError: ((error: Exception) -> Unit)? = null
+    ) {
+        try {
+            databaseRef.child(child).addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val result = snapshot.getValue(clazz)
+                    if (result != null) {
+                        onSuccess?.invoke(result)
+                    } else {
+                        onError?.invoke(Exception("Data not found"))
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    onError?.invoke(error.toException())
+                }
+
+            })
+        } catch (e: Exception) {
+            onError?.invoke(e)
+        }
+    }
+
 
 }

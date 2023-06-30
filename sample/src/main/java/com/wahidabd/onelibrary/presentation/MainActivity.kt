@@ -12,6 +12,7 @@ import com.wahidabd.onelibrary.domain.base.TestModel
 import com.wahidabd.onelibrary.databinding.ActivityMainBinding
 import com.wahidabd.onelibrary.presentation.adapter.AsyncRecyclerActivity
 import com.wahidabd.onelibrary.presentation.adapter.TestBaseRecyclerAdapter
+import com.wahidabd.onelibrary.presentation.firestore.FirestoreActivity
 import com.wahidabd.onelibrary.presentation.imagepicker.ImagePickerActivity
 import com.wahidabd.onelibrary.presentation.movie.MovieActivity
 import com.wahidabd.onelibrary.presentation.multistateview.MultiStateViewActivity
@@ -73,6 +74,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             8 -> NoteActivity.start(this)
             9 -> MultiStateViewActivity.start(this)
             10 -> PagingActivity.start(this)
+            11 -> FirestoreActivity.start(this)
         }
     }
 

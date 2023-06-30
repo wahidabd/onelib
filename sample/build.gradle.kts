@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.kapt")
     id("org.jetbrains.kotlin.plugin.parcelize")
+    id("com.google.gms.google-services")
 }
 
 val composeUiVersion = rootProject.extra.get("compose_ui_version") as String
@@ -75,6 +76,12 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeUiVersion")
     debugImplementation("androidx.compose.ui:ui-tooling:$composeUiVersion")
     debugImplementation("androidx.compose.ui:ui-test-manifest:$composeUiVersion")
+
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.1.0"))
+    implementation("com.google.firebase:firebase-database-ktx:20.2.2")
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.6.1")
 
     // Koin
     implementation("io.insert-koin:koin-android:3.3.3")
