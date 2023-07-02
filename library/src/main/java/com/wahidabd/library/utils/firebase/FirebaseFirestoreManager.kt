@@ -51,7 +51,6 @@ abstract class FirebaseFirestoreManager {
         clazz: Class<T>,
         eventListener: ((data: Resource<T>) -> Unit)
     ) {
-        eventListener.invoke(Resource.loading())
         databaseRef.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
         databaseRef
             .document(document)
@@ -77,7 +76,6 @@ abstract class FirebaseFirestoreManager {
         clazz: Class<T>,
         eventListener: ((data: Resource<List<T>>) -> Unit)
     ) {
-        eventListener.invoke(Resource.loading())
         databaseRef.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
         val results = ArrayList<T>()
 
@@ -114,7 +112,6 @@ abstract class FirebaseFirestoreManager {
         document: String,
         eventListener: ((data: Resource<GenericResponse>) -> Unit),
     ) {
-        eventListener.invoke(Resource.loading())
         databaseRef
             .document(document)
             .delete()

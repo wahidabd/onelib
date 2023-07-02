@@ -3,8 +3,8 @@ package com.wahidabd.onelibrary.domain.firebase
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.boundResource.InternetBoundResource
 import com.wahidabd.library.utils.coroutine.handler.GenericResponse
-import com.wahidabd.onelibrary.data.firebase.FirebaseRepository
-import com.wahidabd.onelibrary.data.firebase.model.FirestoreResponse
+import com.wahidabd.onelibrary.data.firebase.firestore.FirebaseRepository
+import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreResponse
 import com.wahidabd.onelibrary.domain.firebase.model.FirestoreData
 import com.wahidabd.onelibrary.domain.firebase.model.FirestoreParam
 import com.wahidabd.onelibrary.domain.firebase.model.toDomain

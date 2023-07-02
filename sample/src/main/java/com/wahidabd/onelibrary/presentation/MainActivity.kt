@@ -19,6 +19,7 @@ import com.wahidabd.onelibrary.presentation.multistateview.MultiStateViewActivit
 import com.wahidabd.onelibrary.presentation.notification.NotificationActivity
 import com.wahidabd.onelibrary.presentation.paging.PagingActivity
 import com.wahidabd.onelibrary.presentation.permission.PermissionActivity
+import com.wahidabd.onelibrary.presentation.realtime.RealtimeActivity
 import com.wahidabd.onelibrary.presentation.rxdatabase.NoteActivity
 import com.wahidabd.onelibrary.presentation.viewpager.ViewPagerActivity
 import com.wahidabd.onelibrary.utils.Constant
@@ -75,6 +76,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             9 -> MultiStateViewActivity.start(this)
             10 -> PagingActivity.start(this)
             11 -> FirestoreActivity.start(this)
+            12 -> RealtimeActivity.start(this)
         }
     }
 

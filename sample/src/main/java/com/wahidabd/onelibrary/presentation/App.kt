@@ -7,6 +7,7 @@ import com.wahidabd.onelibrary.di.dbModule
 import com.wahidabd.onelibrary.di.features.firebaseModule
 import com.wahidabd.onelibrary.di.features.movieModule
 import com.wahidabd.onelibrary.di.features.noteModule
+import com.wahidabd.onelibrary.di.features.realtimeModule
 import com.wahidabd.onelibrary.di.rxModule
 import org.koin.core.module.Module
 import timber.log.Timber
@@ -21,7 +22,8 @@ class App : BaseApplication() {
             coroutineModule,
             movieModule,
             noteModule,
-            firebaseModule
+            firebaseModule,
+            realtimeModule
         )
 
     override fun initApp() {

@@ -1,7 +1,7 @@
 package com.wahidabd.onelibrary.domain.firebase.model
 
 import com.wahidabd.library.utils.common.emptyString
-import com.wahidabd.onelibrary.data.firebase.model.FirestoreResponse
+import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreResponse
 
 
 /**

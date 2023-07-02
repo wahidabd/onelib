@@ -60,6 +60,11 @@ object Constant {
                  11,
                  "Firestore",
                  "Base Firestore Database"
+             ),
+             TestModel(
+                 12,
+                 "Realtime Database",
+                 "Base Realtime Database"
              )
         )
 

@@ -14,12 +14,28 @@ import com.wahidabd.library.utils.coroutine.handler.GenericResponse
  * Github github.com/wahidabd.
  */
 
+/**
+* theses are some functions you can use
+ * setValue(value: HashMap<String, Any>, child: String, event: (callback))
+ * this function for set data to realtime database
+ *
+ * updateChildren(value: HashMap<String, Any>, child: String, event: (callback))
+ * this function for update data to realtime database
+ *
+ * removeValue(child: String, event: (the callback))
+ * child is a id from some value
+ *
+ * addListValueEventListener
+ *
+ * addValueEventListener
+* */
+
 
 abstract class FirebaseRealtimeManager {
     protected abstract val databaseRef: DatabaseReference
 
     fun setValue(
-        value: HashMap<String, Any>,
+        value: HashMap<String, Any?>,
         child: String,
         eventListener: ((data: Resource<GenericResponse>) -> Unit)
     ) {
@@ -41,11 +57,10 @@ abstract class FirebaseRealtimeManager {
     }
 
     fun updateChildren(
-        value: HashMap<String, Any>,
+        value: HashMap<String, Any?>,
         child: String,
         eventListener: ((data: Resource<GenericResponse>) -> Unit)
     ) {
-        eventListener.invoke(Resource.loading())
         databaseRef.child(child).updateChildren(value)
             .addOnSuccessListener {
                 eventListener.invoke(
@@ -66,7 +81,6 @@ abstract class FirebaseRealtimeManager {
         child: String,
         eventListener: ((data: Resource<GenericResponse>) -> Unit)
     ) {
-        eventListener.invoke(Resource.loading())
         databaseRef.child(child).removeValue()
             .addOnSuccessListener {
                 eventListener.invoke(
@@ -85,12 +99,10 @@ abstract class FirebaseRealtimeManager {
 
     fun <T> addListValueEventListener(
         clazz: Class<T>,
-        child: String,
         eventListener: ((data: Resource<List<T>>) -> Unit),
     ) {
-        eventListener.invoke(Resource.loading())
         try {
-            databaseRef.child(child).addValueEventListener(object : ValueEventListener {
+            databaseRef.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
 
                     val list = ArrayList<T>()
@@ -118,7 +130,6 @@ abstract class FirebaseRealtimeManager {
         child: String,
         eventListener: ((data: Resource<T>) -> Unit),
     ) {
-        eventListener.invoke(Resource.loading())
         try {
             databaseRef.child(child).addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {

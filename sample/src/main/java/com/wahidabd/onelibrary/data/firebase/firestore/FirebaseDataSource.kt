@@ -1,11 +1,11 @@
-package com.wahidabd.onelibrary.data.firebase
+package com.wahidabd.onelibrary.data.firebase.firestore
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.handler.GenericResponse
 import com.wahidabd.library.utils.firebase.FirebaseFirestoreManager
-import com.wahidabd.onelibrary.data.firebase.model.FirestoreRequest
-import com.wahidabd.onelibrary.data.firebase.model.FirestoreResponse
+import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreRequest
+import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreResponse
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -62,15 +62,11 @@ class FirebaseDataSource : FirebaseRepository, FirebaseFirestoreManager() {
         awaitClose { this.close() }
     }
 
-    override fun remove(id: String): Flow<Resource<GenericResponse>> = callbackFlow {
-        val document = "users/$id"
+    override fun remove(id: String): Flow<Resource<GenericResponse>> = callbackFlow{
         removeData(
-            document = document,
-            eventListener = { trySend(it) }
+            document = id,
+            eventListener = {trySend(it)}
         )
-
         awaitClose { this.close() }
     }
-
-
 }
