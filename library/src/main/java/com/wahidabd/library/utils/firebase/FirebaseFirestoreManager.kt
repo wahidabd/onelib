@@ -3,7 +3,8 @@ package com.wahidabd.library.utils.firebase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.wahidabd.library.data.Resource
-import com.wahidabd.library.utils.extensions.debug
+import com.wahidabd.library.utils.constant.OneConstant
+import com.wahidabd.library.utils.coroutine.handler.GenericResponse
 
 
 /**
@@ -18,33 +19,39 @@ abstract class FirebaseFirestoreManager {
 
     fun writeData(
         id: String,
-        value: Any,
+        value: HashMap<String, Any?>,
         collection: String,
-        onSuccess: ((Boolean) -> Unit)? = null,
-        onError: ((Exception) -> Unit)? = null
+        eventListener: ((data: Resource<GenericResponse>) -> Unit),
     ) {
+        eventListener.invoke(Resource.loading())
         databaseRef
             .collection(collection)
             .document(id)
             .set(value)
             .addOnSuccessListener {
-                debug { "Firestore Reference ${it}" }
-                onSuccess?.invoke(true)
+                eventListener.invoke(
+                    Resource.success(
+                        GenericResponse(
+                            true,
+                            OneConstant.MESSAGE_SUCCESS_WRITE
+                        )
+                    )
+                )
             }
-            .addOnFailureListener { onError?.invoke(it) }
+            .addOnFailureListener { eventListener.invoke(Resource.fail(it.localizedMessage)) }
     }
 
     /**
-    * send document as your collection and document id,
-    * like collection/id (add slash (/) for separator
-    * example: users/user_id
-    * */
+     * send document as your collection and document id,
+     * like collection/id (add slash (/) for separator
+     * example: users/user_id
+     * */
     fun <T> readSingleData(
         document: String,
         clazz: Class<T>,
-        onSuccess: ((data: Resource<T>) -> Unit)? = null,
-        onError: ((Exception) -> Unit)? = null
-    ){
+        eventListener: ((data: Resource<T>) -> Unit)
+    ) {
+        eventListener.invoke(Resource.loading())
         databaseRef.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
         databaseRef
             .document(document)
@@ -53,24 +60,24 @@ abstract class FirebaseFirestoreManager {
                 try {
                     if (result != null) {
                         val data = result.toObject(clazz)
-                        if (data != null) onSuccess?.invoke(Resource.success(data))
-                        else onSuccess?.invoke(Resource.empty())
+                        if (data != null) eventListener.invoke(Resource.success(data))
+                        else eventListener.invoke(Resource.empty())
                     }
-                }catch (e: Exception){
-                    onError?.invoke(e)
+                } catch (e: Exception) {
+                    eventListener.invoke(Resource.fail(e.localizedMessage))
                 }
             }
             .addOnFailureListener {
-                onError?.invoke(it)
+                eventListener.invoke(Resource.fail(it.localizedMessage))
             }
     }
 
     fun <T> readListData(
         collection: String,
         clazz: Class<T>,
-        onSuccess: ((data: Resource<List<T>>) -> Unit)? = null,
-        onError: ((Exception) -> Unit)? = null,
+        eventListener: ((data: Resource<List<T>>) -> Unit)
     ) {
+        eventListener.invoke(Resource.loading())
         databaseRef.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
         val results = ArrayList<T>()
 
@@ -85,16 +92,16 @@ abstract class FirebaseFirestoreManager {
                             if (result != null) results.add(result)
                         }
 
-                        if (results.isEmpty()) onSuccess?.invoke(Resource.empty())
-                        else onSuccess?.invoke(Resource.success(results))
+                        if (results.isEmpty()) eventListener.invoke(Resource.empty())
+                        else eventListener.invoke(Resource.success(results))
 
                     }
                 } catch (e: Exception) {
-                    onError?.invoke(e)
+                    eventListener.invoke(Resource.fail(e.localizedMessage))
                 }
             }
             .addOnFailureListener {
-                onError?.invoke(it)
+                eventListener.invoke(Resource.fail(it.localizedMessage))
             }
     }
 
@@ -105,21 +112,28 @@ abstract class FirebaseFirestoreManager {
      * */
     fun removeData(
         document: String,
-        onSuccess: ((data: Resource<Boolean>) -> Unit)? = null,
-        onError: ((Exception) -> Unit)? = null
-    ){
+        eventListener: ((data: Resource<GenericResponse>) -> Unit),
+    ) {
+        eventListener.invoke(Resource.loading())
         databaseRef
             .document(document)
             .delete()
             .addOnSuccessListener {
                 try {
-                    onSuccess?.invoke(Resource.success(true))
-                }catch (e: Exception){
-                    onError?.invoke(e)
+                    eventListener.invoke(
+                        Resource.success(
+                            GenericResponse(
+                                true,
+                                OneConstant.MESSAGE_SUCCESS_REMOVE
+                            )
+                        )
+                    )
+                } catch (e: Exception) {
+                    eventListener.invoke(Resource.fail(e.localizedMessage))
                 }
             }
             .addOnFailureListener {
-                onError?.invoke(it)
+                eventListener.invoke(Resource.fail(it.localizedMessage))
             }
     }
 }

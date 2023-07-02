@@ -1,7 +1,7 @@
 package com.wahidabd.onelibrary.di.features
 
 import com.wahidabd.library.data.libs.ApiService
-import com.wahidabd.library.utils.coroutine.handler.ErrorParses
+import com.wahidabd.library.utils.coroutine.handler.ErrorParser
 import com.wahidabd.onelibrary.data.movie.MovieDataStore
 import com.wahidabd.onelibrary.data.movie.MovieRepository
 import com.wahidabd.onelibrary.data.movie.remote.MovieApi
@@ -24,7 +24,7 @@ val movieModule = module {
     }
 
     single {get<Retrofit>().create(MovieApiClient::class.java)}
-    factory { ErrorParses(get()) }
+    factory { ErrorParser(get()) }
 
     single { MovieApi(get()) }
     single<MovieRepository> { MovieDataStore(get(), get()) }

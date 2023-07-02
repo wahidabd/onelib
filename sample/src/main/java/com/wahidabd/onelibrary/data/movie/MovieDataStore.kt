@@ -2,7 +2,7 @@ package com.wahidabd.onelibrary.data.movie
 
 import com.wahidabd.library.data.LocalDb
 import com.wahidabd.library.data.Resource
-import com.wahidabd.library.utils.coroutine.handler.ErrorParses
+import com.wahidabd.library.utils.coroutine.handler.ErrorParser
 import com.wahidabd.library.utils.coroutine.enqueue
 import com.wahidabd.onelibrary.data.movie.model.MovieDetailResultResponse
 import com.wahidabd.onelibrary.data.movie.remote.MovieApi
@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.flowOn
 
 class MovieDataStore(
     api: MovieApi,
-    private val errorParser: ErrorParses,
+    private val errorParser: ErrorParser,
 ) : MovieRepository {
 
     override val dbService: LocalDb? = null

@@ -17,7 +17,7 @@ data class FirestoreRequest(
     val address: String
 ){
     @Exclude
-    fun toMap() = mutableMapOf(
+    fun toMap() = hashMapOf<String, Any?>(
         "id" to id,
         "name" to name,
         "age" to age,

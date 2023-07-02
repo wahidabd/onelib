@@ -11,7 +11,7 @@ import retrofit2.Retrofit
  * Github wahidabd.
  */
 
-class ErrorParses(private val retrofit: Retrofit) {
+class ErrorParser(private val retrofit: Retrofit) {
 
     fun convertGenericError(error: ResponseBody): ApiError? {
         val converter: Converter<ResponseBody, ApiError> = retrofit

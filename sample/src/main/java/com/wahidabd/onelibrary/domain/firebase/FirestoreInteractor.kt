@@ -2,6 +2,7 @@ package com.wahidabd.onelibrary.domain.firebase
 
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.boundResource.InternetBoundResource
+import com.wahidabd.library.utils.coroutine.handler.GenericResponse
 import com.wahidabd.onelibrary.data.firebase.FirebaseRepository
 import com.wahidabd.onelibrary.data.firebase.model.FirestoreResponse
 import com.wahidabd.onelibrary.domain.firebase.model.FirestoreData
@@ -19,7 +20,7 @@ import kotlinx.coroutines.flow.Flow
 
 class FirestoreInteractor(private val repo: FirebaseRepository) : FirestoreUseCase {
 
-    override fun writeData(request: FirestoreParam): Flow<Resource<Boolean>> {
+    override fun writeData(request: FirestoreParam): Flow<Resource<GenericResponse>> {
         return repo.addData(request.toRequest())
     }
 
@@ -49,6 +50,6 @@ class FirestoreInteractor(private val repo: FirebaseRepository) : FirestoreUseCa
         }.asFlow()
     }
 
-    override fun remove(id: String): Flow<Resource<Boolean>> =
+    override fun remove(id: String): Flow<Resource<GenericResponse>> =
         repo.remove(id)
 }

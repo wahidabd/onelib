@@ -4,6 +4,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
+import com.wahidabd.library.data.Resource
+import com.wahidabd.library.utils.constant.OneConstant
+import com.wahidabd.library.utils.coroutine.handler.GenericResponse
 
 
 /**
@@ -16,43 +19,76 @@ abstract class FirebaseRealtimeManager {
     protected abstract val databaseRef: DatabaseReference
 
     fun setValue(
-        value: Any,
+        value: HashMap<String, Any>,
         child: String,
-        onSuccess: (() -> Unit)? = null,
-        onError: ((error: Exception) -> Unit)? = null
+        eventListener: ((data: Resource<GenericResponse>) -> Unit)
     ) {
+        eventListener.invoke(Resource.loading())
         databaseRef.child(child).setValue(value)
-            .addOnSuccessListener { onSuccess?.invoke() }
-            .addOnFailureListener { error -> onError?.invoke(error) }
+            .addOnSuccessListener {
+                eventListener.invoke(
+                    Resource.success(
+                        GenericResponse(
+                            true,
+                            OneConstant.MESSAGE_SUCCESS_WRITE
+                        )
+                    )
+                )
+            }
+            .addOnFailureListener { error ->
+                eventListener.invoke(Resource.fail(error.localizedMessage))
+            }
     }
 
     fun updateChildren(
         value: HashMap<String, Any>,
         child: String,
-        onSuccess: (() -> Unit)? = null,
-        onError: ((error: Exception) -> Unit)? = null
+        eventListener: ((data: Resource<GenericResponse>) -> Unit)
     ) {
+        eventListener.invoke(Resource.loading())
         databaseRef.child(child).updateChildren(value)
-            .addOnSuccessListener { onSuccess?.invoke() }
-            .addOnFailureListener { error -> onError?.invoke(error) }
+            .addOnSuccessListener {
+                eventListener.invoke(
+                    Resource.success(
+                        GenericResponse(
+                            true,
+                            OneConstant.MESSAGE_SUCCESS_WRITE
+                        )
+                    )
+                )
+            }
+            .addOnFailureListener { error ->
+                eventListener.invoke(Resource.fail(error.localizedMessage))
+            }
     }
 
     fun removeValue(
         child: String,
-        onSuccess: (() -> Unit)? = null,
-        onError: ((error: Exception) -> Unit)? = null
+        eventListener: ((data: Resource<GenericResponse>) -> Unit)
     ) {
+        eventListener.invoke(Resource.loading())
         databaseRef.child(child).removeValue()
-            .addOnSuccessListener { onSuccess?.invoke() }
-            .addOnFailureListener { error -> onError?.invoke(error) }
+            .addOnSuccessListener {
+                eventListener.invoke(
+                    Resource.success(
+                        GenericResponse(
+                            true,
+                            OneConstant.MESSAGE_SUCCESS_WRITE
+                        )
+                    )
+                )
+            }
+            .addOnFailureListener { error ->
+                eventListener.invoke(Resource.fail(error.localizedMessage))
+            }
     }
 
     fun <T> addListValueEventListener(
         clazz: Class<T>,
         child: String,
-        onSuccess: ((data: List<T>) -> Unit)? = null,
-        onError: ((error: Exception) -> Unit)? = null
+        eventListener: ((data: Resource<List<T>>) -> Unit),
     ) {
+        eventListener.invoke(Resource.loading())
         try {
             databaseRef.child(child).addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -64,42 +100,43 @@ abstract class FirebaseRealtimeManager {
                         if (data != null) list.add(data)
                     }
 
-                    onSuccess?.invoke(list)
+                    if (list.isEmpty()) eventListener.invoke(Resource.empty())
+                    else eventListener.invoke(Resource.success(list))
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    onError?.invoke(error.toException())
+                    eventListener.invoke(Resource.fail(error.message))
                 }
             })
         } catch (e: Exception) {
-            onError?.invoke(e)
+            eventListener.invoke(Resource.fail(e.localizedMessage))
         }
     }
 
     fun <T> addValueEventListener(
         clazz: Class<T>,
         child: String,
-        onSuccess: ((data: T) -> Unit)? = null,
-        onError: ((error: Exception) -> Unit)? = null
+        eventListener: ((data: Resource<T>) -> Unit),
     ) {
+        eventListener.invoke(Resource.loading())
         try {
             databaseRef.child(child).addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val result = snapshot.getValue(clazz)
                     if (result != null) {
-                        onSuccess?.invoke(result)
+                        eventListener.invoke(Resource.success(result))
                     } else {
-                        onError?.invoke(Exception("Data not found"))
+                        eventListener.invoke(Resource.fail(OneConstant.MESSAGE_DATA_NOT_FOUND))
                     }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    onError?.invoke(error.toException())
+                    eventListener.invoke(Resource.fail(error.message))
                 }
 
             })
         } catch (e: Exception) {
-            onError?.invoke(e)
+            eventListener.invoke(Resource.fail(e.localizedMessage))
         }
     }
 
