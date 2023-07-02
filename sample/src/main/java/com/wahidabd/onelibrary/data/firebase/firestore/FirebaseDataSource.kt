@@ -3,7 +3,9 @@ package com.wahidabd.onelibrary.data.firebase.firestore
 import com.google.firebase.firestore.FirebaseFirestore
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.handler.GenericResponse
+import com.wahidabd.library.utils.extensions.debug
 import com.wahidabd.library.utils.firebase.FirebaseFirestoreManager
+import com.wahidabd.library.utils.firebase.pushImageToStorage
 import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreRequest
 import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreResponse
 import kotlinx.coroutines.channels.awaitClose
@@ -26,12 +28,27 @@ class FirebaseDataSource : FirebaseRepository, FirebaseFirestoreManager() {
             val id = databaseRef.collection(collection).document().id
             request.id = id
 
-            writeData(
-                id = id,
-                value = request.toMap(),
-                collection = collection,
-                eventListener = { trySend(it) }
-            )
+
+            // push image to storage when the file is not null
+            if (request.file != null) {
+                pushImageToStorage("user", id, request.file, eventListener = {url ->
+                    request.image = url
+
+                    writeData(
+                        id = id,
+                        value = request.toMap(),
+                        collection = collection,
+                        eventListener = { trySend(it) }
+                    )
+                })
+            } else {
+                writeData(
+                    id = id,
+                    value = request.toMap(),
+                    collection = collection,
+                    eventListener = { trySend(it) }
+                )
+            }
 
             awaitClose { this.close() }
         }
@@ -62,10 +79,10 @@ class FirebaseDataSource : FirebaseRepository, FirebaseFirestoreManager() {
         awaitClose { this.close() }
     }
 
-    override fun remove(id: String): Flow<Resource<GenericResponse>> = callbackFlow{
+    override fun remove(id: String): Flow<Resource<GenericResponse>> = callbackFlow {
         removeData(
             document = id,
-            eventListener = {trySend(it)}
+            eventListener = { trySend(it) }
         )
         awaitClose { this.close() }
     }

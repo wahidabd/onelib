@@ -2,6 +2,7 @@ package com.wahidabd.onelibrary.domain.firebase.model
 
 import com.wahidabd.library.utils.common.emptyString
 import com.wahidabd.onelibrary.data.firebase.model.realtime.RealtimeRequest
+import java.io.File
 
 
 /**
@@ -13,10 +14,11 @@ import com.wahidabd.onelibrary.data.firebase.model.realtime.RealtimeRequest
 data class RealtimeParam(
     val id: String? = emptyString(),
     val name: String? = emptyString(),
-    val age: Int? = 0
+    val age: Int? = 0,
+    val file: File? = null
 )
 
 fun RealtimeParam.toRequest(): RealtimeRequest =
     RealtimeRequest(
-        id, name, age
+        id, name, age, file
     )

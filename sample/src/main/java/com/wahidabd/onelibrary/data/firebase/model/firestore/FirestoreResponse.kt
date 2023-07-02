@@ -11,5 +11,6 @@ data class FirestoreResponse(
     val id: String? = null,
     val name: String? = null,
     val age: Int? = null,
-    val address: String? = null
+    val address: String? = null,
+    val image: String? = null
 )

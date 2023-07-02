@@ -1,3 +1,5 @@
+import android.annotation.SuppressLint
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -81,6 +83,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.1.0"))
     implementation("com.google.firebase:firebase-database-ktx:20.2.2")
     implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-storage-ktx")
 
     // koin
     implementation("io.insert-koin:koin-android:3.3.3")
@@ -102,12 +105,12 @@ dependencies {
     implementation("androidx.paging:paging-runtime-ktx:3.1.1")
 
     // room
-    implementation("androidx.room:room-runtime:2.5.1")
-    kapt("androidx.room:room-compiler:2.5.1")
+    implementation("androidx.room:room-runtime:2.5.2")
+    kapt("androidx.room:room-compiler:2.5.2")
     kapt("androidx.lifecycle:lifecycle-compiler:2.6.1")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
     api("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
 
     // rxjava

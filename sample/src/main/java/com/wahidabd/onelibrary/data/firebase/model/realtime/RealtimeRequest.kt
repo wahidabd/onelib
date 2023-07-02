@@ -1,6 +1,7 @@
 package com.wahidabd.onelibrary.data.firebase.model.realtime
 
 import com.google.firebase.database.Exclude
+import java.io.File
 
 
 /**
@@ -12,7 +13,8 @@ import com.google.firebase.database.Exclude
 data class RealtimeRequest(
     var id: String? = null,
     val name: String? = null,
-    val age: Int? = null
+    val age: Int? = null,
+    val file: File? = null
 ){
     @Exclude
     fun toMap() = hashMapOf<String, Any?>(

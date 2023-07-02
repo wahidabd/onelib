@@ -14,10 +14,11 @@ data class FirestoreData(
     val id: String? = emptyString(),
     val name: String? = emptyString(),
     val age: Int? = 0,
-    val address: String? = emptyString()
+    val address: String? = emptyString(),
+    val image: String? = emptyString()
 )
 
 fun FirestoreResponse.toDomain(): FirestoreData =
     FirestoreData(
-        id, name, age, address
+        id, name, age, address, image
     )

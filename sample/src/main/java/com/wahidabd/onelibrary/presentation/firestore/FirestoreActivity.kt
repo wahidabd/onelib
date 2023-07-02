@@ -2,6 +2,10 @@ package com.wahidabd.onelibrary.presentation.firestore
 
 import android.content.Context
 import android.content.Intent
+import com.esafirm.imagepicker.features.ImagePickerConfig
+import com.esafirm.imagepicker.features.ImagePickerMode
+import com.esafirm.imagepicker.features.ReturnMode
+import com.esafirm.imagepicker.features.registerImagePicker
 import com.wahidabd.library.presentation.activity.BaseActivity
 import com.wahidabd.library.utils.common.showToast
 import com.wahidabd.library.utils.extensions.debug
@@ -15,8 +19,11 @@ import com.wahidabd.onelibrary.databinding.ActivityFirestoreBinding
 import com.wahidabd.onelibrary.domain.firebase.model.FirestoreParam
 import com.wahidabd.onelibrary.presentation.firestore.adapter.FirestoreAdapter
 import org.koin.android.ext.android.inject
+import java.io.File
 
 class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
+
+    private var imageFile: File? = null
 
     private val viewModel: FirestoreViewModel by inject()
     private val firestoreAdapter by lazy {
@@ -46,8 +53,26 @@ class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
                 val age = edAge.toStringTrim()
                 val address = edAddress.toStringTrim()
 
-                val req = FirestoreParam(name = name, age = age.toInt(), address = address)
+                val req = FirestoreParam(name = name, age = age.toInt(), address = address, file = imageFile)
                 viewModel.add(req)
+            }
+
+            tvImage.onClick {
+                imagePicker.launch(
+                    ImagePickerConfig(
+                        ImagePickerMode.SINGLE,
+                        returnMode = ReturnMode.ALL
+                    )
+                )
+            }
+        }
+    }
+
+    private val imagePicker = registerImagePicker {
+        with(binding){
+            it.forEach { image ->
+                tvImage.text = image.name
+                imageFile = File(image.path)
             }
         }
     }

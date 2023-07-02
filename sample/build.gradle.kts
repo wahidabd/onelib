@@ -1,3 +1,5 @@
+import android.annotation.SuppressLint
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -82,6 +84,7 @@ dependencies {
     implementation("com.google.firebase:firebase-database-ktx:20.2.2")
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx:24.6.1")
+    implementation("com.google.firebase:firebase-storage-ktx")
 
     // Koin
     implementation("io.insert-koin:koin-android:3.3.3")
@@ -94,9 +97,9 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
 
     // room
-    implementation("androidx.room:room-runtime:2.5.1")
-    implementation("androidx.room:room-rxjava3:2.5.1")
-    kapt("androidx.room:room-compiler:2.5.1")
+    implementation("androidx.room:room-runtime:2.5.2")
+    implementation("androidx.room:room-rxjava3:2.5.2")
+    kapt("androidx.room:room-compiler:2.5.2")
     kapt("androidx.lifecycle:lifecycle-compiler:2.6.1")
 
     // rxjava

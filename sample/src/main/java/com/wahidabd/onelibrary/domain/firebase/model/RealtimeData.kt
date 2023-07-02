@@ -13,8 +13,9 @@ import com.wahidabd.onelibrary.data.firebase.model.realtime.RealtimeResponse
 data class RealtimeData(
     val id: String? = emptyString(),
     val name: String? = emptyString(),
-    val age: Int? = 0
+    val age: Int? = 0,
+    val image: String? = emptyString()
 )
 
 fun RealtimeResponse.toDomain(): RealtimeData =
-    RealtimeData(id, name, age)
+    RealtimeData(id, name, age, image)

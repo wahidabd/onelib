@@ -27,6 +27,12 @@
         android:layout_height="wrap_content"
         android:hint="address" />
 
+    <TextView
+        android:id="@+id/tvImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Image"/>
+
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
