@@ -86,12 +86,17 @@ class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
             viewModel.add.observerLiveData(
                 this@FirestoreActivity,
                 onLoading = {
-                    debug { "ON LOADING" }
+                    progress.visible()
+                    rvFirestore.gone()
                 },
                 onFailure = { t, m ->
+                    progress.gone()
+                    rvFirestore.visible()
                     debug { "$t --> $m" }
                 },
                 onSuccess = {
+                    progress.gone()
+                    rvFirestore.visible()
                     edName.clear()
                     edAge.clear()
                     edAddress.clear()

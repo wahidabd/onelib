@@ -23,7 +23,6 @@ abstract class FirebaseFirestoreManager {
         collection: String,
         eventListener: ((data: Resource<GenericResponse>) -> Unit),
     ) {
-        eventListener.invoke(Resource.loading())
         databaseRef
             .collection(collection)
             .document(id)
