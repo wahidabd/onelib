@@ -15,6 +15,7 @@ import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.utils.exts.toStringTrim
 import com.wahidabd.library.utils.exts.visible
+import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreRequest
 import com.wahidabd.onelibrary.databinding.ActivityFirestoreBinding
 import com.wahidabd.onelibrary.domain.firebase.model.FirestoreParam
 import com.wahidabd.onelibrary.presentation.firestore.adapter.FirestoreAdapter
@@ -55,6 +56,13 @@ class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
 
                 val req = FirestoreParam(name = name, age = age.toInt(), address = address, file = imageFile)
                 viewModel.add(req)
+            }
+
+            btnUpdate.onClick {
+                val name = edName.toStringTrim()
+
+                val req = FirestoreRequest(name = name, id = "51mCJiLjEYF3GajJ5rJc")
+                viewModel.update(req)
             }
 
             tvImage.onClick {

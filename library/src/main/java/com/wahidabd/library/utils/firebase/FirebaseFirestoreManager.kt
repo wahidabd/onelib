@@ -41,6 +41,32 @@ abstract class FirebaseFirestoreManager {
     }
 
     /**
+     * the request must be full data to update data
+    */
+    fun updateData(
+        id: String,
+        collection: String,
+        value: HashMap<String, Any?>,
+        eventListener: ((data: Resource<GenericResponse>) -> Unit),
+    ){
+        databaseRef
+            .collection(collection)
+            .document(id)
+            .update(value)
+            .addOnSuccessListener {
+                eventListener.invoke(
+                    Resource.success(
+                        GenericResponse(
+                            true,
+                            OneConstant.MESSAGE_SUCCESS_WRITE
+                        )
+                    )
+                )
+            }
+            .addOnFailureListener { eventListener.invoke(Resource.fail(it.localizedMessage)) }
+    }
+
+    /**
      * send document as your collection and document id,
      * like collection/id (add slash (/) for separator
      * example: users/user_id

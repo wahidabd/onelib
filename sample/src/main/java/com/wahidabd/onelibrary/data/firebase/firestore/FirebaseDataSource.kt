@@ -53,6 +53,18 @@ class FirebaseDataSource : FirebaseRepository, FirebaseFirestoreManager() {
             awaitClose { this.close() }
         }
 
+    override fun update(request: FirestoreRequest): Flow<Resource<GenericResponse>> = callbackFlow {
+        val collection = "users"
+
+        updateData(
+            id = request.id.toString(),
+            collection = collection,
+            value = request.toMap(),
+            eventListener = {trySend(it)}
+        )
+        awaitClose { this.close() }
+    }
+
     override fun getList(): Flow<Resource<List<FirestoreResponse>>> = callbackFlow {
         val collection = "users"
 

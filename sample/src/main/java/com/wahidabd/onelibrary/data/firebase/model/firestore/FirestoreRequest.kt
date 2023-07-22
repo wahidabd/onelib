@@ -14,9 +14,9 @@ import java.io.File
 data class FirestoreRequest(
     var id: String? = emptyString(),
     var image: String? = emptyString(),
-    val name: String,
-    val age: Int,
-    val address: String,
+    val name: String? = emptyString(),
+    val age: Int? = null,
+    val address: String? = emptyString(),
     val file: File? = null
 ){
     @Exclude
