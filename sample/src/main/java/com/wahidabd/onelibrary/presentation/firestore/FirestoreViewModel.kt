@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.handler.GenericResponse
+import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreRequest
 import com.wahidabd.onelibrary.domain.firebase.FirestoreUseCase
 import com.wahidabd.onelibrary.domain.firebase.model.FirestoreData
 import com.wahidabd.onelibrary.domain.firebase.model.FirestoreParam
@@ -41,6 +42,11 @@ class FirestoreViewModel(
             .launchIn(viewModelScope)
     }
 
+    fun update(req: FirestoreRequest){
+        useCase.update(req)
+            .onEach { _add.value = it }
+            .launchIn(viewModelScope)
+    }
 
     fun list() {
         useCase.getList()

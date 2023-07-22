@@ -9,11 +9,11 @@ plugins {
 
 android {
     namespace "com.wahidabd.library"
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdk 23
-        targetSdk 33
+        targetSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 //        consumerProguardFiles("consumer-rules.pro")
@@ -55,7 +55,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
-    implementation("com.google.firebase:firebase-firestore-ktx:24.6.1")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.7.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -70,7 +70,7 @@ dependencies {
 
     // livedata compose
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.1")
-    implementation("androidx.compose.runtime:runtime-livedata:1.5.0-beta02")
+    implementation("androidx.compose.runtime:runtime-livedata:1.6.0-alpha01")
 
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:32.1.0"))
@@ -132,6 +132,9 @@ dependencies {
 
     // multi state view
     implementation("com.github.Kennyc1012:MultiStateView:2.2.0")
+
+    // jsoup
+    implementation 'org.jsoup:jsoup:1.15.4'
 }
 
 afterEvaluate {

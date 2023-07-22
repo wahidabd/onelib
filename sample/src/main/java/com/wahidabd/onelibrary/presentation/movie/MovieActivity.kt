@@ -1,12 +1,9 @@
 package com.wahidabd.onelibrary.presentation.movie
 
 
-import androidx.lifecycle.lifecycleScope
 import com.wahidabd.library.presentation.activity.BaseActivity
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.onelibrary.databinding.ActivityMainBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -40,7 +37,7 @@ class MovieActivity : BaseActivity<ActivityMainBinding>() {
             onEmpty = {
                 Timber.d("EMPTY")
             },
-            onFailure = {throwable, message ->
+            onFailure = { throwable, message ->
                 Timber.e("ERROR: $throwable --> $message")
             },
             onSuccess = {
