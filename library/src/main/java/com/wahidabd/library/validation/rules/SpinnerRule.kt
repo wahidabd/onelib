@@ -15,5 +15,5 @@ import com.wahidabd.library.validation.Rule
 //
 //    override fun isRulePassed(view: View): Boolean =
 //        if (view is Spinner) view.selectedItemPosition > defaultItem
-//        else if ()
+//        else if (view is )
 //}

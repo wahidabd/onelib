@@ -67,12 +67,7 @@ class ValidationAutoCompleteTextView(
     }
 
     private fun parseAttrs(attrs: AttributeSet?){
-//        val attribute = context.obtainStyledAttributes(attrs, R.styleable.OneValidationAutoCompleteTextView)
-//        errorMessage = attribute.getString(R.styleable.OneValidationAutoCompleteTextView_actv_error_message)
-//        hint = attribute.getString(R.styleable.OneValidationAutoCompleteTextView_actv_hint)
-//        errorMessageColor = attribute.getColorStateList(R.styleable.OneValidationAutoCompleteTextView_actv_error_message_color)
-//        size = attribute.getDimension(R.styleable.OneValidationAutoCompleteTextView_actv_error_message_size, resources.getDimension(R.dimen.text_size_12sp))
-//        attribute.recycle()
+
     }
 
     private fun setHint(){

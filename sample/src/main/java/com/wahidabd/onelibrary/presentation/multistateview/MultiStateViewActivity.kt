@@ -18,6 +18,8 @@ class MultiStateViewActivity : BaseActivity<ActivityMultiStateViewBinding>() {
     override fun getViewBinding(): ActivityMultiStateViewBinding =
         ActivityMultiStateViewBinding.inflate(layoutInflater)
 
+    override fun initIntent() {}
+
     override fun initUI() {}
 
     override fun initAction() {

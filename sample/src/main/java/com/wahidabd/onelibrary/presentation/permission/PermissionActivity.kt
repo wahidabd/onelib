@@ -13,6 +13,8 @@ class PermissionActivity : BaseActivity<ActivityPermissionBinding>() {
     override fun getViewBinding(): ActivityPermissionBinding =
         ActivityPermissionBinding.inflate(layoutInflater)
 
+    override fun initIntent() {}
+
     override fun initUI() {
     }
 

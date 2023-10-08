@@ -59,6 +59,7 @@ abstract class BaseActivity <VB: ViewBinding> : AppCompatActivity(), BaseView, B
     }
 
     private fun onReady(){
+        initIntent()
         initUI()
         initAction()
         initProcess()
@@ -73,6 +74,7 @@ abstract class BaseActivity <VB: ViewBinding> : AppCompatActivity(), BaseView, B
 
     override fun onFragmentDetached(tag: String) {}
 
+    abstract fun initIntent()
     abstract fun initUI()
     abstract fun initAction()
     abstract fun initProcess()

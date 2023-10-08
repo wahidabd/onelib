@@ -16,6 +16,8 @@ class ImagePickerActivity : BaseActivity<ActivityImagePickerBinding>() {
     override fun getViewBinding(): ActivityImagePickerBinding =
         ActivityImagePickerBinding.inflate(layoutInflater)
 
+    override fun initIntent() {}
+
     override fun initUI() {
         requestPermission()
     }

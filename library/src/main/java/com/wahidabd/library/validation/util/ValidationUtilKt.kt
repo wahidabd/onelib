@@ -8,6 +8,7 @@ import android.widget.RadioGroup
 import com.google.android.material.textfield.TextInputLayout
 import com.wahidabd.library.presentation.view.InputView
 import com.wahidabd.library.utils.common.emptyString
+import com.wahidabd.library.validation.RuleNotApplicableException
 import java.util.regex.Pattern
 
 internal fun extractCheckedTypedView(view: View): Boolean =

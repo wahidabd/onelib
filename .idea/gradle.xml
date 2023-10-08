@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/compose-sample" />
             <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/library-compose" />
             <option value="$PROJECT_DIR$/sample" />
           </set>
         </option>

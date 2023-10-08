@@ -18,6 +18,8 @@ class AsyncRecyclerActivity : BaseActivity<ActivityAsyncRecyclerBinding>() {
     override fun getViewBinding(): ActivityAsyncRecyclerBinding =
         ActivityAsyncRecyclerBinding.inflate(layoutInflater)
 
+    override fun initIntent() {}
+
     override fun initUI() {
         binding.rvItem.apply {
             adapter = asyncAdapter

@@ -16,6 +16,8 @@ class PagingActivity : BaseActivity<ActivityPagingBinding>() {
     override fun getViewBinding(): ActivityPagingBinding =
         ActivityPagingBinding.inflate(layoutInflater)
 
+    override fun initIntent() {}
+
     override fun initUI() {
         binding.rvMovie.apply {
             adapter = mAdapter

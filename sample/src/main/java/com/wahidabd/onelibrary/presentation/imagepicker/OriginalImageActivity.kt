@@ -18,6 +18,8 @@ class OriginalImageActivity : BaseActivity<ActivityOriginalImageBinding>() {
     override fun getViewBinding(): ActivityOriginalImageBinding =
         ActivityOriginalImageBinding.inflate(layoutInflater)
 
+    override fun initIntent() {}
+
     override fun initUI() {}
 
     override fun initAction() {
