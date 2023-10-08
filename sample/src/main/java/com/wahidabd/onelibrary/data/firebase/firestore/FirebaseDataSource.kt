@@ -3,7 +3,6 @@ package com.wahidabd.onelibrary.data.firebase.firestore
 import com.google.firebase.firestore.FirebaseFirestore
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.handler.GenericResponse
-import com.wahidabd.library.utils.extensions.debug
 import com.wahidabd.library.utils.firebase.FirebaseFirestoreManager
 import com.wahidabd.library.utils.firebase.pushImageToStorage
 import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreRequest
@@ -34,7 +33,7 @@ class FirebaseDataSource : FirebaseRepository, FirebaseFirestoreManager() {
                 pushImageToStorage("user", id, request.file, eventListener = {url ->
                     request.image = url
 
-                    writeData(
+                    setValue(
                         id = id,
                         value = request.toMap(),
                         collection = collection,
@@ -42,7 +41,7 @@ class FirebaseDataSource : FirebaseRepository, FirebaseFirestoreManager() {
                     )
                 })
             } else {
-                writeData(
+                setValue(
                     id = id,
                     value = request.toMap(),
                     collection = collection,
@@ -56,7 +55,7 @@ class FirebaseDataSource : FirebaseRepository, FirebaseFirestoreManager() {
     override fun update(request: FirestoreRequest): Flow<Resource<GenericResponse>> = callbackFlow {
         val collection = "users"
 
-        updateData(
+        updateValue(
             id = request.id.toString(),
             collection = collection,
             value = request.toMap(),
@@ -68,7 +67,7 @@ class FirebaseDataSource : FirebaseRepository, FirebaseFirestoreManager() {
     override fun getList(): Flow<Resource<List<FirestoreResponse>>> = callbackFlow {
         val collection = "users"
 
-        readListData(
+        getListValue(
             collection,
             FirestoreResponse::class.java,
             eventListener = {
@@ -80,9 +79,10 @@ class FirebaseDataSource : FirebaseRepository, FirebaseFirestoreManager() {
     }
 
     override fun getSingle(id: String): Flow<Resource<FirestoreResponse>> = callbackFlow {
-        val document = "users/$id"
+        val document = "users" //"users/$id"
 
-        readSingleData(
+        getSingleValue(
+            id = id,
             document = document,
             FirestoreResponse::class.java,
             eventListener = { trySend(it) },
@@ -92,7 +92,7 @@ class FirebaseDataSource : FirebaseRepository, FirebaseFirestoreManager() {
     }
 
     override fun remove(id: String): Flow<Resource<GenericResponse>> = callbackFlow {
-        removeData(
+        deleteValue(
             document = id,
             eventListener = { trySend(it) }
         )

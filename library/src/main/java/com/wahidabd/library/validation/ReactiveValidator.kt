@@ -21,7 +21,6 @@ class ReactiveValidator(override val validations: MutableList<Validation>) : Val
 
     override var mListener: ValidationListener? = null
 
-
     override fun addValidation(validation: Validation) {
         when (val view = validation.getView) {
             is EditText -> {

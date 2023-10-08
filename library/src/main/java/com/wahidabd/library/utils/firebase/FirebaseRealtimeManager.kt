@@ -56,7 +56,7 @@ abstract class FirebaseRealtimeManager {
             }
     }
 
-    fun updateChildren(
+    fun updateValue(
         value: HashMap<String, Any?>,
         child: String,
         eventListener: ((data: Resource<GenericResponse>) -> Unit)
@@ -97,7 +97,7 @@ abstract class FirebaseRealtimeManager {
             }
     }
 
-    fun <T> addListValueEventListener(
+    fun <T> getListValue(
         clazz: Class<T>,
         eventListener: ((data: Resource<List<T>>) -> Unit),
     ) {
@@ -125,7 +125,7 @@ abstract class FirebaseRealtimeManager {
         }
     }
 
-    fun <T> addValueEventListener(
+    fun <T> getValue(
         clazz: Class<T>,
         child: String,
         eventListener: ((data: Resource<T>) -> Unit),
