@@ -25,12 +25,12 @@ class ValidationAutoCompleteTextView(
     private val attributeSet: AttributeSet
 ): BaseRichView(), ErrorableView, InputView{
 
-    private lateinit var autoCompleteTextView: AppCompatAutoCompleteTextView
+    lateinit var autoCompleteTextView: AppCompatAutoCompleteTextView
     private lateinit var tvError: TextView
     private var errorMessageColor: ColorStateList? = null
     private var hint: String? = emptyString()
     private var errorMessage: String? = emptyString()
-    private var size: Float? = null
+    private var errorMessageSize: Float? = null
 
     fun initView(){
         parseAttribute(attributeSet)
@@ -67,7 +67,16 @@ class ValidationAutoCompleteTextView(
     }
 
     private fun parseAttrs(attrs: AttributeSet?){
+        val attributes = context.obtainStyledAttributes(attrs, R.styleable.ValidacionAutoCompleteTextView, 0, 0)
+        errorMessage = attributes.getString(R.styleable.ValidacionAutoCompleteTextView_actv_error_message).orEmpty()
+        hint = attributes.getString(R.styleable.ValidacionAutoCompleteTextView_actv_hint).orEmpty()
+        errorMessageColor = attributes.getColorStateList(R.styleable.ValidacionAutoCompleteTextView_actv_error_message_color)
+        errorMessageSize = attributes.getDimension(R.styleable.ValidacionAutoCompleteTextView_actv_error_message_size, resources.getDimension(R.dimen.text_size_12sp))
 
+        if (errorMessageColor != null) tvError.setTextColor(errorMessageColor)
+        if (errorMessageSize != null) tvError.setTextSize(0, errorMessageSize!!.toFloat())
+
+        attributes.recycle()
     }
 
     private fun setHint(){

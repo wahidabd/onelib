@@ -22,6 +22,7 @@ import com.wahidabd.onelibrary.presentation.permission.PermissionActivity
 import com.wahidabd.onelibrary.presentation.realtime.RealtimeActivity
 import com.wahidabd.onelibrary.presentation.rxdatabase.NoteActivity
 import com.wahidabd.onelibrary.presentation.validation.PassiveValidationActivity
+import com.wahidabd.onelibrary.presentation.validation.ReactiveValidationActivity
 import com.wahidabd.onelibrary.presentation.viewpager.ViewPagerActivity
 import com.wahidabd.onelibrary.utils.Constant
 
@@ -81,6 +82,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             11 -> FirestoreActivity.start(this)
             12 -> RealtimeActivity.start(this)
             13 -> PassiveValidationActivity.start(this)
+            14 -> ReactiveValidationActivity.start(this)
         }
     }
 

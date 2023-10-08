@@ -27,7 +27,8 @@ class PassiveValidator(override val validations: MutableList<Validation>) : Vali
             if (!validation.validate()) isValid = false
         }
 
-        if (isValid) mListener?.onValidationSuccess() else mListener?.onValidationFailed()
+        if (isValid) mListener?.onValidationSuccess()
+        else mListener?.onValidationFailed()
         return isValid
     }
 

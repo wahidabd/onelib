@@ -58,7 +58,7 @@ fun EditText.onTextChange(doOnChange: (String) -> Unit){
 }
 
 fun TextInputLayout.onTextChange(doOnChange: (String) -> Unit){
-    this.onTextChange {
-        doOnChange.invoke(it)
+    this.editText?.doAfterTextChanged {
+        doOnChange.invoke(it.toString())
     }
 }

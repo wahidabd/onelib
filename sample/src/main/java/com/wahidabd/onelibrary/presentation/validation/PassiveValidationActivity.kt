@@ -98,16 +98,6 @@ class PassiveValidationActivity : PassiveFormActivity<ActivityPassiveValidationB
                         )
                     ),
                     Validation(
-                        tilPhoneNumberNational, listOf(
-                            indonesianPhoneNumberNationalFormatOnly("national phone number format only")
-                        )
-                    ),
-                    Validation(
-                        tilPhoneNumberE164, listOf(
-                            indonesianPhoneNumberE164FormatOnly("E164 format only")
-                        )
-                    ),
-                    Validation(
                         tilNotEmpty, listOf(
                             notEmptyRule("Cannot be empty")
                         )
