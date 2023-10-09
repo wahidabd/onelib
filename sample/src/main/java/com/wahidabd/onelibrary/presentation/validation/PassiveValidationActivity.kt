@@ -17,13 +17,11 @@ import com.wahidabd.library.validation.util.notEmptyRule
 import com.wahidabd.library.validation.util.passwordRule
 import com.wahidabd.onelibrary.R
 import com.wahidabd.onelibrary.databinding.ActivityPassiveValidationBinding
+import com.wahidabd.onelibrary.utils.Constant
 import com.wahidabd.onelibrary.utils.Constant.MAX_LENGTH
 import com.wahidabd.onelibrary.utils.Constant.MIN_LENGTH
 
 class PassiveValidationActivity : PassiveFormActivity<ActivityPassiveValidationBinding>() {
-
-    private val validations = mutableListOf<Validation>()
-    private lateinit var passiveValidator: PassiveValidator
 
     companion object {
         fun start(context: Context) {
@@ -39,11 +37,7 @@ class PassiveValidationActivity : PassiveFormActivity<ActivityPassiveValidationB
 
     override fun initAction() {
         binding.btnValidation.onClick {
-            if (passiveValidator.validate()){
-                showToast("Success")
-            }else{
-                showToast("Failed")
-            }
+            validate()
         }
     }
 
@@ -61,50 +55,62 @@ class PassiveValidationActivity : PassiveFormActivity<ActivityPassiveValidationB
 
     override fun setupValidation() {
         with(binding) {
-            validations.addAll(
-                mutableListOf(
-                    Validation(
-                        tilEmail,
-                        listOf(
-                            notEmptyRule(getString(R.string.error_field_required)),
-                            emailRule(getString(R.string.error_email_invalid))
-                        )
-                    ),
-                    Validation(
-                        tilPassword, listOf(
-                            notEmptyRule("Wajib diisi"),
-                            passwordRule("Password harus angka dan huruf")
-                        )
-                    ),
-                    Validation(
-                        tilPhone, listOf(
-                            notEmptyRule("Wajib diisi"),
-                            minMaxLengthRule(
-                                "masukan nomor telpon yang benar",
-                                MIN_LENGTH,
-                                MAX_LENGTH
-                            )
-                        )
-                    ),
-                    Validation(
-                        tilName, listOf(
-                            notEmptyRule("Wajib diisi"),
-                            alphabetOnlyRule("alphabet only")
-                        )
-                    ),
-                    Validation(
-                        tilLongName, listOf(
-                            alphabetSpaceOnly("alphabet space only")
-                        )
-                    ),
-                    Validation(
-                        tilNotEmpty, listOf(
-                            notEmptyRule("Cannot be empty")
+            addValidation(
+                Validation(
+                    tilEmail,
+                    listOf(
+                        notEmptyRule(getString(R.string.error_field_required)),
+                        emailRule(getString(R.string.error_email_invalid))
+                    )
+                )
+            )
+
+            addValidation(
+                Validation(
+                    tilPassword, listOf(
+                        notEmptyRule("Wajib diisi"),
+                        passwordRule("Password harus angka dan huruf")
+                    )
+                )
+            )
+
+            addValidation(
+                Validation(
+                    tilPhone, listOf(
+                        notEmptyRule("Wajib diisi"),
+                        minMaxLengthRule(
+                            "masukan nomor telpon yang benar",
+                            MIN_LENGTH,
+                            MAX_LENGTH
                         )
                     )
                 )
             )
-            passiveValidator = PassiveValidator(validations)
+
+            addValidation(
+                Validation(
+                    tilName, listOf(
+                        notEmptyRule("Wajib diisi"),
+                        alphabetOnlyRule("alphabet only")
+                    )
+                )
+            )
+
+            addValidation(
+                Validation(
+                    tilLongName, listOf(
+                        alphabetSpaceOnly("alphabet space only")
+                    )
+                )
+            )
+
+            addValidation(
+                Validation(
+                    tilNotEmpty, listOf(
+                        notEmptyRule("Cannot be empty")
+                    )
+                )
+            )
         }
     }
 
