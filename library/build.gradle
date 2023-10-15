@@ -5,7 +5,7 @@ plugins {
     id 'kotlin-parcelize'
     id 'maven-publish'
     id "com.google.gms.google-services"
-    id "com.google.devtools.ksp" version "1.8.10-1.0.9"
+    id "com.google.devtools.ksp" version "1.9.10-1.0.13"
 }
 
 android {
@@ -152,7 +152,7 @@ afterEvaluate {
                 from components.release
 
                 groupId = 'com.github.wahidabd'
-                artifactId = 'one-library'
+                artifactId = 'onelib'
                 version = '1.0'
             }
         }

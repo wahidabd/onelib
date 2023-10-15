@@ -22,7 +22,7 @@ class FirestoreAdapter(
     items: ArrayList<FirestoreData> = arrayListOf(),
     private val onItemClick: (data: FirestoreData) -> Unit,
     private val onDelete: (id: String) -> Unit,
-) : BaseAsyncRecyclerAdapter<FirestoreData, FirestoreAdapter.FirestoreViewHolder>(items) {
+) : BaseAsyncRecyclerAdapter<FirestoreData, FirestoreAdapter.FirestoreViewHolder>() {
 
 
     override fun getViewBinding(parent: ViewGroup, viewType: Int): ViewBinding {

@@ -10,9 +10,8 @@ import com.wahidabd.onelibrary.databinding.ItemRecyclerBinding
 
 class TestBaseAsyncRecyclerAdapter(
     private val context: Context,
-    items: ArrayList<String> = arrayListOf(),
     private val onItemClicked: ((String) -> Unit)?
-) : BaseAsyncRecyclerAdapter<String, TestBaseAsyncRecyclerAdapter.ViewHolder>(items){
+) : BaseAsyncRecyclerAdapter<String, TestBaseAsyncRecyclerAdapter.ViewHolder>(){
 
     override fun getViewBinding(parent: ViewGroup, viewType: Int): ViewBinding =
         ItemRecyclerBinding.inflate(LayoutInflater.from(context), parent, false)

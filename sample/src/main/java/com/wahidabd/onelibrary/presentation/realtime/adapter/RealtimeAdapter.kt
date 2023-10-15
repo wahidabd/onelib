@@ -22,7 +22,7 @@ class RealtimeAdapter(
     items: ArrayList<RealtimeData> = arrayListOf(),
     private val onItemClick: (data: RealtimeData) -> Unit,
     private val onDelete: (id: String) -> Unit,
-) : BaseAsyncRecyclerAdapter<RealtimeData, RealtimeAdapter.FirestoreViewHolder>(items) {
+) : BaseAsyncRecyclerAdapter<RealtimeData, RealtimeAdapter.FirestoreViewHolder>() {
 
 
     override fun getViewBinding(parent: ViewGroup, viewType: Int): ViewBinding {

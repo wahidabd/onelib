@@ -2,25 +2,22 @@ package com.wahidabd.library.presentation.adapter
 
 import android.annotation.SuppressLint
 import android.view.ViewGroup
-import android.view.ViewParent
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
 
-abstract class BaseAsyncRecyclerAdapter<T, H : BaseAsyncItemViewHolder<T>>(
-    private val data: ArrayList<T>
-) : RecyclerView.Adapter<H>() {
+abstract class BaseAsyncRecyclerAdapter<T, H : BaseAsyncItemViewHolder<T>>() :
+    RecyclerView.Adapter<H>() {
 
     private val differCallback = object : DiffUtil.ItemCallback<T>() {
-        override fun areItemsTheSame(oldItem: T, newItem: T): Boolean =
+        override fun areItemsTheSame(oldItem: T & Any, newItem: T & Any): Boolean =
             oldItem == newItem
 
         @SuppressLint("DiffUtilEquals")
-        override fun areContentsTheSame(oldItem: T, newItem: T): Boolean =
+        override fun areContentsTheSame(oldItem: T & Any, newItem: T & Any): Boolean =
             oldItem == newItem
-
     }
 
     private val listDiffer = AsyncListDiffer(this, differCallback)
@@ -39,7 +36,7 @@ abstract class BaseAsyncRecyclerAdapter<T, H : BaseAsyncItemViewHolder<T>>(
 
     override fun getItemCount(): Int = setData.size
 
-    fun clear(){
+    fun clear() {
         setData.toMutableList().clear()
     }
 
