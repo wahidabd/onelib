@@ -45,13 +45,13 @@ abstract class FirebaseFirestoreManager {
 
     /**
      * the request must be full data to update data
-    */
+     */
     fun updateValue(
         id: String,
         collection: String,
         value: HashMap<String, Any?>,
         eventListener: ((data: Resource<GenericResponse>) -> Unit),
-    ){
+    ) {
         databaseRef
             .collection(collection)
             .document(id)
@@ -76,13 +76,13 @@ abstract class FirebaseFirestoreManager {
      * */
     fun <T> getSingleValue(
         id: String,
-        document: String,
+        collection: String,
         clazz: Class<T>,
         eventListener: ((data: Resource<T>) -> Unit)
     ) {
         databaseRef.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
         databaseRef
-            .document("$document/$id")
+            .document("$collection/$id")
             .get()
             .addOnSuccessListener { result ->
                 try {
@@ -134,8 +134,8 @@ abstract class FirebaseFirestoreManager {
 
     /**
      * send document as your collection and document id,
-     * like collection/id (add slash (/) for separator
-     * example: users/user_id
+     * @param collection like 'collection/id' (add slash (/) for separator
+     * @param eventListener This is lambda function for collect the data from firestore
      * */
     fun deleteValue(
         document: String,
@@ -170,14 +170,14 @@ abstract class FirebaseFirestoreManager {
      * @param [query] second The value for comparison
      * @param [orderBy] The value for order the data from descending
      * @return The data of list [clazz]
-    */
+     */
     fun <T> getListQuery(
         query: Pair<String, String>,
         collection: String,
         orderBy: String,
         clazz: Class<T>,
         eventListener: ((data: Resource<List<T>>) -> Unit)
-    ){
+    ) {
         val results = ArrayList<T>()
 
         databaseRef.collection(collection)
@@ -188,12 +188,12 @@ abstract class FirebaseFirestoreManager {
                 try {
                     document.map { snapshot ->
                         val res = snapshot.toObject(clazz)
-                        if (res != null) results.add(res)
+                        results.add(res)
                     }
 
                     if (results.isEmpty()) eventListener.invoke(Resource.empty())
                     else eventListener.invoke(Resource.success(results))
-                }catch (e: Exception){
+                } catch (e: Exception) {
                     eventListener.invoke(Resource.fail(e.localizedMessage))
                 }
             }

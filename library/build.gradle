@@ -74,10 +74,10 @@ dependencies {
     api("androidx.compose.runtime:runtime-livedata:1.6.0-alpha07")
 
     // Firebase
-    api(platform("com.google.firebase:firebase-bom:32.1.0"))
-    api("com.google.firebase:firebase-database-ktx:20.2.2")
-    api("com.google.firebase:firebase-analytics-ktx")
-    api("com.google.firebase:firebase-storage-ktx")
+    implementation(platform("com.google.firebase:firebase-bom:32.1.0"))
+    implementation("com.google.firebase:firebase-database-ktx:20.2.2")
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-storage-ktx")
 
     // koin
     api("io.insert-koin:koin-android:3.3.3")

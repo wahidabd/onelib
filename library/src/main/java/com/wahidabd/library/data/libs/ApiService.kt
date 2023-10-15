@@ -60,8 +60,6 @@ object ApiService {
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
-
-//        return retrofit.create(serviceClass)
     }
 
 }

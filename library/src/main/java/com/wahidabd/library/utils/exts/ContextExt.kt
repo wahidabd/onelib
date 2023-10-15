@@ -9,6 +9,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.IntegerRes
+import androidx.core.content.ContextCompat
 
 
 /**
@@ -47,25 +48,19 @@ fun Context.email(email: String, subject: String, text: String): Boolean {
     }
 }
 
-fun Context.getCompatColor(@ColorRes resId: Int): Int {
-    TODO()
-}
+fun Context.getCompatColor(@ColorRes resId: Int): Int =
+    ContextCompat.getColor(this, resId)
 
-fun Context.getCompatDrawable(@DrawableRes resId: Int): Drawable? {
-    TODO()
-}
+fun Context.getCompatDrawable(@DrawableRes resId: Int): Drawable? =
+    ContextCompat.getDrawable(this, resId)
 
-fun Context.getDimenSize(@DimenRes resId: Int): Drawable? {
-    TODO()
-}
+fun Context.getDimenSize(@DimenRes resId: Int): Int =
+    this.resources.getDimensionPixelSize(resId)
 
-fun Context.getInteger(@IntegerRes resId: Int): Int {
-    TODO()
-}
+fun Context.getInteger(@IntegerRes resId: Int): Int =
+    this.resources.getInteger(resId)
 
-fun Context.isDarkTheme(): Boolean {
-    TODO()
-}
+fun Context.isDarkTheme(): Boolean = (this.resources.configuration.uiMode) == 32
 
 fun Context.makeCall(number: String): Boolean {
     TODO()

@@ -83,7 +83,7 @@ class FirebaseDataSource : FirebaseRepository, FirebaseFirestoreManager() {
 
         getSingleValue(
             id = id,
-            document = document,
+            collection = document,
             FirestoreResponse::class.java,
             eventListener = { trySend(it) },
         )
