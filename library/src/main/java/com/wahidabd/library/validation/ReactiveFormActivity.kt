@@ -11,14 +11,18 @@ import com.wahidabd.library.presentation.activity.BaseActivity
 
 abstract class ReactiveFormActivity<VB: ViewBinding> : BaseActivity<VB>(), ValidationListener{
 
+    private val validator = ReactiveValidator(arrayListOf())
+
+    override fun initIntent() {
+        this.validator.setListener(this)
+        this.setupValidation()
+    }
+
     protected fun addValidation(validation: Validation) {
-
+        validator.addValidation(validation)
     }
 
-
-    protected abstract fun setupValidation()
-    protected fun validate(): Boolean {
-        return false
-    }
+    protected fun validate(): Boolean = validator.validate()
+    abstract fun setupValidation()
 
 }

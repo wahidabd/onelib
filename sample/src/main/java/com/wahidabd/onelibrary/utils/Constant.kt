@@ -4,6 +4,9 @@ import com.wahidabd.onelibrary.domain.base.TestModel
 
 object Constant {
 
+    const val MIN_LENGTH: Int = 10
+    const val MAX_LENGTH: Int = 13
+
     fun testData(): List<TestModel> =
          listOf(
             TestModel(
@@ -65,6 +68,16 @@ object Constant {
                  12,
                  "Realtime Database",
                  "Base Realtime Database"
+             ),
+             TestModel(
+                 13,
+                 "Passive Validation",
+                 "Passive Validation"
+             ),
+             TestModel(
+                 14,
+                 "Reactive Validation",
+                 "Reactive Validation"
              )
         )
 

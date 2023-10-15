@@ -26,6 +26,8 @@ class NoteActivity : BaseActivity<ActivityNoteBinding>() {
     override fun getViewBinding(): ActivityNoteBinding =
         ActivityNoteBinding.inflate(layoutInflater)
 
+    override fun initIntent() {}
+
     override fun initUI() {}
 
     override fun initAction() {

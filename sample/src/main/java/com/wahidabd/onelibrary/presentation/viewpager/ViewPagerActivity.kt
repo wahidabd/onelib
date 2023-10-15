@@ -20,6 +20,8 @@ class ViewPagerActivity : BaseActivity<ActivityViewPagerBinding>() {
     override fun getViewBinding(): ActivityViewPagerBinding =
         ActivityViewPagerBinding.inflate(layoutInflater)
 
+    override fun initIntent() {}
+
     override fun initUI() {
         setupViewPager()
     }

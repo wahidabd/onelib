@@ -49,7 +49,7 @@ class RealtimeDataSource : RealtimeRepository, FirebaseRealtimeManager() {
     }
 
     override fun realtimeList(): Flow<Resource<List<RealtimeResponse>>> = callbackFlow{
-        addListValueEventListener(
+        getListValue(
             clazz = RealtimeResponse::class.java,
             eventListener = {trySend(it)}
         )

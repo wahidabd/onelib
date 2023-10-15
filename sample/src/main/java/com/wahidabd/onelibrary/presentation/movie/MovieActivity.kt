@@ -15,6 +15,8 @@ class MovieActivity : BaseActivity<ActivityMainBinding>() {
     override fun getViewBinding(): ActivityMainBinding =
         ActivityMainBinding.inflate(layoutInflater)
 
+    override fun initIntent() {}
+
     override fun initUI() {
         Timber.d("INIT: UI")
     }

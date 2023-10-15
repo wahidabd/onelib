@@ -24,7 +24,6 @@ class Validation (private val view: View, private val rules: List<Rule>) {
         var index = 0
         if (index < rules.size){
             do {
-                index++
                 val rule = rules[index]
                 if (!rule.isRulePassed(view)){
                     isValid = false
@@ -51,6 +50,7 @@ class Validation (private val view: View, private val rules: List<Rule>) {
                         if (index == rules.size - 1 && view.isErrorShowing()) view.hideError()
                     }
                 }
+                index++
             }while (index < rules.size)
         }
 

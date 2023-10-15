@@ -42,6 +42,8 @@ class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
     override fun getViewBinding(): ActivityFirestoreBinding =
         ActivityFirestoreBinding.inflate(layoutInflater)
 
+    override fun initIntent() {}
+
     override fun initUI() {
         binding.rvFirestore.adapter = firestoreAdapter
     }

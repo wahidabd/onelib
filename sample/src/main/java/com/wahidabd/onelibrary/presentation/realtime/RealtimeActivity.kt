@@ -31,6 +31,8 @@ class RealtimeActivity : BaseActivity<ActivityRealtimeBinding>() {
     override fun getViewBinding(): ActivityRealtimeBinding =
         ActivityRealtimeBinding.inflate(layoutInflater)
 
+    override fun initIntent() {}
+
     override fun initUI() {
         binding.rvFirestore.adapter = realtimeAdapter
     }

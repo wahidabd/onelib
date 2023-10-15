@@ -25,6 +25,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.validation.ReactiveValidationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.validation.PassiveValidationActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.realtime.RealtimeActivity"
             android:exported="false" />
         <activity

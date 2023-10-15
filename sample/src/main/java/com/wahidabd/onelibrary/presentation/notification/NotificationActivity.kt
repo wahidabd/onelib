@@ -13,6 +13,8 @@ class NotificationActivity : BaseActivity<ActivityNotificationBinding>() {
     override fun getViewBinding(): ActivityNotificationBinding =
         ActivityNotificationBinding.inflate(layoutInflater)
 
+    override fun initIntent() {}
+
     override fun initUI() {}
 
     override fun initAction() {

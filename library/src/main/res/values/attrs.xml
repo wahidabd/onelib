@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <!--    <declare-styleable name="OneValidationAutoCompleteTextView">-->
-<!--        <attr format="string" name="actv_error_message"/>-->
-<!--        <attr format="string" name="actv_hint"/>-->
-<!--        <attr format="color|reference" name="actv_error_message_color"/>-->
-<!--        <attr format="dimension" name="actv_error_message_size"/>-->
+<!--        <attr format="string" name="one_actv_error_message"/>-->
+<!--        <attr format="string" name="one_actv_hint"/>-->
+<!--        <attr format="color|reference" name="one_actv_error_message_color"/>-->
+<!--        <attr format="dimension" name="one_actv_error_message_size"/>-->
 <!--    </declare-styleable>-->
 </resources>

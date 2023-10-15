@@ -21,6 +21,8 @@ import com.wahidabd.onelibrary.presentation.paging.PagingActivity
 import com.wahidabd.onelibrary.presentation.permission.PermissionActivity
 import com.wahidabd.onelibrary.presentation.realtime.RealtimeActivity
 import com.wahidabd.onelibrary.presentation.rxdatabase.NoteActivity
+import com.wahidabd.onelibrary.presentation.validation.PassiveValidationActivity
+import com.wahidabd.onelibrary.presentation.validation.ReactiveValidationActivity
 import com.wahidabd.onelibrary.presentation.viewpager.ViewPagerActivity
 import com.wahidabd.onelibrary.utils.Constant
 
@@ -38,6 +40,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun getViewBinding(): ActivityMainBinding =
         ActivityMainBinding.inflate(layoutInflater)
+
+    override fun initIntent() {}
 
     override fun initAction() {
     }
@@ -77,6 +81,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             10 -> PagingActivity.start(this)
             11 -> FirestoreActivity.start(this)
             12 -> RealtimeActivity.start(this)
+            13 -> PassiveValidationActivity.start(this)
+            14 -> ReactiveValidationActivity.start(this)
         }
     }
 
@@ -87,7 +93,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 context, 0,
                 Intent(context, MainActivity::class.java).apply {
                     flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                }, PendingIntent.FLAG_ONE_SHOT
+                }, PendingIntent.FLAG_ONE_SHOT or  PendingIntent.FLAG_IMMUTABLE
             )
     }
 
