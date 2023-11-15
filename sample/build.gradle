@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id "com.google.gms.google-services"
+    id "com.google.devtools.ksp" version "1.9.10-1.0.13"
 }
 
 android {
@@ -77,4 +78,47 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx:24.6.1")
     implementation("com.google.firebase:firebase-storage-ktx")
+
+    // room
+    implementation("androidx.room:room-runtime:2.5.2")
+    implementation("androidx.room:room-rxjava3:2.5.2")
+    ksp("androidx.room:room-compiler:2.5.2")
+    ksp("androidx.lifecycle:lifecycle-compiler:2.6.2")
+
+    implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
+
+    // paging
+    implementation("androidx.paging:paging-rxjava3:3.2.1")
+    implementation("androidx.paging:paging-common-ktx:3.2.1")
+    implementation("androidx.paging:paging-runtime-ktx:3.2.1")
+
+    // rxjava
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
+    implementation("io.reactivex.rxjava3:rxjava:3.1.5")
+
+    // rx permission
+    implementation("com.github.tbruyelle:rxpermissions:0.12")
+
+    // image loader
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    ksp("com.github.bumptech.glide:compiler:4.16.0")
+
+    // image picker
+    implementation("com.github.esafirm:android-image-picker:3.0.0")
+
+    // compress image and crop
+    implementation("id.zelory:compressor:2.1.1")
+    implementation("com.github.yalantis:ucrop:2.2.6")
+
+    // lib phone number
+    implementation("com.googlecode.libphonenumber:libphonenumber:8.13.7")
+
+    // google play core
+    implementation("com.google.android.play:app-update-ktx:2.1.0")
+
+    // multi state view
+    implementation("com.github.Kennyc1012:MultiStateView:2.2.0")
+
+    // jsoup
+    implementation 'org.jsoup:jsoup:1.15.4'
 }

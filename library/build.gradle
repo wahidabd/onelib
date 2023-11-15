@@ -70,8 +70,8 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest:$compose_ui_version")
 
     // livedata compose
-    api("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
-    api("androidx.compose.runtime:runtime-livedata:1.6.0-alpha07")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
+    implementation("androidx.compose.runtime:runtime-livedata:1.6.0-alpha07")
 
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:32.1.0"))
@@ -91,58 +91,59 @@ dependencies {
     api("com.squareup.retrofit2:retrofit:2.9.0")
     api("com.squareup.retrofit2:converter-gson:2.9.0")
     api("com.squareup.okhttp3:logging-interceptor:4.9.0")
-    api("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
+    implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
 
     // paging
-    api("androidx.paging:paging-rxjava3:3.2.1")
-    api("androidx.paging:paging-common-ktx:3.2.1")
-    api("androidx.paging:paging-runtime-ktx:3.2.1")
+    implementation("androidx.paging:paging-rxjava3:3.2.1")
+    implementation("androidx.paging:paging-common-ktx:3.2.1")
+    implementation("androidx.paging:paging-runtime-ktx:3.2.1")
 
     // Ktor - Http Client
-    api "io.ktor:ktor-client-core:2.3.4"
-    api "io.ktor:ktor-client-okhttp:2.3.4"
-    api "io.ktor:ktor-client-android:2.3.4"
-    api "io.ktor:ktor-client-serialization:2.3.4"
-    api "io.ktor:ktor-client-logging:2.3.4"
+    implementation "io.ktor:ktor-client-core:2.3.4"
+    implementation "io.ktor:ktor-client-okhttp:2.3.4"
+    implementation "io.ktor:ktor-client-android:2.3.4"
+    implementation "io.ktor:ktor-client-serialization:2.3.4"
+    implementation "io.ktor:ktor-client-logging:2.3.4"
 
     // room
-    api("androidx.room:room-runtime:2.5.2")
+    implementation("androidx.room:room-runtime:2.5.2")
     ksp("androidx.room:room-compiler:2.5.2")
     ksp("androidx.lifecycle:lifecycle-compiler:2.6.2")
 
+    // coroutine
     api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
     api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2")
     api("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
 
     // rxjava
-    api("io.reactivex.rxjava3:rxandroid:3.0.2")
-    api("io.reactivex.rxjava3:rxjava:3.1.5")
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
+    implementation("io.reactivex.rxjava3:rxjava:3.1.5")
 
     // rx permission
-    api("com.github.tbruyelle:rxpermissions:0.12")
+    implementation("com.github.tbruyelle:rxpermissions:0.12")
 
     // image loader
-    api("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
     ksp("com.github.bumptech.glide:compiler:4.16.0")
 
     // image picker
-    api("com.github.esafirm:android-image-picker:3.0.0")
+    implementation("com.github.esafirm:android-image-picker:3.0.0")
 
     // compress image and crop
-    api("id.zelory:compressor:2.1.1")
-    api("com.github.yalantis:ucrop:2.2.6")
+    implementation("id.zelory:compressor:2.1.1")
+    implementation("com.github.yalantis:ucrop:2.2.6")
 
     // lib phone number
-    api("com.googlecode.libphonenumber:libphonenumber:8.13.7")
+    implementation("com.googlecode.libphonenumber:libphonenumber:8.13.7")
 
     // google play core
-    api("com.google.android.play:app-update-ktx:2.1.0")
+    implementation("com.google.android.play:app-update-ktx:2.1.0")
 
     // multi state view
-    api("com.github.Kennyc1012:MultiStateView:2.2.0")
+    implementation("com.github.Kennyc1012:MultiStateView:2.2.0")
 
     // jsoup
-    api 'org.jsoup:jsoup:1.15.4'
+    implementation 'org.jsoup:jsoup:1.15.4'
 }
 
 afterEvaluate {

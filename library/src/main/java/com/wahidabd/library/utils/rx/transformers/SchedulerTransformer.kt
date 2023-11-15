@@ -9,30 +9,35 @@ import io.reactivex.rxjava3.schedulers.Schedulers
  * Github wahidabd.
  */
 
+@Deprecated(message = "Please migrate to coroutine")
 fun <T : Any> singleScheduler(
     subscriberScheduler: Scheduler = Schedulers.io(),
     observerScheduler: Scheduler = AndroidSchedulers.mainThread()
 ): SingleSchedulerTransformer<T> =
     SingleSchedulerTransformer(subscriberScheduler, observerScheduler)
 
+@Deprecated(message = "Please migrate to coroutine")
 fun <T : Any> observerScheduler(
     subscriberScheduler: Scheduler = Schedulers.io(),
     observerScheduler: Scheduler = AndroidSchedulers.mainThread()
 ): ObservableSchedulerTransformer<T> =
     ObservableSchedulerTransformer(subscriberScheduler, observerScheduler)
 
+@Deprecated(message = "Please migrate to coroutine")
 fun <T : Any> flowableScheduler(
     subscriberScheduler: Scheduler = Schedulers.io(),
     observerScheduler: Scheduler = AndroidSchedulers.mainThread()
 ): FlowableSchedulerTransformer<T> =
     FlowableSchedulerTransformer(subscriberScheduler, observerScheduler)
 
+@Deprecated(message = "Please migrate to coroutine")
 fun <T : Any> maybeScheduler(
     subscriberScheduler: Scheduler = Schedulers.io(),
     observerScheduler: Scheduler = AndroidSchedulers.mainThread()
 ): MaybeSchedulerTransformer<T> =
     MaybeSchedulerTransformer(subscriberScheduler, observerScheduler)
 
+@Deprecated(message = "Please migrate to coroutine")
 fun <T: Any> completableScheduler(
     subscriberScheduler: Scheduler = Schedulers.io(),
     observerScheduler: Scheduler = AndroidSchedulers.mainThread()
