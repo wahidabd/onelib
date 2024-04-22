@@ -2,8 +2,8 @@ package com.wahidabd.onelibrary.data.movie
 
 import com.wahidabd.library.data.LocalDb
 import com.wahidabd.library.data.Resource
+import com.wahidabd.library.utils.coroutine.OneCall
 import com.wahidabd.library.utils.coroutine.handler.ErrorParser
-import com.wahidabd.library.utils.coroutine.enqueue
 import com.wahidabd.onelibrary.data.movie.model.MovieDetailResultResponse
 import com.wahidabd.onelibrary.data.movie.remote.MovieApi
 import kotlinx.coroutines.Dispatchers
@@ -20,9 +20,8 @@ class MovieDataStore(
     override val dbService: LocalDb? = null
     override val webService = api
 
-
     override suspend fun getDetailMovie(id: Int): Flow<Resource<MovieDetailResultResponse>> = flow {
-        enqueue(
+        OneCall.enqueue(
             id,
             errorParser::convertGenericError,
             webService::getDetailMovie,

@@ -1,4 +1,4 @@
-package com.wahidabd.library.utils.exts
+package com.wahidabd.library.utils.compose
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState

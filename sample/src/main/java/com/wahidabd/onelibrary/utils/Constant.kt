@@ -26,7 +26,7 @@ object Constant {
              ),
              TestModel(
                  4,
-                 "Api with RxJava",
+                 "Api with Coroutine",
                  "Base implement api with rx",
              ),
              TestModel(

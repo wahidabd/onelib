@@ -2,7 +2,7 @@ package com.wahidabd.library.utils.ktorclient
 
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.data.model.ApiError
-import com.wahidabd.library.utils.rx.apihandlers.coroutineErrorHandler
+import com.wahidabd.library.utils.coroutine.handler.coroutineErrorHandler
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.HttpRequestBuilder

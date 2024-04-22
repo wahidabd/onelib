@@ -6,6 +6,6 @@ package com.wahidabd.library.presentation.adapter
  * Github wahidabd.
  */
 
-class Selectable<T>(item: T) {
-    var selected = false
+class Selectable<T>(val item: T){
+    var selected: Boolean = false
 }

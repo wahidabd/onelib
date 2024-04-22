@@ -12,7 +12,6 @@ import retrofit2.Retrofit
  */
 
 class ErrorParser(private val retrofit: Retrofit) {
-
     fun convertGenericError(error: ResponseBody): ApiError? {
         val converter: Converter<ResponseBody, ApiError> = retrofit
             .responseBodyConverter(ApiError::class.java, arrayOfNulls(0))

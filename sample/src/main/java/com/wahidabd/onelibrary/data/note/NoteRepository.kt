@@ -5,7 +5,7 @@ import com.wahidabd.onelibrary.data.note.local.NoteEntity
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 
-interface NoteRepository : BaseRepository {
+interface NoteRepository {
 
     fun addNote(noteEntity: NoteEntity): Completable
 
