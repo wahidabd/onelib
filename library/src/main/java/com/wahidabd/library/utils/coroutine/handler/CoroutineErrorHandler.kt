@@ -16,10 +16,10 @@ import javax.net.ssl.SSLPeerUnverifiedException
 
 fun <T> coroutineErrorHandler(e: Throwable): Resource<T> =
     when(e){
-        is SocketTimeoutException -> Resource.fail(e, "Connection Time Out")
-        is SSLHandshakeException -> Resource.fail(e, "SSL Certificate not matched")
-        is SSLPeerUnverifiedException ->  Resource.fail(e, "SSL Certificate not matched")
-        is IOException ->  Resource.fail(e, "Connection IOException")
-        is JsonSyntaxException -> Resource.fail(e, "JSON Exception")
-        else -> Resource.fail(e, e.message ?: "An unknown error occurred")
+        is SocketTimeoutException -> Resource.fail(e.message ?: "Connection Time Out")
+        is SSLHandshakeException -> Resource.fail(e.message ?: "SSL Certificate not matched")
+        is SSLPeerUnverifiedException ->  Resource.fail(e.message ?: "SSL Certificate not matched")
+        is IOException ->  Resource.fail(e.message ?: "Connection IOException")
+        is JsonSyntaxException -> Resource.fail(e.message ?: "JSON Exception")
+        else -> Resource.fail(e.message ?: "An unknown error occurred")
     }

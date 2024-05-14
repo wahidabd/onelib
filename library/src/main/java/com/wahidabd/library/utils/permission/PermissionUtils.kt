@@ -1,112 +1,59 @@
 package com.wahidabd.library.utils.permission
 
 import android.app.Activity
-import android.content.Intent
-import android.net.Uri
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.fragment.app.Fragment
-import com.tbruyelle.rxpermissions3.RxPermissions
-import io.reactivex.rxjava3.disposables.Disposable
-import timber.log.Timber
-import java.util.*
+import androidx.core.app.ComponentActivity
 
-fun Activity.openAppSettings(applicationId: String) {
-    val intent = Intent("android.settings.APPLICATION_DETAILS_SETTINGS", Uri.parse("package:$applicationId"))
-    startActivity(intent)
-}
-
-fun AppCompatActivity.requestPermission(
-    vararg permissions: String,
-    onAllowed: () -> Unit,
-    onDenied: () -> Unit
-): Disposable {
-    val rxPermissions = RxPermissions(this)
-    return rxPermissions
-        .requestEach(*permissions)
-        .subscribe {
-            if (it.granted) onAllowed.invoke()
-            else onDenied.invoke()
-
-            Timber.d("do we have permissions granted? $it")
-        }
-}
-
-fun AppCompatActivity.requestPermission(
-    vararg permissions: String,
-    onAllowed: (String) -> Unit,
-    onNeedPermissionRationale: (String) -> Unit,
-    onDenied: (String) -> Unit
-): Disposable {
-    val rxPermissions = RxPermissions(this)
-    return rxPermissions
-        .requestEach(*permissions)
-        .subscribe {
-            when {
-                it.granted -> {
-                    onAllowed.invoke(it.name)
-                }
-
-                it.shouldShowRequestPermissionRationale -> {
-                    onNeedPermissionRationale.invoke(it.name)
-                }
-
-                else -> {
-                    onDenied.invoke(it.name)
-                }
-            }
-
-            Timber.d("do we have permissions granted? $it")
-        }
-}
-
-fun Fragment.requestPermission(
-    vararg permissions: String,
-    onAllowed: () -> Unit,
-    onDenied: () -> Unit
-): Disposable {
-    val rxPermissions = RxPermissions(this)
-    return rxPermissions
-        .requestEach(*permissions)
-        .subscribe {
-            if (it.granted) onAllowed.invoke()
-            else onDenied.invoke()
-
-            Timber.d("do we have permissions granted? $it")
-        }
-}
-
-fun Fragment.requestPermission(
-    vararg permissions: String,
-    onAllowed: (String) -> Unit,
-    onNeedPermissionRationale: (String) -> Unit,
-    onDenied: (String) -> Unit
-): Disposable {
-    val rxPermissions = RxPermissions(this)
-    return rxPermissions
-        .requestEach(*permissions)
-        .subscribe {
-            when {
-                it.granted -> {
-                    onAllowed.invoke(it.name)
-                }
-
-                it.shouldShowRequestPermissionRationale -> {
-                    onNeedPermissionRationale.invoke(it.name)
-                }
-
-                else -> {
-                    onDenied.invoke(it.name)
-                }
-            }
-
-            Timber.d("do we have permissions granted? $it")
-        }
-}
 
 fun Activity.showPermissionDialog(
     permissionName: String,
     requestCode: Int
-){
+) {
     ActivityCompat.requestPermissions(this, arrayOf(permissionName), requestCode)
+}
+
+fun AppCompatActivity.requestMultiplePermission(
+    permissions: Array<String>,
+    requestCode: Int,
+    doIfGranted: (() -> Unit)? = null,
+) {
+    val deniedPermissions = mutableListOf<String>()
+    permissions.forEach { permission ->
+        if (!isGranted(permission)) {
+            deniedPermissions.add(permission)
+        }
+    }
+    if (deniedPermissions.isNotEmpty()) {
+        ActivityCompat.requestPermissions(this, deniedPermissions.toTypedArray(), requestCode)
+    } else {
+        doIfGranted?.invoke()
+    }
+}
+
+fun AppCompatActivity.isGranted(permission: String): Boolean {
+    return ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
+}
+/**
+ * Compose Permission
+ */
+
+fun ComponentActivity.requestMultiplePermission(
+    permissions: Array<String>,
+    requestCode: Int,
+    doIfGranted: (() -> Unit)? = null
+) {
+    val deniedPermissions = mutableListOf<String>()
+    permissions.forEach { permission ->
+        if (!isGranted(permission)) deniedPermissions.add(permission)
+    }
+
+    if (deniedPermissions.isNotEmpty()) {
+        ActivityCompat.requestPermissions(this, deniedPermissions.toTypedArray(), requestCode)
+    } else doIfGranted?.invoke()
+}
+
+fun ComponentActivity.isGranted(permission: String): Boolean {
+    return ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
 }

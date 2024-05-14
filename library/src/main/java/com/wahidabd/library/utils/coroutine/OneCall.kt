@@ -130,4 +130,67 @@ object OneCall {
             onEmit.invoke(coroutineErrorHandler(e))
         }
     }
+
+    suspend fun <T, R, S, U, V> enqueue(
+        req1: R,
+        req2: S,
+        req3: U,
+        req4: V,
+        converter: (ResponseBody) -> ApiError?,
+        call: suspend (R, S, U, V) -> Response<T>,
+        onEmit: suspend ((Resource<T>) -> Unit)
+    ) {
+        try {
+            val response = call(req1, req2, req3, req4)
+            val body = response.body()
+            val errBody = response.errorBody()
+
+            if (response.isSuccessful && body != null) {
+                onEmit.invoke(Resource.success(body))
+            } else if (errBody != null) {
+                val parsedError = converter(errBody)
+                if (parsedError != null) {
+                    onEmit.invoke(Resource.fail(parsedError.message))
+                } else {
+                    onEmit.invoke(Resource.fail("An unknown error occurred"))
+                }
+            } else {
+                onEmit.invoke(Resource.fail("An unknown error occurred"))
+            }
+        } catch (e: Exception) {
+            onEmit.invoke(coroutineErrorHandler(e))
+        }
+    }
+
+    suspend fun <T, R, S, U, V, W> enqueue(
+        req1: R,
+        req2: S,
+        req3: U,
+        req4: V,
+        req5: W,
+        converter: (ResponseBody) -> ApiError?,
+        call: suspend (R, S, U, V, W) -> Response<T>,
+        onEmit: suspend ((Resource<T>) -> Unit)
+    ) {
+        try {
+            val response = call(req1, req2, req3, req4, req5)
+            val body = response.body()
+            val errBody = response.errorBody()
+
+            if (response.isSuccessful && body != null) {
+                onEmit.invoke(Resource.success(body))
+            } else if (errBody != null) {
+                val parsedError = converter(errBody)
+                if (parsedError != null) {
+                    onEmit.invoke(Resource.fail(parsedError.message))
+                } else {
+                    onEmit.invoke(Resource.fail("An unknown error occurred"))
+                }
+            } else {
+                onEmit.invoke(Resource.fail("An unknown error occurred"))
+            }
+        } catch (e: Exception) {
+            onEmit.invoke(coroutineErrorHandler(e))
+        }
+    }
 }

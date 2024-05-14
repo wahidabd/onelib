@@ -62,7 +62,7 @@ class RealtimeActivity : BaseActivity<ActivityRealtimeBinding>() {
                     rvFirestore.gone()
                     showToast("LOADING")
                 },
-                onFailure = { _, m ->
+                onFailure = { m ->
                     progress.gone()
                     rvFirestore.gone()
                     showToast(m.toString())

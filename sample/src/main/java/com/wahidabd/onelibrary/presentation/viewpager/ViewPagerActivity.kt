@@ -3,7 +3,7 @@ package com.wahidabd.onelibrary.presentation.viewpager
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.wahidabd.library.presentation.activity.BaseActivity
-import com.wahidabd.library.presentation.adapter.BaseViewPagerFragmentStateAdapter
+import com.wahidabd.library.presentation.adapter.BaseViewPagerAdapter
 import com.wahidabd.library.presentation.fragment.BaseFragment
 import com.wahidabd.library.utils.exts.fallback
 import com.wahidabd.onelibrary.databinding.ActivityViewPagerBinding
@@ -11,7 +11,7 @@ import com.wahidabd.onelibrary.databinding.ActivityViewPagerBinding
 class ViewPagerActivity : BaseActivity<ActivityViewPagerBinding>() {
 
     private val viewPager by lazy {
-        object : BaseViewPagerFragmentStateAdapter<BaseFragment<*>>(this){
+        object : BaseViewPagerAdapter<BaseFragment<*>>(this){
             override fun createFragment(position: Int): Fragment =
                 getItem(position).fallback(Fragment())
         }

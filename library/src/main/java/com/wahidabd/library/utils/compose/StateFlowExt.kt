@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.StateFlow
 fun <T> StateFlow<Resource<T>>.collectStateFlow(
     onLoading: @Composable (() -> Unit),
     onEmpty: @Composable (() -> Unit)? = null,
-    onFailure: @Composable (Throwable?, String?) -> Unit?,
+    onFailure: @Composable (String?) -> Unit?,
     onSuccess: @Composable (data: T) -> Unit,
 ) {
     this.collectAsState().value.also {
@@ -32,7 +32,7 @@ fun <T> StateFlow<Resource<T>>.collectStateFlow(
             }
 
             is Resource.Failure -> {
-                onFailure.invoke(it.throwable, it.message)
+                onFailure.invoke(it.message)
             }
 
             is Resource.Success -> {
@@ -46,7 +46,7 @@ fun <T> StateFlow<Resource<T>>.collectStateFlow(
 fun <T> MutableStateFlow<Resource<T>>.collectStateFlow(
     onLoading: @Composable (() -> Unit),
     onEmpty: @Composable (() -> Unit)? = null,
-    onFailure: @Composable (Throwable?, String?) -> Unit?,
+    onFailure: @Composable (String?) -> Unit?,
     onSuccess: @Composable (data: T) -> Unit,
 ) {
     this.collectAsState().value.also {
@@ -61,7 +61,7 @@ fun <T> MutableStateFlow<Resource<T>>.collectStateFlow(
             }
 
             is Resource.Failure -> {
-                onFailure.invoke(it.throwable, it.message)
+                onFailure.invoke(it.message)
             }
 
             is Resource.Success -> {

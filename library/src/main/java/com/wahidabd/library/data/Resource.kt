@@ -14,10 +14,7 @@ sealed class Resource <T> {
         fun <T> empty(): Resource<T> = Empty()
 
         fun <T> fail(message: String?): Resource<T> =
-            Failure(throwable = null, message = message)
-
-        fun <T> fail(throwable: Throwable?, message: String?): Resource<T> =
-            Failure(throwable = throwable, message = message)
+            Failure(message = message)
 
         fun <T> loading(): Resource<T> =
             Loading()
@@ -27,7 +24,6 @@ sealed class Resource <T> {
     }
 
     data class Failure<T>(
-        val throwable: Throwable?,
         val message: String?
     ): Resource<T>()
 

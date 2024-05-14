@@ -31,51 +31,41 @@ object Constant {
              ),
              TestModel(
                  5,
-                 "Image Picker",
-                 "Base image picker with imagepickerutils"
-             ),
-             TestModel(
-                 6,
-                 "Permission",
-                 "Test base permission"
-             ),
-             TestModel(
-                 7,
                  "Notification",
                  "Base notification"
              ),
              TestModel(
-                 8,
+                 6,
                  "Rx Local Database",
                  "Base Local Database With Rx"
              ),
              TestModel(
-                 9,
+                 7,
                  "Multi State View",
                  "Multi State View"
              ),
              TestModel(
-                 10,
+                 8,
                  "Rx Paging",
                  "Base RxPagingAdapter"
              ),
              TestModel(
-                 11,
+                 9,
                  "Firestore",
                  "Base Firestore Database"
              ),
              TestModel(
-                 12,
+                 10,
                  "Realtime Database",
                  "Base Realtime Database"
              ),
              TestModel(
-                 13,
+                 11,
                  "Passive Validation",
                  "Passive Validation"
              ),
              TestModel(
-                 14,
+                 12,
                  "Reactive Validation",
                  "Reactive Validation"
              )

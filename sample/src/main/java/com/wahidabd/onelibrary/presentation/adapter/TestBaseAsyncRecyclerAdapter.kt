@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.wahidabd.library.presentation.adapter.BaseAsyncRecyclerAdapter
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
+import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.onelibrary.databinding.ItemRecyclerBinding
 
 class TestBaseAsyncRecyclerAdapter(
     private val context: Context,
-    private val onItemClicked: ((String) -> Unit)?
+    private val onItemClicked: (String) -> Unit
 ) : BaseAsyncRecyclerAdapter<String, TestBaseAsyncRecyclerAdapter.ViewHolder>(){
 
     override fun getViewBinding(parent: ViewGroup, viewType: Int): ViewBinding =
@@ -23,9 +24,12 @@ class TestBaseAsyncRecyclerAdapter(
         override fun bind(data: String) {
             with(binding as ItemRecyclerBinding){
                 tvTitle.text = data
+
+                tvTitle.onClick {
+                    onItemClicked.invoke(data)
+                }
             }
         }
-
     }
 
 }

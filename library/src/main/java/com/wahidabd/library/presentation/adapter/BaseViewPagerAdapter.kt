@@ -3,7 +3,7 @@ package com.wahidabd.library.presentation.adapter
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-abstract class BaseViewPagerFragmentStateAdapter<T>(fragment: FragmentActivity) :
+abstract class BaseViewPagerAdapter<T>(fragment: FragmentActivity) :
     FragmentStateAdapter(fragment) {
 
     private val items = ArrayList<T>()

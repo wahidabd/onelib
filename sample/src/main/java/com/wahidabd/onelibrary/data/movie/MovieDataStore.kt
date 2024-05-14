@@ -25,12 +25,8 @@ class MovieDataStore(
             id,
             errorParser::convertGenericError,
             webService::getDetailMovie,
-            onEmit = {
-                emit(it)
-            }
+            onEmit = { emit(it) }
         )
-    }.catch {
-        emit(Resource.empty())
     }.flowOn(Dispatchers.IO)
 
 }

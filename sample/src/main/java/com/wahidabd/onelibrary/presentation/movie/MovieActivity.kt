@@ -39,8 +39,8 @@ class MovieActivity : BaseActivity<ActivityMainBinding>() {
             onEmpty = {
                 Timber.d("EMPTY")
             },
-            onFailure = { throwable, message ->
-                Timber.e("ERROR: $throwable --> $message")
+            onFailure = {message ->
+                Timber.e("ERROR: $message")
             },
             onSuccess = {
                 Timber.d("SUCCESS: $it")

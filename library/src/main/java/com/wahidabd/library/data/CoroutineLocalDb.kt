@@ -20,7 +20,7 @@ interface CoroutineLocalDb<T : Model> : LocalDb {
     @Update
     abstract suspend fun update(vararg response: T)
 
-    abstract fun get(intId: Any? = null): Flow<T>
+    abstract fun get(id: Any? = null): Flow<T>
 
     abstract fun getList(): Flow<List<T>>
 

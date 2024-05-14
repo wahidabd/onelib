@@ -11,7 +11,7 @@ fun <T> LiveData<Resource<T>>.observerLiveData(
     onLoading: (() -> Unit)?,
     onSuccess: (T) -> Unit,
     onEmpty: (() -> Unit)? = null,
-    onFailure: (Throwable?, String?) -> Unit
+    onFailure: (String?) -> Unit
 ) {
     this.observe(owner) {
         when (it) {
@@ -21,7 +21,7 @@ fun <T> LiveData<Resource<T>>.observerLiveData(
             }
 
             is Resource.Failure -> {
-                onFailure.invoke(it.throwable, it.message)
+                onFailure.invoke(it.message)
             }
 
             is Resource.Empty -> {
@@ -41,7 +41,7 @@ fun <T> LiveData<Resource<T>>.observerLiveDataState(
     onLoading: @Composable (() -> Unit)?,
     onSuccess: @Composable (T) -> Unit,
     onEmpty: @Composable (() -> Unit)?,
-    onFailure: @Composable (Throwable?, String?) -> Unit
+    onFailure: @Composable (String?) -> Unit
 ) {
     this.observeAsState().value.let {
         when (it) {
@@ -55,7 +55,7 @@ fun <T> LiveData<Resource<T>>.observerLiveDataState(
             }
 
             is Resource.Failure -> {
-                onFailure.invoke(it.throwable, it.message)
+                onFailure.invoke(it.message)
             }
 
             is Resource.Success -> {
