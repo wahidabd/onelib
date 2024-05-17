@@ -1,4 +1,4 @@
-package com.wahidabd.library.presentation.adapter.diffutil
+package com.wahidabd.library.presentation.adapter.utils
 
 import androidx.recyclerview.widget.DiffUtil
 import com.wahidabd.library.presentation.adapter.Pager

@@ -11,6 +11,7 @@ import com.wahidabd.onelibrary.databinding.ActivityMainBinding
 import com.wahidabd.onelibrary.domain.base.TestModel
 import com.wahidabd.onelibrary.presentation.adapter.AsyncRecyclerActivity
 import com.wahidabd.onelibrary.presentation.adapter.TestBaseRecyclerAdapter
+import com.wahidabd.onelibrary.presentation.bottomsheet.BottomSheetActivity
 import com.wahidabd.onelibrary.presentation.firestore.FirestoreActivity
 import com.wahidabd.onelibrary.presentation.movie.MovieActivity
 import com.wahidabd.onelibrary.presentation.multistateview.MultiStateViewActivity
@@ -18,6 +19,7 @@ import com.wahidabd.onelibrary.presentation.notification.NotificationActivity
 import com.wahidabd.onelibrary.presentation.paging.PagingActivity
 import com.wahidabd.onelibrary.presentation.realtime.RealtimeActivity
 import com.wahidabd.onelibrary.presentation.rxdatabase.NoteActivity
+import com.wahidabd.onelibrary.presentation.selectable.SelectableAdapterActivity
 import com.wahidabd.onelibrary.presentation.validation.PassiveValidationActivity
 import com.wahidabd.onelibrary.presentation.validation.ReactiveValidationActivity
 import com.wahidabd.onelibrary.presentation.viewpager.ViewPagerActivity
@@ -78,6 +80,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             10 -> RealtimeActivity.start(this)
             11 -> PassiveValidationActivity.start(this)
             12 -> ReactiveValidationActivity.start(this)
+            13 -> SelectableAdapterActivity.start(this)
+            14 -> BottomSheetActivity.start(this)
         }
     }
 

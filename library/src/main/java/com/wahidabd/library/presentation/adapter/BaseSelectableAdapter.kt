@@ -1,10 +1,9 @@
 package com.wahidabd.library.presentation.adapter
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
-import com.wahidabd.library.presentation.adapter.viewholder.BaseItemViewHolder
+import com.wahidabd.library.presentation.adapter.utils.SelectedItem
+import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
 import com.wahidabd.library.utils.exts.onClick
 
 
@@ -14,50 +13,55 @@ import com.wahidabd.library.utils.exts.onClick
  */
 
 abstract class BaseSelectableAdapter<T>(
-    private val mContext: Context,
-    private val items: List<Selectable<T>>,
-    private val isMultipleSelect: Boolean,
-    private val onItemClickedListener: (Selectable<T>) -> Unit?
-) : BaseRecyclerAdapter<Selectable<T>, BaseSelectableAdapter<T>.SelectableViewHolder>(mContext, ArrayList(items)) {
+    private val isMultipleSelect: Boolean = false,
+    private val selectableItem: (selected: T) -> Unit,
+) : BaseAsyncRecyclerAdapter<Selectable<T>, BaseSelectableAdapter<T>.BaseSelectableViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectableViewHolder =
-        SelectableViewHolder(
-            mContext,
-            getViewBinding(parent, viewType),
-            onItemClickListener,
-            onLongItemClickListener
-        )
+    private var currentSelectedIndex = -1
 
-    inner class SelectableViewHolder(
-        context: Context,
-        binding: ViewBinding,
-        itemClickListener: OnItemClickListener?,
-        longItemClickListener: OnLongItemClickListener?
-    ) : BaseItemViewHolder<Selectable<T>>(context, binding, itemClickListener, longItemClickListener) {
+    abstract fun bindData(binding: ViewBinding, data: Selectable<T>)
+    abstract fun setSelected(binding: ViewBinding, selected: Boolean)
 
-        @SuppressLint("NotifyDataSetChanged")
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseSelectableViewHolder {
+        return BaseSelectableViewHolder(getViewBinding(parent, viewType))
+    }
+
+    inner class BaseSelectableViewHolder(
+        binding: ViewBinding
+    ) : BaseAsyncItemViewHolder<Selectable<T>>(binding), SelectedItem {
+
         override fun bind(data: Selectable<T>) {
+            setSelectedItem(data.selected)
+
             binding.root.onClick {
-                if (isMultipleSelect) data.selected = !data.selected
-                else data.selected = true
+                val previousIndex = currentSelectedIndex
+                currentSelectedIndex = bindingAdapterPosition
 
-                if (!isMultipleSelect){
-                    var index = 0
-                    val iterable = items.iterator()
-                    while (iterable.hasNext()){
-                        val item = iterable.next()
-                        index++
-                        if (index < 0) throw ArithmeticException("Index overflow has happened")
+                if (isMultipleSelect) {
+                    data.selected = !data.selected
+                    setSelectedItem(data.selected)
+                } else {
+                    if (currentSelectedIndex != previousIndex) {
+                        data.selected = true
 
-                        item.selected = index == this.adapterPosition
+                        if (previousIndex > -1) {
+                            setData[previousIndex].selected = false
+                            notifyItemChanged(previousIndex)
+                        }
+
+                        setSelectedItem(data.selected)
                     }
                 }
 
-                onItemClickedListener.invoke(data)
-                notifyDataSetChanged()
+                selectableItem.invoke(data.item)
             }
+
+            bindData(binding, data)
         }
 
+        override fun setSelectedItem(selected: Boolean) {
+            setSelected(binding, selected)
+            if (selected) currentSelectedIndex = bindingAdapterPosition
+        }
     }
-
 }

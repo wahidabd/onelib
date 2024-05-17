@@ -68,6 +68,16 @@ object Constant {
                  12,
                  "Reactive Validation",
                  "Reactive Validation"
+             ),
+             TestModel(
+                 13,
+                 "Selectable Adapter",
+                 "Selectable Adapter"
+             ),
+             TestModel(
+                 14,
+                 "Bottom Sheet",
+                 "Bottom Sheet"
              )
         )
 

@@ -14,14 +14,3 @@ fun MovieDetailResultResponse.toDomain(): MovieDetail =
         releaseDate = releaseDate,
         genres = genres?.map { it.toDomain() }
     )
-//
-//fun MovieDetail.toFavoriteDomain(): Favorite =
-//    Favorite(
-//        id = id!!,
-//        title = title.toString(),
-//        poster = AppConstants.URL_IMAGE_ORIGINAL + backdropPath.toString(),
-//        release = releaseDate.toString().removeRange(3, 9),
-//        genres = genres?.map { it.name.toString() + " " }.toString()
-//            .replace("[", "")
-//            .replace("]", "")
-//    )

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dimen_16dp"
+    android:orientation="vertical"
+    tools:context=".presentation.bottomsheet.BottomSheetFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Title of Bottom Sheet"
+        android:textSize="@dimen/text_size_16sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lorem"
+        android:layout_marginTop="@dimen/dimen_12dp"
+        android:textSize="@dimen/text_size_14sp"
+        android:textColor="@color/black"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_close"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Close Bottom Sheet"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="@dimen/dimen_24dp"
+        style="?attr/materialButtonOutlinedStyle"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

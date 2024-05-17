@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHolder
 
-abstract class BaseAsyncRecyclerAdapter<T, H : BaseAsyncItemViewHolder<T>>() :
+abstract class BaseAsyncRecyclerAdapter<T, H : BaseAsyncItemViewHolder<T>> :
     RecyclerView.Adapter<H>() {
 
     private val differCallback = object : DiffUtil.ItemCallback<T>() {
