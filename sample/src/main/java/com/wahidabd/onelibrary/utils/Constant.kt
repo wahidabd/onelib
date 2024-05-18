@@ -78,6 +78,11 @@ object Constant {
                  14,
                  "Bottom Sheet",
                  "Bottom Sheet"
+             ),
+             TestModel(
+                 15,
+                 "Filterable Adapter",
+                 "Filterable Adapter"
              )
         )
 
