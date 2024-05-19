@@ -48,7 +48,7 @@ class NoteActivity : BaseActivity<ActivityNoteBinding>() {
         viewModel.addNote.observerLiveData(this,
             onLoading = {},
             onEmpty = {},
-            onFailure = {_, m ->
+            onFailure = {m ->
                 showToast(m.toString())
             },
             onSuccess = {

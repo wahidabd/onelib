@@ -56,7 +56,12 @@ class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
                 val age = edAge.toStringTrim()
                 val address = edAddress.toStringTrim()
 
-                val req = FirestoreParam(name = name, age = age.toInt(), address = address, file = imageFile)
+                val req = FirestoreParam(
+                    name = name,
+                    age = age.toInt(),
+                    address = address,
+                    file = imageFile
+                )
                 viewModel.add(req)
             }
 
@@ -79,7 +84,7 @@ class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
     }
 
     private val imagePicker = registerImagePicker {
-        with(binding){
+        with(binding) {
             it.forEach { image ->
                 tvImage.text = image.name
                 imageFile = File(image.path)
@@ -99,10 +104,9 @@ class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
                     progress.visible()
                     rvFirestore.gone()
                 },
-                onFailure = { t, m ->
+                onFailure = { m ->
                     progress.gone()
                     rvFirestore.visible()
-                    debug { "$t --> $m" }
                 },
                 onSuccess = {
                     progress.gone()
@@ -124,10 +128,9 @@ class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
                     rvFirestore.gone()
                     showToast("Data is empty")
                 },
-                onFailure = { t, m ->
+                onFailure = { m ->
                     progress.gone()
                     rvFirestore.gone()
-                    showToast("$t -> $m")
                 },
                 onSuccess = {
                     progress.gone()
@@ -141,8 +144,7 @@ class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
                 onLoading = {
                     debug { "ON LOADING" }
                 },
-                onFailure = { t, m ->
-                    debug { "$t --> $m" }
+                onFailure = { m ->
                 },
                 onSuccess = {
                     debug { "Item Remove" }
@@ -155,8 +157,7 @@ class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
                 onLoading = {
                     debug { "ON LOADING" }
                 },
-                onFailure = { t, m ->
-                    debug { "$t --> $m" }
+                onFailure = { m ->
                 },
                 onSuccess = {
                     debug { "Data --> $it" }

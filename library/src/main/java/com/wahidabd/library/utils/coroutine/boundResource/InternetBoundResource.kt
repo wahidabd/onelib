@@ -30,7 +30,7 @@ abstract class InternetBoundResource<Response, Request> {
             }
             is Resource.Failure -> {
                 onFetchFailed()
-                emit(Resource.fail(response.throwable, response.message))
+                emit(Resource.fail(response.message))
             }
             is Resource.Success -> {
                 emit(Resource.success(saveCallRequest(response.data)))

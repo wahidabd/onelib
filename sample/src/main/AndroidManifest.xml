@@ -25,6 +25,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.dialog.DialogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.filterable.FilterableActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.bottomsheet.BottomSheetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.selectable.SelectableAdapterActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.validation.ReactiveValidationActivity"
             android:exported="false" />
         <activity

@@ -33,17 +33,17 @@ fun View.gone() {
     this.visibility = View.GONE
 }
 
-inline fun View.onlyGoneIf(condition: () -> Boolean){
+fun View.onlyGoneIf(condition: () -> Boolean){
     if (condition.invoke()) gone()
     else visible()
 }
 
-inline fun View.onlyVisibleIf(condition: () -> Boolean){
+fun View.onlyVisibleIf(condition: () -> Boolean){
     if (condition.invoke()) visible()
     else gone()
 }
 
-inline fun View.onlyInvisibleIf(condition: () -> Boolean){
+fun View.onlyInvisibleIf(condition: () -> Boolean){
     if (condition.invoke()) invisible()
     else visible()
 }
@@ -78,12 +78,12 @@ fun TextInputLayout.onTextChange(doOnChange: (String) -> Unit) {
     }
 }
 
-inline fun View.disableIf(condition: () -> Boolean){
+fun View.disableIf(condition: () -> Boolean){
     if (condition.invoke()) disable()
     else enable()
 }
 
-inline fun View.enableIf(condition: () -> Boolean){
+fun View.enableIf(condition: () -> Boolean){
     if (condition.invoke()) enable()
     else disable()
 }

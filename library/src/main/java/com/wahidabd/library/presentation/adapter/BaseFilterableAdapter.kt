@@ -1,68 +1,81 @@
-//package com.wahidabd.library.presentation.adapter
-//
-//import android.content.Context
-//import android.view.ViewGroup
-//import androidx.viewbinding.ViewBinding
-//import com.wahidabd.library.presentation.adapter.viewholder.BaseFilterableItemViewHolder
-//import com.wahidabd.library.presentation.adapter.viewholder.BaseItemViewHolder
-//
-//
-///**
-// * Created by Wahid on 3/17/2023.
-// * Github wahidabd.
-// */
-//
-//abstract class BaseFilterableAdapter<T>(
-//    private val context: Context,
-//    private val data: List<T>,
-//    private val onItemClickedListener: (T) -> Unit?
-//) : BaseRecyclerAdapter<T, BaseItemViewHolder<T>>(context, ArrayList(data)) {
-//
-//
-//    private val filteredData: MutableList<T> = ArrayList()
-//    private val originalData: MutableList<T> = ArrayList()
-//
-//    abstract fun isFiltered(query: String, item: T): Boolean
-//
-//    fun filter(query: String){
-//        filteredData.clear()
-//        val tempList = ArrayList<T>()
-//        tempList.clear()
-//
-//        for (item in originalData){
-//            if (isFiltered(query, item)){
-//                tempList.add(item)
-//            }
-//        }
-//
-//        filteredData.addAll(tempList)
-//        this.clear()
-//        this.addAll(if (query.isEmpty()) originalData else filteredData)
-//        this.notifyDataSetChanged()
-//    }
-//
-//    open fun addOrUpdate(items: MutableList<T>?){
-//        super.addOrUpdate(items!!)
-//        filteredData.clear()
-//        filteredData.addAll(data)
-//        originalData.clear()
-//        originalData.addAll(data)
-//    }
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilterableViewHolder =
-//        FilterableViewHolder(
-//            getViewBinding(parent, viewType))
-//
-//
-//    inner class FilterableViewHolder(
-//        binding: ViewBinding,
-//    ): BaseItemViewHolder<T>(
-//        context,
-//        getViewBinding(parent, viewType),
-//    ) {
-//
-//        open override fun bind(data: T) {}
-//
-//    }
-//
-//}
+package com.wahidabd.library.presentation.adapter
+
+import android.annotation.SuppressLint
+import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewbinding.ViewBinding
+import com.wahidabd.library.presentation.adapter.viewholder.BaseFilterableItemViewHolder
+
+
+/**
+ * Created by wahid on 5/18/2024.
+ * Github github.com/wahidabd.
+ */
+
+
+abstract class BaseFilterableAdapter<T, H : BaseFilterableItemViewHolder<T>> :
+    RecyclerView.Adapter<H>(), Filterable {
+
+    private val differCallback = object : DiffUtil.ItemCallback<T>() {
+        override fun areItemsTheSame(oldItem: T & Any, newItem: T & Any): Boolean =
+            oldItem == newItem
+
+        @SuppressLint("DiffUtilEquals")
+        override fun areContentsTheSame(oldItem: T & Any, newItem: T & Any): Boolean =
+            oldItem == newItem
+    }
+
+    private var originalData: List<T> = emptyList()
+    private val listDiffer = AsyncListDiffer(this, differCallback)
+
+    var setData: List<T>
+        get() = listDiffer.currentList
+        set(value) {
+            originalData = value
+            listDiffer.submitList(value)
+        }
+
+    abstract fun getViewBinding(parent: ViewGroup, viewType: Int): ViewBinding
+
+    abstract override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): H
+
+    override fun onBindViewHolder(holder: H, position: Int) {
+        holder.bind(setData[position])
+    }
+
+    override fun getItemCount(): Int = setData.size
+
+    fun clear() {
+        setData.toMutableList().clear()
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val filteredList = if (constraint.isNullOrEmpty()) {
+                    originalData
+                } else {
+                    originalData.filter {
+                        // Implement your filtering logic here
+                        // For example, if T is a String:
+                        // (it as String).contains(constraint, ignoreCase = true)
+
+                        // Modify the condition as per your requirements
+                        (it.toString().contains(constraint, ignoreCase = true))
+                    }
+                }
+                return FilterResults().apply { values = filteredList }
+            }
+
+            override fun publishResults(char: CharSequence?, results: FilterResults?) {
+                listDiffer.submitList(results?.values as? List<T> ?: originalData)
+            }
+
+        }
+    }
+
+}

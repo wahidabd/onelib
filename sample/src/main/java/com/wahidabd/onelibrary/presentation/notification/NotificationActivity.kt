@@ -21,20 +21,20 @@ class NotificationActivity : BaseActivity<ActivityNotificationBinding>() {
 
         binding.btnNotification.onClick {
             showNotification(
-                this,
-                "This is title",
-                "This is body",
-                MainActivity.pendingIntent(this)
+                context = this,
+                title = "This is title",
+                body = "This is body",
+                intent = MainActivity.pendingIntent(this)
             )
         }
 
         binding.btnNotificationWithImage.onClick {
             showNotification(
-                this,
-                "This is title",
-                "This is body",
-                MainActivity.pendingIntent(this),
-                "https://fastly.picsum.photos/id/938/200/300.jpg?hmac=MVXKrDXBUPK5fv_Ev3FTdCFeYf9rvJE2Tz9xynjeelM"
+                context = this,
+                title = "This is title",
+                body = "This is body",
+                intent = MainActivity.pendingIntent(this),
+                imgUrl = "https://fastly.picsum.photos/id/938/200/300.jpg?hmac=MVXKrDXBUPK5fv_Ev3FTdCFeYf9rvJE2Tz9xynjeelM"
             )
         }
 

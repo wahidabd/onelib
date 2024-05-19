@@ -22,7 +22,6 @@ class MovieViewModel(
         viewModelScope.launch {
             movieUseCase.getDetailMovie(id).collectLatest {
                 _detail.value = it
-                debug { "VIEWMODEL --> $it" }
             }
         }
     }

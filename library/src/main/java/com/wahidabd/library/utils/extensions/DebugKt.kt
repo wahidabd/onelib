@@ -8,14 +8,14 @@ import timber.log.Timber
  * Github github.com/wahidabd.
  */
 
-inline fun debug(t: Throwable? = null, message: () -> String) {
+fun debug(t: Throwable? = null, message: () -> String) {
     if (Timber.treeCount > 0){
         Timber.d(t, message.invoke())
     }
 }
 
 
-inline fun Timber.Tree.debug(t: Throwable?, message: () -> String){
+fun Timber.Tree.debug(t: Throwable?, message: () -> String){
     if (Timber.treeCount > 0){
         this.d(t, message.invoke())
     }

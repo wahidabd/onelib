@@ -32,11 +32,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "1.8"
     }
 
     composeOptions {
@@ -50,19 +50,20 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.core:core-ktx:1.13.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
-    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
-    implementation("com.google.firebase:firebase-firestore-ktx:24.7.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.11.1")
+    implementation 'androidx.compose.ui:ui-android:1.6.6'
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     // Compose
-    implementation("androidx.activity:activity-compose:1.7.2")
+    implementation("androidx.activity:activity-compose:1.9.0")
     implementation("androidx.compose.ui:ui:$compose_ui_version")
     implementation("androidx.compose.ui:ui-tooling-preview:$compose_ui_version")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$compose_ui_version")
@@ -70,19 +71,20 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest:$compose_ui_version")
 
     // livedata compose
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
-    implementation("androidx.compose.runtime:runtime-livedata:1.6.0-alpha07")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
+    implementation("androidx.compose.runtime:runtime-livedata:1.6.6")
 
     // Firebase
-    implementation(platform("com.google.firebase:firebase-bom:32.1.0"))
-    implementation("com.google.firebase:firebase-database-ktx:20.2.2")
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
+    implementation("com.google.firebase:firebase-database-ktx:21.0.0")
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")
+    implementation("com.google.firebase:firebase-auth-ktx")
 
     // koin
-    api("io.insert-koin:koin-android:3.3.3")
-    api("io.insert-koin:koin-androidx-workmanager:3.3.3")
-    api("io.insert-koin:koin-androidx-navigation:3.3.3")
+    api("io.insert-koin:koin-android:3.5.6")
+    api("io.insert-koin:koin-androidx-workmanager:3.5.6")
+    api("io.insert-koin:koin-androidx-navigation:3.5.6")
 
     // logging
     api("com.jakewharton.timber:timber:5.0.1")
@@ -99,35 +101,25 @@ dependencies {
     implementation("androidx.paging:paging-runtime-ktx:3.2.1")
 
     // Ktor - Http Client
-    implementation "io.ktor:ktor-client-core:2.3.4"
-    implementation "io.ktor:ktor-client-okhttp:2.3.4"
+    implementation "io.ktor:ktor-client-core:2.3.7"
+    implementation "io.ktor:ktor-client-okhttp:2.3.7"
     implementation "io.ktor:ktor-client-android:2.3.4"
     implementation "io.ktor:ktor-client-serialization:2.3.4"
     implementation "io.ktor:ktor-client-logging:2.3.4"
 
     // room
-    implementation("androidx.room:room-runtime:2.5.2")
-    ksp("androidx.room:room-compiler:2.5.2")
-    ksp("androidx.lifecycle:lifecycle-compiler:2.6.2")
+    implementation("androidx.room:room-runtime:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
+    ksp("androidx.lifecycle:lifecycle-compiler:2.7.0")
 
     // coroutine
     api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
     api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2")
     api("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
 
-    // rxjava
-    implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
-    implementation("io.reactivex.rxjava3:rxjava:3.1.5")
-
-    // rx permission
-    implementation("com.github.tbruyelle:rxpermissions:0.12")
-
     // image loader
     implementation("com.github.bumptech.glide:glide:4.16.0")
     ksp("com.github.bumptech.glide:compiler:4.16.0")
-
-    // image picker
-    implementation("com.github.esafirm:android-image-picker:3.0.0")
 
     // compress image and crop
     implementation("id.zelory:compressor:2.1.1")

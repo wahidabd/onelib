@@ -13,17 +13,21 @@ class TestFragment : BaseFragment<FragmentTestBinding>() {
         attachRoot: Boolean
     ): FragmentTestBinding = FragmentTestBinding.inflate(layoutInflater)
 
+    override fun initUI() {
+        // Handle UI here, ex: set text of TextView, set adapter to RecyclerView, etc
+    }
 
     override fun initAction() {
+        // Handle Action here, ex: click button, etc
+    }
+
+
+    override fun initProcess() {
+        // Handle Process here, ex: load data, etc
     }
 
     override fun initObservers() {
-    }
-
-    override fun initProcess() {
-    }
-
-    override fun initUI() {
+        // Handle Observers here, ex: LiveData, Flow, etc
     }
 
 }

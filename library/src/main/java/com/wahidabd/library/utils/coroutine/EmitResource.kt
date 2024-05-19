@@ -20,7 +20,7 @@ abstract class EmitResource <Request, Response> {
             is Resource.Default -> {}
             is Resource.Empty -> {}
             is Resource.Failure -> {
-                emit(Resource.fail(response.throwable!!, response.message))
+                emit(Resource.fail(response.message))
             }
             is Resource.Success -> {
                 saveCallResult(response.data)

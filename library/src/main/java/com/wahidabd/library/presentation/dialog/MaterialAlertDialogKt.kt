@@ -23,7 +23,7 @@ import kotlin.contracts.contract
  * it, then creates an [AlertDialog] from the builder, and returns it, so you can call
  * [AlertDialog.show] on the created dialog.
  */
-inline fun Context.materialAlertDialog(dialogConfig: MaterialAlertDialogBuilder.() -> Unit): AlertDialog {
+fun Context.materialAlertDialog(dialogConfig: MaterialAlertDialogBuilder.() -> Unit): AlertDialog {
     contract { callsInPlace(dialogConfig, InvocationKind.EXACTLY_ONCE) }
     return MaterialAlertDialogBuilder(this)
         .apply(dialogConfig)
@@ -35,7 +35,7 @@ inline fun Context.materialAlertDialog(dialogConfig: MaterialAlertDialogBuilder.
  * [iconResource], applies the [dialogConfig] lambda to it, then creates an [AlertDialog] from
  * the builder, and returns it, so you can call [AlertDialog.show] on the created dialog.
  */
-inline fun Context.materialAlertDialog(
+fun Context.materialAlertDialog(
     title: CharSequence? = null,
     message: CharSequence? = null,
     @DrawableRes iconResource: Int = 0,
@@ -59,7 +59,7 @@ inline fun Context.materialAlertDialog(
  * [icon], applies the [dialogConfig] lambda to it, then creates an [AlertDialog] from
  * the builder, and returns it, so you can call [AlertDialog.show] on the created dialog.
  */
-inline fun Context.materialAlertDialog(
+fun Context.materialAlertDialog(
     title: CharSequence? = null,
     message: CharSequence? = null,
     icon: Drawable? = null,

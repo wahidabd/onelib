@@ -4,9 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.presentation.BaseViewModel
-import com.wahidabd.library.utils.exts.addTo
-import com.wahidabd.library.utils.rx.apihandlers.genericErrorHandler
-import com.wahidabd.library.utils.rx.transformers.completableScheduler
 import com.wahidabd.onelibrary.domain.note.NoteUseCase
 import com.wahidabd.onelibrary.domain.note.model.Note
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -40,13 +37,6 @@ class NoteViewModel(
 
     fun addNote(note: Note){
         _addNote.value = Resource.loading()
-        useCase.addNote(note)
-            .compose(completableScheduler<Unit>())
-            .subscribe({
-                _addNote.value = Resource.success(Unit)
-            }, { genericErrorHandler(it, _addNote) })
-            .addTo(disposable)
-
     }
 
 }

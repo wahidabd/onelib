@@ -16,5 +16,3 @@ dependencyResolutionManagement {
 rootProject.name = "onelib"
 include ':sample'
 include ':library'
-include ':sample-compose'
-include ':library-compose'
