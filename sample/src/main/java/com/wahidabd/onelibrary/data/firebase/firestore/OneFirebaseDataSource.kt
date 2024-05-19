@@ -1,9 +1,10 @@
 package com.wahidabd.onelibrary.data.firebase.firestore
 
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.firebase.OneFirebaseFirestore
-import com.wahidabd.library.utils.firebase.pushImageToStorage
+import com.wahidabd.library.utils.firebase.OneFirebaseStorage
 import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreRequest
 import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreResponse
 import kotlinx.coroutines.channels.awaitClose
@@ -17,8 +18,12 @@ import kotlinx.coroutines.flow.callbackFlow
  */
 
 
-class OneFirebaseDataSource : FirebaseRepository, OneFirebaseFirestore() {
+class OneFirebaseDataSource : FirebaseRepository, OneFirebaseFirestore(), OneFirebaseStorage {
+
     override val databaseRef: FirebaseFirestore = FirebaseFirestore.getInstance()
+    override val storageReference: FirebaseStorage = FirebaseStorage.getInstance()
+    override val storage: String = "user"
+
 
     override fun addData(request: FirestoreRequest): Flow<Resource<Boolean>> =
         callbackFlow {
@@ -29,7 +34,7 @@ class OneFirebaseDataSource : FirebaseRepository, OneFirebaseFirestore() {
 
             // push image to storage when the file is not null
             if (request.file != null) {
-                pushImageToStorage("user", id, request.file, eventListener = { url ->
+                pushFile(request.file, eventListener = { url ->
                     request.image = url
 
                     setValue(
