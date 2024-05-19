@@ -2,7 +2,6 @@ package com.wahidabd.onelibrary.data.firebase.firestore
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.wahidabd.library.data.Resource
-import com.wahidabd.library.utils.coroutine.handler.GenericResponse
 import com.wahidabd.library.utils.firebase.OneFirebaseFirestore
 import com.wahidabd.library.utils.firebase.pushImageToStorage
 import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreRequest
@@ -21,7 +20,7 @@ import kotlinx.coroutines.flow.callbackFlow
 class OneFirebaseDataSource : FirebaseRepository, OneFirebaseFirestore() {
     override val databaseRef: FirebaseFirestore = FirebaseFirestore.getInstance()
 
-    override fun addData(request: FirestoreRequest): Flow<Resource<GenericResponse>> =
+    override fun addData(request: FirestoreRequest): Flow<Resource<Boolean>> =
         callbackFlow {
             val collection = "users"
             val id = databaseRef.collection(collection).document().id
@@ -30,11 +29,10 @@ class OneFirebaseDataSource : FirebaseRepository, OneFirebaseFirestore() {
 
             // push image to storage when the file is not null
             if (request.file != null) {
-                pushImageToStorage("user", id, request.file, eventListener = {url ->
+                pushImageToStorage("user", id, request.file, eventListener = { url ->
                     request.image = url
 
                     setValue(
-                        id = id,
                         value = request.toMap(),
                         collection = collection,
                         eventListener = { trySend(it) }
@@ -42,7 +40,6 @@ class OneFirebaseDataSource : FirebaseRepository, OneFirebaseFirestore() {
                 })
             } else {
                 setValue(
-                    id = id,
                     value = request.toMap(),
                     collection = collection,
                     eventListener = { trySend(it) }
@@ -52,14 +49,14 @@ class OneFirebaseDataSource : FirebaseRepository, OneFirebaseFirestore() {
             awaitClose { this.close() }
         }
 
-    override fun update(request: FirestoreRequest): Flow<Resource<GenericResponse>> = callbackFlow {
+    override fun update(request: FirestoreRequest): Flow<Resource<Boolean>> = callbackFlow {
         val collection = "users"
 
         updateValue(
             id = request.id.toString(),
             collection = collection,
             value = request.toMap(),
-            eventListener = {trySend(it)}
+            eventListener = { trySend(it) }
         )
         awaitClose { this.close() }
     }
@@ -68,8 +65,8 @@ class OneFirebaseDataSource : FirebaseRepository, OneFirebaseFirestore() {
         val collection = "users"
 
         getListValue(
-            collection,
-            FirestoreResponse::class.java,
+            collection = collection,
+            clazz = FirestoreResponse::class.java,
             eventListener = {
                 trySend(it)
             }
@@ -84,16 +81,17 @@ class OneFirebaseDataSource : FirebaseRepository, OneFirebaseFirestore() {
         getSingleValue(
             id = id,
             collection = document,
-            FirestoreResponse::class.java,
+            clazz = FirestoreResponse::class.java,
             eventListener = { trySend(it) },
         )
 
         awaitClose { this.close() }
     }
 
-    override fun remove(id: String): Flow<Resource<GenericResponse>> = callbackFlow {
+    override fun remove(id: String): Flow<Resource<Boolean>> = callbackFlow {
         deleteValue(
-            document = id,
+            id = id,
+            collection = "users",
             eventListener = { trySend(it) }
         )
         awaitClose { this.close() }

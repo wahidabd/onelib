@@ -11,6 +11,14 @@ import com.wahidabd.library.data.Resource
  */
 
 
+/**
+ * Example usage:
+ * ```
+ * class MyFirebaseAuth: OneFirebaseAuth() {
+ *   override val auth: FirebaseAuth = FirebaseAuth.getInstance()
+ * }
+ * ```
+ */
 abstract class OneFirebaseAuth {
     protected abstract val auth: FirebaseAuth
 
@@ -28,6 +36,11 @@ abstract class OneFirebaseAuth {
      *
      * Example usage:
      * ```
+     * fun signIn(email: String, password: String) {
+     *      signIn(email, password) { result ->
+     *          // handle the result
+     *      }
+     * }
      * ```
      */
     fun signIn(
@@ -63,6 +76,11 @@ abstract class OneFirebaseAuth {
      *
      * Example usage:
      * ```
+     * fun signUp(email: String, password: String) {
+     *      signUp(email, password) { result ->
+     *          // handle the result
+     *      }
+     * }
      * ```
      */
     fun signUp(
@@ -93,6 +111,11 @@ abstract class OneFirebaseAuth {
      *
      * Example usage:
      * ```
+     * fun signOut() {
+     *      signOut { result ->
+     *          // handle the result
+     *      }
+     * }
      * ```
      */
     fun signOut(eventListener: ((data: Resource<Boolean>) -> Unit)) {
@@ -113,6 +136,11 @@ abstract class OneFirebaseAuth {
      *
      * Example usage:
      * ```
+     * fun resetPassword(email: String) {
+     *      resetPassword(email) { result ->
+     *          // handle the result
+     *      }
+     * }
      * ```
      */
     fun resetPassword(email: String, eventListener: ((data: Resource<Boolean>) -> Unit)) {

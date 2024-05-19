@@ -17,11 +17,11 @@ import kotlinx.coroutines.flow.Flow
 
 interface FirebaseRepository {
 
-    fun addData(request: FirestoreRequest): Flow<Resource<GenericResponse>>
-    fun update(request: FirestoreRequest): Flow<Resource<GenericResponse>>
+    fun addData(request: FirestoreRequest): Flow<Resource<Boolean>>
+    fun update(request: FirestoreRequest): Flow<Resource<Boolean>>
     fun getList(): Flow<Resource<List<FirestoreResponse>>>
     fun getSingle(id: String): Flow<Resource<FirestoreResponse>>
-    fun remove(id: String): Flow<Resource<GenericResponse>>
+    fun remove(id: String): Flow<Resource<Boolean>>
 
 
 }

@@ -3,7 +3,6 @@ package com.wahidabd.onelibrary.data.firebase.raltime
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.wahidabd.library.data.Resource
-import com.wahidabd.library.utils.coroutine.handler.GenericResponse
 import com.wahidabd.library.utils.firebase.OneFirebaseRealtime
 import com.wahidabd.onelibrary.data.firebase.model.realtime.RealtimeRequest
 import com.wahidabd.onelibrary.data.firebase.model.realtime.RealtimeResponse
@@ -20,15 +19,13 @@ import kotlinx.coroutines.flow.callbackFlow
 
 class RealtimeDataSourceOne : RealtimeRepository, OneFirebaseRealtime() {
 
-    override val databaseRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("users")
+    override val databaseRef: DatabaseReference =
+        FirebaseDatabase.getInstance().getReference("users")
 
-    override fun realtimeAdd(data: RealtimeRequest): Flow<Resource<GenericResponse>> = callbackFlow{
-        val id = databaseRef.push().key
-        data.id = id.toString()
+    override fun realtimeAdd(data: RealtimeRequest): Flow<Resource<Boolean>> = callbackFlow {
 
         setValue(
-            data.toMap(),
-            child = id.toString(),
+            value = data.toMap(),
             eventListener = {
                 trySend(it)
             }
@@ -37,9 +34,9 @@ class RealtimeDataSourceOne : RealtimeRepository, OneFirebaseRealtime() {
         awaitClose { this.close() }
     }
 
-    override fun realtimeRemove(id: String): Flow<Resource<GenericResponse>> = callbackFlow {
+    override fun realtimeRemove(id: String): Flow<Resource<Boolean>> = callbackFlow {
         removeValue(
-            child = id,
+            id = id,
             eventListener = {
                 trySend(it)
             }
@@ -48,10 +45,10 @@ class RealtimeDataSourceOne : RealtimeRepository, OneFirebaseRealtime() {
         awaitClose { this.close() }
     }
 
-    override fun realtimeList(): Flow<Resource<List<RealtimeResponse>>> = callbackFlow{
+    override fun realtimeList(): Flow<Resource<List<RealtimeResponse>>> = callbackFlow {
         getListValue(
             clazz = RealtimeResponse::class.java,
-            eventListener = {trySend(it)}
+            eventListener = { trySend(it) }
         )
         awaitClose { this.close() }
     }
