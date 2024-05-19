@@ -31,7 +31,7 @@ import com.wahidabd.library.utils.coroutine.handler.GenericResponse
 * */
 
 
-abstract class FirebaseRealtimeManager {
+abstract class OneFirebaseRealtime {
     protected abstract val databaseRef: DatabaseReference
 
     fun setValue(

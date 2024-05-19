@@ -2,8 +2,6 @@ package com.wahidabd.library.utils.firebase
 
 import android.net.Uri
 import com.google.firebase.storage.FirebaseStorage
-import com.wahidabd.library.utils.common.emptyString
-import com.wahidabd.library.utils.extensions.debug
 import java.io.File
 
 

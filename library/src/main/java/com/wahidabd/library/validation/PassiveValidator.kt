@@ -1,7 +1,5 @@
 package com.wahidabd.library.validation
 
-import java.util.Collections
-
 
 /**
  * Created by Wahid on 9/19/2023.
@@ -9,14 +7,14 @@ import java.util.Collections
  */
 
 
-class PassiveValidator(override val validations: MutableList<Validation>) : Validator{
+class PassiveValidator(override val validations: MutableList<Validation>) : Validator {
 
     override var mListener: ValidationListener? = null
-    override fun setListener(listener: ValidationListener){
+    override fun setListener(listener: ValidationListener) {
         mListener = listener
     }
 
-    override fun addValidation(validation: Validation){
+    override fun addValidation(validation: Validation) {
         validations.add(validation)
     }
 

@@ -1,8 +1,8 @@
 package com.wahidabd.onelibrary.di.features
 
-import com.wahidabd.onelibrary.data.firebase.firestore.FirebaseDataSource
+import com.wahidabd.onelibrary.data.firebase.firestore.OneFirebaseDataSource
 import com.wahidabd.onelibrary.data.firebase.firestore.FirebaseRepository
-import com.wahidabd.onelibrary.data.firebase.raltime.RealtimeDataSource
+import com.wahidabd.onelibrary.data.firebase.raltime.RealtimeDataSourceOne
 import com.wahidabd.onelibrary.data.firebase.raltime.RealtimeRepository
 import com.wahidabd.onelibrary.domain.firebase.FirestoreInteractor
 import com.wahidabd.onelibrary.domain.firebase.FirestoreUseCase
@@ -21,13 +21,13 @@ import org.koin.dsl.module
 
 
 val firebaseModule = module {
-    single<FirebaseRepository> { FirebaseDataSource() }
+    single<FirebaseRepository> { OneFirebaseDataSource() }
     single<FirestoreUseCase> { FirestoreInteractor(get()) }
     viewModel { FirestoreViewModel(get()) }
 }
 
 val realtimeModule = module {
-    single<RealtimeRepository> { RealtimeDataSource() }
+    single<RealtimeRepository> { RealtimeDataSourceOne() }
     single<RealtimeUseCase> { RealtimeInteractor(get()) }
     viewModel { RealtimeViewModel(get()) }
 }

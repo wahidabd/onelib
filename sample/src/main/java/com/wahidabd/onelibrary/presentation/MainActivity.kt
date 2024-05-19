@@ -12,6 +12,7 @@ import com.wahidabd.onelibrary.domain.base.TestModel
 import com.wahidabd.onelibrary.presentation.adapter.AsyncRecyclerActivity
 import com.wahidabd.onelibrary.presentation.adapter.TestBaseRecyclerAdapter
 import com.wahidabd.onelibrary.presentation.bottomsheet.BottomSheetActivity
+import com.wahidabd.onelibrary.presentation.dialog.DialogActivity
 import com.wahidabd.onelibrary.presentation.filterable.FilterableActivity
 import com.wahidabd.onelibrary.presentation.firestore.FirestoreActivity
 import com.wahidabd.onelibrary.presentation.movie.MovieActivity
@@ -84,6 +85,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             13 -> SelectableAdapterActivity.start(this)
             14 -> BottomSheetActivity.start(this)
             15 -> FilterableActivity.start(this)
+            16 -> DialogActivity.start(this)
         }
     }
 

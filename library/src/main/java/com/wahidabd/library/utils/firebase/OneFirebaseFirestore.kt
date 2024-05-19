@@ -14,7 +14,7 @@ import com.wahidabd.library.utils.coroutine.handler.GenericResponse
  */
 
 
-abstract class FirebaseFirestoreManager {
+abstract class OneFirebaseFirestore {
     protected abstract val databaseRef: FirebaseFirestore
 
 
@@ -24,6 +24,7 @@ abstract class FirebaseFirestoreManager {
         collection: String,
         eventListener: ((data: Resource<GenericResponse>) -> Unit),
     ) {
+        eventListener.invoke(Resource.loading())
         databaseRef
             .collection(collection)
             .document(id)
@@ -52,6 +53,7 @@ abstract class FirebaseFirestoreManager {
         value: HashMap<String, Any?>,
         eventListener: ((data: Resource<GenericResponse>) -> Unit),
     ) {
+        eventListener.invoke(Resource.loading())
         databaseRef
             .collection(collection)
             .document(id)
@@ -80,6 +82,7 @@ abstract class FirebaseFirestoreManager {
         clazz: Class<T>,
         eventListener: ((data: Resource<T>) -> Unit)
     ) {
+        eventListener.invoke(Resource.loading())
         databaseRef.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
         databaseRef
             .document("$collection/$id")
@@ -105,6 +108,7 @@ abstract class FirebaseFirestoreManager {
         clazz: Class<T>,
         eventListener: ((data: Resource<List<T>>) -> Unit)
     ) {
+        eventListener.invoke(Resource.loading())
         databaseRef.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
         val results = ArrayList<T>()
 
@@ -141,6 +145,7 @@ abstract class FirebaseFirestoreManager {
         document: String,
         eventListener: ((data: Resource<GenericResponse>) -> Unit),
     ) {
+        eventListener.invoke(Resource.loading())
         databaseRef
             .document(document)
             .delete()

@@ -4,7 +4,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.handler.GenericResponse
-import com.wahidabd.library.utils.firebase.FirebaseRealtimeManager
+import com.wahidabd.library.utils.firebase.OneFirebaseRealtime
 import com.wahidabd.onelibrary.data.firebase.model.realtime.RealtimeRequest
 import com.wahidabd.onelibrary.data.firebase.model.realtime.RealtimeResponse
 import kotlinx.coroutines.channels.awaitClose
@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.callbackFlow
  */
 
 
-class RealtimeDataSource : RealtimeRepository, FirebaseRealtimeManager() {
+class RealtimeDataSourceOne : RealtimeRepository, OneFirebaseRealtime() {
 
     override val databaseRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("users")
 

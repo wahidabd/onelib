@@ -3,7 +3,7 @@ package com.wahidabd.onelibrary.data.firebase.firestore
 import com.google.firebase.firestore.FirebaseFirestore
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.handler.GenericResponse
-import com.wahidabd.library.utils.firebase.FirebaseFirestoreManager
+import com.wahidabd.library.utils.firebase.OneFirebaseFirestore
 import com.wahidabd.library.utils.firebase.pushImageToStorage
 import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreRequest
 import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreResponse
@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.callbackFlow
  */
 
 
-class FirebaseDataSource : FirebaseRepository, FirebaseFirestoreManager() {
+class OneFirebaseDataSource : FirebaseRepository, OneFirebaseFirestore() {
     override val databaseRef: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     override fun addData(request: FirestoreRequest): Flow<Resource<GenericResponse>> =
