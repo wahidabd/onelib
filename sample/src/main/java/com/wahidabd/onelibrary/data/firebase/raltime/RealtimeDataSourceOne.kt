@@ -22,34 +22,46 @@ class RealtimeDataSourceOne : RealtimeRepository, OneFirebaseRealtime() {
     override val databaseRef: DatabaseReference =
         FirebaseDatabase.getInstance().getReference("users")
 
-    override fun realtimeAdd(data: RealtimeRequest): Flow<Resource<Boolean>> = callbackFlow {
-
-        setValue(
-            value = data.toMap(),
-            eventListener = {
+    override suspend fun realtimeAdd(data: RealtimeRequest): Flow<Resource<Boolean>> =
+        callbackFlow {
+            setValue(value = data.toMap()) {
                 trySend(it)
             }
-        )
+
+            awaitClose { this.close() }
+        }
+
+    override suspend fun realtimeRemove(id: String): Flow<Resource<Boolean>> = callbackFlow {
+        removeValue(id = id) {
+            trySend(it)
+        }
 
         awaitClose { this.close() }
     }
 
-    override fun realtimeRemove(id: String): Flow<Resource<Boolean>> = callbackFlow {
-        removeValue(
-            id = id,
-            eventListener = {
-                trySend(it)
-            }
-        )
-
-        awaitClose { this.close() }
-    }
-
-    override fun realtimeList(): Flow<Resource<List<RealtimeResponse>>> = callbackFlow {
+    override suspend fun realtimeList(): Flow<Resource<List<RealtimeResponse>>> = callbackFlow {
         getListValue(
             clazz = RealtimeResponse::class.java,
             eventListener = { trySend(it) }
         )
         awaitClose { this.close() }
+    }
+
+    override suspend fun realtimeEdit(id: String): Flow<Resource<Boolean>> = callbackFlow {
+        val value = hashMapOf<String, Any?>("name" to "wahid")
+
+        updateValue(id = id, value = value) {
+            trySend(it)
+        }
+
+        awaitClose(this::close)
+    }
+
+    override suspend fun getData(id: String): Flow<Resource<RealtimeResponse>> = callbackFlow {
+        getValue(id = id, clazz = RealtimeResponse::class.java){ data ->
+            trySend(data)
+        }
+
+        awaitClose(this::close)
     }
 }

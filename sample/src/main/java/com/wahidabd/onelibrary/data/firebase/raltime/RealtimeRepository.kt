@@ -13,7 +13,9 @@ import kotlinx.coroutines.flow.Flow
 
 
 interface RealtimeRepository {
-    fun realtimeAdd(data: RealtimeRequest): Flow<Resource<Boolean>>
-    fun realtimeRemove(id: String): Flow<Resource<Boolean>>
-    fun realtimeList(): Flow<Resource<List<RealtimeResponse>>>
+    suspend fun realtimeAdd(data: RealtimeRequest): Flow<Resource<Boolean>>
+    suspend fun realtimeRemove(id: String): Flow<Resource<Boolean>>
+    suspend fun realtimeList(): Flow<Resource<List<RealtimeResponse>>>
+    suspend fun realtimeEdit(id: String): Flow<Resource<Boolean>>
+    suspend fun getData(id: String): Flow<Resource<RealtimeResponse>>
 }

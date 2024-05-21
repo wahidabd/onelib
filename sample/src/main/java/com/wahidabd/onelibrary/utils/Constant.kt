@@ -51,12 +51,12 @@ object Constant {
             ),
             TestModel(
                 9,
-                "Firestore",
+                "Firebase Firestore Database",
                 "Base Firestore Database"
             ),
             TestModel(
                 10,
-                "Realtime Database",
+                "Firebase Realtime Database",
                 "Base Realtime Database"
             ),
             TestModel(
@@ -88,6 +88,21 @@ object Constant {
                 16,
                 "Dialog",
                 "Dialog"
+            ),
+            TestModel(
+                17,
+                "Firebase Auth",
+                "Firebase Auth"
+            ),
+            TestModel(
+                18,
+                "Firebase Storage",
+                "Firebase Storage"
+            ),
+            TestModel(
+                18,
+                "Firebase Auth",
+                "Firebase Auth"
             )
         ).sortedBy { it.title }
 

@@ -1,10 +1,8 @@
 package com.wahidabd.onelibrary.domain.firebase.realtime
 
 import com.wahidabd.library.data.Resource
-import com.wahidabd.library.utils.coroutine.boundResource.InternetBoundResource
-import com.wahidabd.library.utils.coroutine.handler.GenericResponse
-import com.wahidabd.onelibrary.data.firebase.model.realtime.RealtimeRequest
-import com.wahidabd.onelibrary.data.firebase.model.realtime.RealtimeResponse
+import com.wahidabd.library.utils.coroutine.oneMap
+import com.wahidabd.library.utils.coroutine.oneMapList
 import com.wahidabd.onelibrary.data.firebase.raltime.RealtimeRepository
 import com.wahidabd.onelibrary.domain.firebase.model.RealtimeData
 import com.wahidabd.onelibrary.domain.firebase.model.RealtimeParam
@@ -24,26 +22,27 @@ class RealtimeInteractor(
     private val repository: RealtimeRepository
 ) : RealtimeUseCase {
 
-    override fun realtimeAdd(data: RealtimeParam): Flow<Resource<GenericResponse>> {
+    override suspend fun realtimeAdd(data: RealtimeParam): Flow<Resource<Boolean>> {
         return repository.realtimeAdd(data.toRequest())
     }
 
-    override fun realtimeRemove(id: String): Flow<Resource<GenericResponse>> {
+    override suspend fun realtimeRemove(id: String): Flow<Resource<Boolean>> {
         return repository.realtimeRemove(id)
     }
 
-    override fun realtimeList(): Flow<Resource<List<RealtimeData>>> {
-        return object : InternetBoundResource<List<RealtimeData>, List<RealtimeResponse>>(){
-            override suspend fun createCall(): Flow<Resource<List<RealtimeResponse>>> {
-                return repository.realtimeList()
-            }
+    override suspend fun realtimeList(): Flow<Resource<List<RealtimeData>>> {
+        return repository.realtimeList().map { resource ->
+            resource.oneMapList { data -> data.toDomain() }
+        }
+    }
 
-            override suspend fun saveCallRequest(data: List<RealtimeResponse>): List<RealtimeData> {
-                return data.map {
-                    it.toDomain()
-                }
-            }
+    override suspend fun realtimeEdit(id: String): Flow<Resource<Boolean>> {
+        return repository.realtimeEdit(id)
+    }
 
-        }.asFlow()
+    override suspend fun realtimeData(id: String): Flow<Resource<RealtimeData>> {
+        return repository.getData(id).map { resource ->
+            resource.oneMap { data -> data.toDomain() }
+        }
     }
 }

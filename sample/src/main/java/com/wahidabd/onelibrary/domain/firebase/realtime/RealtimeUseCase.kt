@@ -1,8 +1,6 @@
 package com.wahidabd.onelibrary.domain.firebase.realtime
 
 import com.wahidabd.library.data.Resource
-import com.wahidabd.library.utils.coroutine.handler.GenericResponse
-import com.wahidabd.onelibrary.data.firebase.model.realtime.RealtimeRequest
 import com.wahidabd.onelibrary.domain.firebase.model.RealtimeData
 import com.wahidabd.onelibrary.domain.firebase.model.RealtimeParam
 import kotlinx.coroutines.flow.Flow
@@ -15,7 +13,9 @@ import kotlinx.coroutines.flow.Flow
 
 
 interface RealtimeUseCase {
-    fun realtimeAdd(data: RealtimeParam): Flow<Resource<GenericResponse>>
-    fun realtimeRemove(id: String): Flow<Resource<GenericResponse>>
-    fun realtimeList(): Flow<Resource<List<RealtimeData>>>
+    suspend fun realtimeAdd(data: RealtimeParam): Flow<Resource<Boolean>>
+    suspend fun realtimeRemove(id: String): Flow<Resource<Boolean>>
+    suspend fun realtimeList(): Flow<Resource<List<RealtimeData>>>
+    suspend fun realtimeEdit(id: String): Flow<Resource<Boolean>>
+    suspend fun realtimeData(id: String): Flow<Resource<RealtimeData>>
 }

@@ -18,3 +18,13 @@ fun <T, R> Resource<T>.oneMap(transform: (T) -> R): Resource<R> {
         is Resource.Empty -> Resource.empty()
     }
 }
+
+fun <T, R> Resource<List<T>>.oneMapList(transform: (T) -> R): Resource<List<R>> {
+    return when (this) {
+        is Resource.Success -> Resource.success(data.map { transform(it) })
+        is Resource.Failure -> Resource.fail(message)
+        is Resource.Loading -> Resource.loading()
+        is Resource.Default -> Resource.default()
+        is Resource.Empty -> Resource.empty()
+    }
+}

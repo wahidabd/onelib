@@ -5,9 +5,11 @@
     android:layout_height="match_parent"
     android:gravity="center">
 
-    <ProgressBar
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+        android:text="Data is Empty"
+        android:textSize="@dimen/text_size_22sp"
+        android:textColor="@color/black"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

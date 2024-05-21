@@ -20,5 +20,7 @@ data class RealtimeParam(
 
 fun RealtimeParam.toRequest(): RealtimeRequest =
     RealtimeRequest(
-        id, name, age, file
+        name = name,
+        age = age,
+        file = file
     )

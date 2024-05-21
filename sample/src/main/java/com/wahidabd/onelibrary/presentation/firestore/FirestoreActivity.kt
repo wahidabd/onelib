@@ -2,19 +2,15 @@ package com.wahidabd.onelibrary.presentation.firestore
 
 import android.content.Context
 import android.content.Intent
-import com.esafirm.imagepicker.features.ImagePickerConfig
-import com.esafirm.imagepicker.features.ImagePickerMode
-import com.esafirm.imagepicker.features.ReturnMode
-import com.esafirm.imagepicker.features.registerImagePicker
 import com.wahidabd.library.presentation.activity.BaseActivity
-import com.wahidabd.library.utils.common.showToast
-import com.wahidabd.library.utils.extensions.debug
+import com.wahidabd.library.utils.extensions.showDefaultState
+import com.wahidabd.library.utils.extensions.showEmptyState
+import com.wahidabd.library.utils.extensions.showErrorState
+import com.wahidabd.library.utils.extensions.showLoadingState
 import com.wahidabd.library.utils.exts.clear
-import com.wahidabd.library.utils.exts.gone
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.utils.exts.toStringTrim
-import com.wahidabd.library.utils.exts.visible
 import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreRequest
 import com.wahidabd.onelibrary.databinding.ActivityFirestoreBinding
 import com.wahidabd.onelibrary.domain.firebase.model.FirestoreParam
@@ -24,9 +20,14 @@ import java.io.File
 
 class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
 
-    private var imageFile: File? = null
+    companion object {
+        fun start(context: Context) {
+            context.startActivity(Intent(context, FirestoreActivity::class.java))
+        }
+    }
 
     private val viewModel: FirestoreViewModel by inject()
+
     private val firestoreAdapter by lazy {
         FirestoreAdapter(
             context = this,
@@ -60,7 +61,6 @@ class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
                     name = name,
                     age = age.toInt(),
                     address = address,
-                    file = imageFile
                 )
                 viewModel.add(req)
             }
@@ -68,26 +68,8 @@ class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
             btnUpdate.onClick {
                 val name = edName.toStringTrim()
 
-                val req = FirestoreRequest(name = name, id = "51mCJiLjEYF3GajJ5rJc")
+                val req = FirestoreRequest(name = name, id = "")
                 viewModel.update(req)
-            }
-
-            tvImage.onClick {
-                imagePicker.launch(
-                    ImagePickerConfig(
-                        ImagePickerMode.SINGLE,
-                        returnMode = ReturnMode.ALL
-                    )
-                )
-            }
-        }
-    }
-
-    private val imagePicker = registerImagePicker {
-        with(binding) {
-            it.forEach { image ->
-                tvImage.text = image.name
-                imageFile = File(image.path)
             }
         }
     }
@@ -100,76 +82,48 @@ class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
         with(binding) {
             viewModel.add.observerLiveData(
                 this@FirestoreActivity,
-                onLoading = {
-                    progress.visible()
-                    rvFirestore.gone()
-                },
-                onFailure = { m ->
-                    progress.gone()
-                    rvFirestore.visible()
-                },
+                onLoading = { msv.showLoadingState() },
+                onFailure = { m -> msv.showErrorState(m) },
                 onSuccess = {
-                    progress.gone()
-                    rvFirestore.visible()
-                    edName.clear()
-                    edAge.clear()
-                    edAddress.clear()
+                    msv.showDefaultState()
+                    clearText()
                 }
             )
 
             viewModel.list.observerLiveData(
                 this@FirestoreActivity,
-                onLoading = {
-                    progress.visible()
-                    rvFirestore.gone()
-                },
-                onEmpty = {
-                    progress.gone()
-                    rvFirestore.gone()
-                    showToast("Data is empty")
-                },
-                onFailure = { m ->
-                    progress.gone()
-                    rvFirestore.gone()
-                },
+                onLoading = { msv.showLoadingState() },
+                onEmpty = { msv.showEmptyState() },
+                onFailure = { m -> msv.showErrorState(m) },
                 onSuccess = {
-                    progress.gone()
-                    rvFirestore.visible()
+                    msv.showDefaultState()
                     firestoreAdapter.setData = it
                 }
             )
 
             viewModel.remove.observerLiveData(
                 this@FirestoreActivity,
-                onLoading = {
-                    debug { "ON LOADING" }
-                },
-                onFailure = { m ->
-                },
+                onLoading = { msv.showLoadingState() },
+                onFailure = { m -> msv.showErrorState(m) },
                 onSuccess = {
-                    debug { "Item Remove" }
+                    msv.showDefaultState()
                     viewModel.list()
                 }
             )
 
             viewModel.data.observerLiveData(
                 this@FirestoreActivity,
-                onLoading = {
-                    debug { "ON LOADING" }
-                },
-                onFailure = { m ->
-                },
-                onSuccess = {
-                    debug { "Data --> $it" }
-                }
+                onLoading = { msv.showLoadingState() },
+                onFailure = { m -> msv.showErrorState(m) },
+                onSuccess = {}
             )
         }
     }
 
-    companion object {
-        fun start(context: Context) {
-            context.startActivity(Intent(context, FirestoreActivity::class.java))
-        }
+    private fun clearText() = with(binding) {
+        edName.clear()
+        edAge.clear()
+        edAddress.clear()
     }
 
 }

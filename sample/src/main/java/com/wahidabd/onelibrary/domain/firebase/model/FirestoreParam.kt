@@ -14,7 +14,6 @@ data class FirestoreParam(
     val name: String,
     val age: Int,
     val address: String,
-    val file: File? = null
 )
 
 fun FirestoreParam.toRequest(): FirestoreRequest =
@@ -22,5 +21,4 @@ fun FirestoreParam.toRequest(): FirestoreRequest =
         name = name,
         age = age,
         address = address,
-        file = file
     )

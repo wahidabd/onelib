@@ -11,14 +11,12 @@ import java.io.File
 
 
 data class RealtimeRequest(
-    var id: String? = null,
     val name: String? = null,
     val age: Int? = null,
     val file: File? = null
 ){
     @Exclude
     fun toMap() = hashMapOf<String, Any?>(
-        "id" to id,
         "name" to name,
         "age" to age
     )

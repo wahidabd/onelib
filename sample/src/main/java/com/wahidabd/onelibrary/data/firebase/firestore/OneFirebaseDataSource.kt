@@ -25,36 +25,17 @@ class OneFirebaseDataSource : FirebaseRepository, OneFirebaseFirestore(), OneFir
     override val storage: String = "user"
 
 
-    override fun addData(request: FirestoreRequest): Flow<Resource<Boolean>> =
+    override suspend fun addData(request: FirestoreRequest): Flow<Resource<Boolean>> =
         callbackFlow {
-            val collection = "users"
-            val id = databaseRef.collection(collection).document().id
-            request.id = id
-
-
-            // push image to storage when the file is not null
-            if (request.file != null) {
-                pushFile(request.file, eventListener = { url ->
-                    request.image = url
-
-                    setValue(
-                        value = request.toMap(),
-                        collection = collection,
-                        eventListener = { trySend(it) }
-                    )
-                })
-            } else {
-                setValue(
-                    value = request.toMap(),
-                    collection = collection,
-                    eventListener = { trySend(it) }
-                )
-            }
-
+            setValue(
+                value = request.toMap(),
+                collection = "users",
+                eventListener = { trySend(it) }
+            )
             awaitClose { this.close() }
         }
 
-    override fun update(request: FirestoreRequest): Flow<Resource<Boolean>> = callbackFlow {
+    override suspend fun update(request: FirestoreRequest): Flow<Resource<Boolean>> = callbackFlow {
         val collection = "users"
 
         updateValue(
@@ -66,22 +47,20 @@ class OneFirebaseDataSource : FirebaseRepository, OneFirebaseFirestore(), OneFir
         awaitClose { this.close() }
     }
 
-    override fun getList(): Flow<Resource<List<FirestoreResponse>>> = callbackFlow {
+    override suspend fun getList(): Flow<Resource<List<FirestoreResponse>>> = callbackFlow {
         val collection = "users"
 
         getListValue(
             collection = collection,
             clazz = FirestoreResponse::class.java,
-            eventListener = {
-                trySend(it)
-            }
+            eventListener = { trySend(it) }
         )
 
         awaitClose { this.close() }
     }
 
-    override fun getSingle(id: String): Flow<Resource<FirestoreResponse>> = callbackFlow {
-        val document = "users" //"users/$id"
+    override suspend fun getSingle(id: String): Flow<Resource<FirestoreResponse>> = callbackFlow {
+        val document = "users"
 
         getSingleValue(
             id = id,
@@ -93,7 +72,7 @@ class OneFirebaseDataSource : FirebaseRepository, OneFirebaseFirestore(), OneFir
         awaitClose { this.close() }
     }
 
-    override fun remove(id: String): Flow<Resource<Boolean>> = callbackFlow {
+    override suspend fun remove(id: String): Flow<Resource<Boolean>> = callbackFlow {
         deleteValue(
             id = id,
             collection = "users",

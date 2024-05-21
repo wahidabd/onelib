@@ -14,13 +14,13 @@ import com.wahidabd.library.data.Resource
 /**
  * Example usage:
  * ```
- * class MyFirebaseAuth: OneFirebaseAuth() {
+ * class MyFirebaseAuth: OneFirebaseAuth {
  *   override val auth: FirebaseAuth = FirebaseAuth.getInstance()
  * }
  * ```
  */
-abstract class OneFirebaseAuth {
-    protected abstract val auth: FirebaseAuth
+interface OneFirebaseAuth {
+    val auth: FirebaseAuth
 
     /**
      * This function allows a user to sign in with their email and password.

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dimen_14dp"
     tools:context=".presentation.firestore.FirestoreActivity">
 
     <EditText
@@ -27,46 +28,53 @@
         android:layout_height="wrap_content"
         android:hint="address" />
 
-    <TextView
-        android:id="@+id/tvImage"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Image"/>
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        android:layout_gravity="center_horizontal"/>
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:text="Submit" />
 
-    <Button
-        android:id="@+id/btnUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Update"
-        android:layout_gravity="center_horizontal"/>
+        <Space
+            android:layout_width="@dimen/dimen_12dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:text="Update" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_1_5dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFirestore"
+    <com.kennyc.view.MultiStateView
+        android:id="@+id/msv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="true"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:paddingHorizontal="@dimen/dimen_12dp"
-        android:paddingVertical="@dimen/dimen_12dp" />
+        app:msv_loadingView="@layout/layout_loading"
+        app:msv_emptyView="@layout/layout_empty"
+        app:msv_errorView="@layout/layout_error"
+        app:msv_viewState="loading">
 
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminateTint="@color/black"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/dimen_100dp"/>
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFirestore"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="true"
+            android:paddingHorizontal="@dimen/dimen_12dp"
+            android:paddingVertical="@dimen/dimen_12dp"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+    </com.kennyc.view.MultiStateView>
 </LinearLayout>

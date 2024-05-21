@@ -4,8 +4,8 @@ import com.wahidabd.onelibrary.data.firebase.firestore.OneFirebaseDataSource
 import com.wahidabd.onelibrary.data.firebase.firestore.FirebaseRepository
 import com.wahidabd.onelibrary.data.firebase.raltime.RealtimeDataSourceOne
 import com.wahidabd.onelibrary.data.firebase.raltime.RealtimeRepository
-import com.wahidabd.onelibrary.domain.firebase.FirestoreInteractor
-import com.wahidabd.onelibrary.domain.firebase.FirestoreUseCase
+import com.wahidabd.onelibrary.domain.firebase.firestore.FirestoreInteractor
+import com.wahidabd.onelibrary.domain.firebase.firestore.FirestoreUseCase
 import com.wahidabd.onelibrary.domain.firebase.realtime.RealtimeInteractor
 import com.wahidabd.onelibrary.domain.firebase.realtime.RealtimeUseCase
 import com.wahidabd.onelibrary.presentation.firestore.FirestoreViewModel
