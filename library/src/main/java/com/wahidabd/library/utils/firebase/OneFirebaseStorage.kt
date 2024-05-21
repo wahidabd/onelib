@@ -49,7 +49,7 @@ interface OneFirebaseStorage {
      */
     fun pushFile(
         file: File,
-        child: String = emptyString(),
+        child: String,
         eventListener: (String) -> Unit
     ) {
         val uriFile = Uri.fromFile(file)
@@ -69,7 +69,7 @@ interface OneFirebaseStorage {
     /**
      * Deletes a file from Firebase Storage.
      *
-     * @param child The path to the child location in Firebase Storage where the file is stored.
+     * @param id The path to the child location in Firebase Storage where the file is stored.
      * @param eventListener A callback function that takes a Boolean parameter, indicating whether the file deletion operation was successful.
      *
      * This function performs the following steps:
@@ -85,10 +85,10 @@ interface OneFirebaseStorage {
      * ```
      */
     fun removeFile(
-        child: String,
+        id: String,
         eventListener: (Boolean) -> Unit
     ) {
-        storageReference.getReference(storage).child(child).delete()
+        storageReference.getReference(storage).child(id).delete()
             .addOnSuccessListener {
                 eventListener.invoke(true)
             }

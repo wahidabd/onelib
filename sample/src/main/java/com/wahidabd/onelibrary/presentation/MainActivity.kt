@@ -23,6 +23,7 @@ import com.wahidabd.onelibrary.presentation.paging.PagingActivity
 import com.wahidabd.onelibrary.presentation.realtime.RealtimeActivity
 import com.wahidabd.onelibrary.presentation.rxdatabase.NoteActivity
 import com.wahidabd.onelibrary.presentation.selectable.SelectableAdapterActivity
+import com.wahidabd.onelibrary.presentation.storage.FirebaseStorageActivity
 import com.wahidabd.onelibrary.presentation.validation.PassiveValidationActivity
 import com.wahidabd.onelibrary.presentation.validation.ReactiveValidationActivity
 import com.wahidabd.onelibrary.presentation.viewpager.ViewPagerActivity
@@ -88,7 +89,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             15 -> FilterableActivity.start(this)
             16 -> DialogActivity.start(this)
             17 -> FirebaseAuthActivity.start(this)
-            18 -> {} // Firebase Storage
+            18 -> FirebaseStorageActivity.start(this)
         }
     }
 

@@ -2,16 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_MEDIA_*" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
 
     <application
         android:name=".presentation.App"
@@ -24,6 +30,9 @@
         android:theme="@style/Theme.OneLibrary"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".presentation.storage.FirebaseStorageActivity"
+            android:exported="false" />
         <activity
             android:name=".presentation.firebaseauth.FirebaseAuthActivity"
             android:exported="false" />
@@ -65,12 +74,6 @@
             android:exported="false" />
         <activity
             android:name=".presentation.notification.NotificationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.permission.PermissionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.imagepicker.ImagePickerActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.movie.MovieActivity"

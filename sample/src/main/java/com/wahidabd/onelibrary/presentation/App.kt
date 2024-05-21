@@ -6,6 +6,7 @@ import com.wahidabd.onelibrary.di.coroutineModule
 import com.wahidabd.onelibrary.di.dbModule
 import com.wahidabd.onelibrary.di.features.firebaseAuth
 import com.wahidabd.onelibrary.di.features.firebaseModule
+import com.wahidabd.onelibrary.di.features.firebaseStorage
 import com.wahidabd.onelibrary.di.features.movieModule
 import com.wahidabd.onelibrary.di.features.noteModule
 import com.wahidabd.onelibrary.di.features.realtimeModule
@@ -25,7 +26,8 @@ class App : BaseApplication() {
             noteModule,
             firebaseModule,
             realtimeModule,
-            firebaseAuth
+            firebaseAuth,
+            firebaseStorage
         )
 
     override fun initApp() {
