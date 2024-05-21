@@ -1,4 +1,4 @@
-package com.wahidabd.onelibrary.data.firebase.model.realtime
+package com.wahidabd.onelibrary.data.firebase.raltime.model
 
 
 /**

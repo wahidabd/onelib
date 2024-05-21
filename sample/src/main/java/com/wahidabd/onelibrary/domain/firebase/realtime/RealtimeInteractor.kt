@@ -4,10 +4,10 @@ import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.oneMap
 import com.wahidabd.library.utils.coroutine.oneMapList
 import com.wahidabd.onelibrary.data.firebase.raltime.RealtimeRepository
-import com.wahidabd.onelibrary.domain.firebase.model.RealtimeData
-import com.wahidabd.onelibrary.domain.firebase.model.RealtimeParam
-import com.wahidabd.onelibrary.domain.firebase.model.toDomain
-import com.wahidabd.onelibrary.domain.firebase.model.toRequest
+import com.wahidabd.onelibrary.domain.firebase.realtime.model.RealtimeData
+import com.wahidabd.onelibrary.domain.firebase.realtime.model.RealtimeParam
+import com.wahidabd.onelibrary.domain.firebase.realtime.model.toDomain
+import com.wahidabd.onelibrary.domain.firebase.realtime.model.toRequest
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

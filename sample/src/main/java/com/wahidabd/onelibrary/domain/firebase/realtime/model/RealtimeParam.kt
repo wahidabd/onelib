@@ -1,7 +1,7 @@
-package com.wahidabd.onelibrary.domain.firebase.model
+package com.wahidabd.onelibrary.domain.firebase.realtime.model
 
 import com.wahidabd.library.utils.common.emptyString
-import com.wahidabd.onelibrary.data.firebase.model.realtime.RealtimeRequest
+import com.wahidabd.onelibrary.data.firebase.raltime.model.RealtimeRequest
 import java.io.File
 
 

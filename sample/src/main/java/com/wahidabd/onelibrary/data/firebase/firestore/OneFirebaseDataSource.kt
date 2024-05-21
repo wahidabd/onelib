@@ -5,8 +5,8 @@ import com.google.firebase.storage.FirebaseStorage
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.firebase.OneFirebaseFirestore
 import com.wahidabd.library.utils.firebase.OneFirebaseStorage
-import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreRequest
-import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreResponse
+import com.wahidabd.onelibrary.data.firebase.firestore.model.FirestoreRequest
+import com.wahidabd.onelibrary.data.firebase.firestore.model.FirestoreResponse
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow

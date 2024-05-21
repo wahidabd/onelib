@@ -1,9 +1,9 @@
 package com.wahidabd.onelibrary.domain.firebase.firestore
 
 import com.wahidabd.library.data.Resource
-import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreRequest
-import com.wahidabd.onelibrary.domain.firebase.model.FirestoreData
-import com.wahidabd.onelibrary.domain.firebase.model.FirestoreParam
+import com.wahidabd.onelibrary.data.firebase.firestore.model.FirestoreRequest
+import com.wahidabd.onelibrary.domain.firebase.firestore.model.FirestoreData
+import com.wahidabd.onelibrary.domain.firebase.firestore.model.FirestoreParam
 import kotlinx.coroutines.flow.Flow
 
 

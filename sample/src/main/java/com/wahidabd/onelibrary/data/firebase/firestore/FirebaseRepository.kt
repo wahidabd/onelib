@@ -1,11 +1,8 @@
 package com.wahidabd.onelibrary.data.firebase.firestore
 
 import com.wahidabd.library.data.Resource
-import com.wahidabd.library.utils.coroutine.handler.GenericResponse
-import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreRequest
-import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreResponse
-import com.wahidabd.onelibrary.data.firebase.model.realtime.RealtimeRequest
-import com.wahidabd.onelibrary.data.firebase.model.realtime.RealtimeResponse
+import com.wahidabd.onelibrary.data.firebase.firestore.model.FirestoreRequest
+import com.wahidabd.onelibrary.data.firebase.firestore.model.FirestoreResponse
 import kotlinx.coroutines.flow.Flow
 
 

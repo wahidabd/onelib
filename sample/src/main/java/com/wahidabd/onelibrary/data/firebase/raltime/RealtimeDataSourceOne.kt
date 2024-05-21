@@ -4,8 +4,8 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.firebase.OneFirebaseRealtime
-import com.wahidabd.onelibrary.data.firebase.model.realtime.RealtimeRequest
-import com.wahidabd.onelibrary.data.firebase.model.realtime.RealtimeResponse
+import com.wahidabd.onelibrary.data.firebase.raltime.model.RealtimeRequest
+import com.wahidabd.onelibrary.data.firebase.raltime.model.RealtimeResponse
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow

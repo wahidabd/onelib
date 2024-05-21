@@ -46,13 +46,13 @@ interface OneFirebaseAuth {
     fun signIn(
         email: String,
         password: String,
-        eventListener: ((data: Resource<FirebaseUser?>) -> Unit)
+        eventListener: ((data: Resource<FirebaseUser>) -> Unit)
     ) {
         eventListener.invoke(Resource.loading())
         auth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
                 eventListener.invoke(
-                    Resource.success(it.user)
+                    Resource.success(it.user!!)
                 )
             }
             .addOnFailureListener {
@@ -87,13 +87,13 @@ interface OneFirebaseAuth {
         email: String,
         password: String,
         sendVerification: Boolean = false,
-        eventListener: ((data: Resource<FirebaseUser?>) -> Unit)
+        eventListener: ((data: Resource<FirebaseUser>) -> Unit)
     ) {
         eventListener.invoke(Resource.loading())
         auth.createUserWithEmailAndPassword(email, password)
             .addOnSuccessListener {
                 if (sendVerification) it.user?.sendEmailVerification()
-                eventListener.invoke(Resource.success(it.user))
+                eventListener.invoke(Resource.success(it.user!!))
             }
             .addOnFailureListener {
                 eventListener.invoke(Resource.fail(it.localizedMessage))

@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.wahidabd.library.data.Resource
-import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreRequest
+import com.wahidabd.onelibrary.data.firebase.firestore.model.FirestoreRequest
 import com.wahidabd.onelibrary.domain.firebase.firestore.FirestoreUseCase
-import com.wahidabd.onelibrary.domain.firebase.model.FirestoreData
-import com.wahidabd.onelibrary.domain.firebase.model.FirestoreParam
+import com.wahidabd.onelibrary.domain.firebase.firestore.model.FirestoreData
+import com.wahidabd.onelibrary.domain.firebase.firestore.model.FirestoreParam
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch

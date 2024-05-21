@@ -1,4 +1,4 @@
-package com.wahidabd.onelibrary.data.firebase.model.firestore
+package com.wahidabd.onelibrary.data.firebase.firestore.model
 
 
 /**

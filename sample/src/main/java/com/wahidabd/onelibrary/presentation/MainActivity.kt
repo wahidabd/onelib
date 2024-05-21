@@ -14,6 +14,7 @@ import com.wahidabd.onelibrary.presentation.adapter.TestBaseRecyclerAdapter
 import com.wahidabd.onelibrary.presentation.bottomsheet.BottomSheetActivity
 import com.wahidabd.onelibrary.presentation.dialog.DialogActivity
 import com.wahidabd.onelibrary.presentation.filterable.FilterableActivity
+import com.wahidabd.onelibrary.presentation.firebaseauth.FirebaseAuthActivity
 import com.wahidabd.onelibrary.presentation.firestore.FirestoreActivity
 import com.wahidabd.onelibrary.presentation.movie.MovieActivity
 import com.wahidabd.onelibrary.presentation.multistateview.MultiStateViewActivity
@@ -86,6 +87,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             14 -> BottomSheetActivity.start(this)
             15 -> FilterableActivity.start(this)
             16 -> DialogActivity.start(this)
+            17 -> FirebaseAuthActivity.start(this)
+            18 -> {} // Firebase Storage
         }
     }
 

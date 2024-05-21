@@ -8,7 +8,7 @@ import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHol
 import com.wahidabd.library.utils.exts.layoutInflater
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.onelibrary.databinding.FirestoreItemBinding
-import com.wahidabd.onelibrary.domain.firebase.model.FirestoreData
+import com.wahidabd.onelibrary.domain.firebase.firestore.model.FirestoreData
 
 
 /**
@@ -19,7 +19,6 @@ import com.wahidabd.onelibrary.domain.firebase.model.FirestoreData
 
 class FirestoreAdapter(
     private val context: Context,
-    items: ArrayList<FirestoreData> = arrayListOf(),
     private val onItemClick: (data: FirestoreData) -> Unit,
     private val onDelete: (id: String) -> Unit,
 ) : BaseAsyncRecyclerAdapter<FirestoreData, FirestoreAdapter.FirestoreViewHolder>() {

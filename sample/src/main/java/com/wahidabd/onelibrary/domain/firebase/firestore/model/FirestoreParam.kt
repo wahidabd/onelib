@@ -1,7 +1,6 @@
-package com.wahidabd.onelibrary.domain.firebase.model
+package com.wahidabd.onelibrary.domain.firebase.firestore.model
 
-import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreRequest
-import java.io.File
+import com.wahidabd.onelibrary.data.firebase.firestore.model.FirestoreRequest
 
 
 /**

@@ -1,8 +1,8 @@
 package com.wahidabd.onelibrary.data.firebase.raltime
 
 import com.wahidabd.library.data.Resource
-import com.wahidabd.onelibrary.data.firebase.model.realtime.RealtimeRequest
-import com.wahidabd.onelibrary.data.firebase.model.realtime.RealtimeResponse
+import com.wahidabd.onelibrary.data.firebase.raltime.model.RealtimeRequest
+import com.wahidabd.onelibrary.data.firebase.raltime.model.RealtimeResponse
 import kotlinx.coroutines.flow.Flow
 
 

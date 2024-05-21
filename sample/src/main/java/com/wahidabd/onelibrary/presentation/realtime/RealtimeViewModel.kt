@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.wahidabd.library.data.Resource
-import com.wahidabd.onelibrary.domain.firebase.model.RealtimeData
-import com.wahidabd.onelibrary.domain.firebase.model.RealtimeParam
+import com.wahidabd.onelibrary.domain.firebase.realtime.model.RealtimeData
+import com.wahidabd.onelibrary.domain.firebase.realtime.model.RealtimeParam
 import com.wahidabd.onelibrary.domain.firebase.realtime.RealtimeUseCase
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

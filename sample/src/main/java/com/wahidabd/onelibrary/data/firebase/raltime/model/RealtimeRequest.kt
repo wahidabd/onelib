@@ -1,4 +1,4 @@
-package com.wahidabd.onelibrary.data.firebase.model.realtime
+package com.wahidabd.onelibrary.data.firebase.raltime.model
 
 import com.google.firebase.database.Exclude
 import java.io.File

@@ -19,6 +19,16 @@ fun <T, R> Resource<T>.oneMap(transform: (T) -> R): Resource<R> {
     }
 }
 
+fun <T, R> Resource<T>.oneTransform(transform: (T?) -> R): R? {
+    return when (this) {
+        is Resource.Success -> transform(data)
+        is Resource.Failure -> throw Exception(message)
+        is Resource.Loading -> null
+        is Resource.Default -> null
+        is Resource.Empty -> null
+    }
+}
+
 fun <T, R> Resource<List<T>>.oneMapList(transform: (T) -> R): Resource<List<R>> {
     return when (this) {
         is Resource.Success -> Resource.success(data.map { transform(it) })

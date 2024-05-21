@@ -8,7 +8,7 @@ import com.wahidabd.library.presentation.adapter.viewholder.BaseAsyncItemViewHol
 import com.wahidabd.library.utils.exts.layoutInflater
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.onelibrary.databinding.FirestoreItemBinding
-import com.wahidabd.onelibrary.domain.firebase.model.RealtimeData
+import com.wahidabd.onelibrary.domain.firebase.realtime.model.RealtimeData
 
 
 /**

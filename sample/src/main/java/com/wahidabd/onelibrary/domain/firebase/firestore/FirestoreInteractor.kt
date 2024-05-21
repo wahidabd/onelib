@@ -1,16 +1,14 @@
 package com.wahidabd.onelibrary.domain.firebase.firestore
 
 import com.wahidabd.library.data.Resource
-import com.wahidabd.library.utils.coroutine.boundResource.InternetBoundResource
 import com.wahidabd.library.utils.coroutine.oneMap
 import com.wahidabd.library.utils.coroutine.oneMapList
 import com.wahidabd.onelibrary.data.firebase.firestore.FirebaseRepository
-import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreRequest
-import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreResponse
-import com.wahidabd.onelibrary.domain.firebase.model.FirestoreData
-import com.wahidabd.onelibrary.domain.firebase.model.FirestoreParam
-import com.wahidabd.onelibrary.domain.firebase.model.toDomain
-import com.wahidabd.onelibrary.domain.firebase.model.toRequest
+import com.wahidabd.onelibrary.data.firebase.firestore.model.FirestoreRequest
+import com.wahidabd.onelibrary.domain.firebase.firestore.model.FirestoreData
+import com.wahidabd.onelibrary.domain.firebase.firestore.model.FirestoreParam
+import com.wahidabd.onelibrary.domain.firebase.firestore.model.toDomain
+import com.wahidabd.onelibrary.domain.firebase.firestore.model.toRequest
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

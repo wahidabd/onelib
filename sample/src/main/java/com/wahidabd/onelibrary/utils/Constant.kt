@@ -99,11 +99,7 @@ object Constant {
                 "Firebase Storage",
                 "Firebase Storage"
             ),
-            TestModel(
-                18,
-                "Firebase Auth",
-                "Firebase Auth"
-            )
+
         ).sortedBy { it.title }
 
     fun dataList(): List<String> =

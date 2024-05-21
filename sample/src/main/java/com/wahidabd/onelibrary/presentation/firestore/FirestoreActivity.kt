@@ -11,12 +11,11 @@ import com.wahidabd.library.utils.exts.clear
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.utils.exts.toStringTrim
-import com.wahidabd.onelibrary.data.firebase.model.firestore.FirestoreRequest
+import com.wahidabd.onelibrary.data.firebase.firestore.model.FirestoreRequest
 import com.wahidabd.onelibrary.databinding.ActivityFirestoreBinding
-import com.wahidabd.onelibrary.domain.firebase.model.FirestoreParam
+import com.wahidabd.onelibrary.domain.firebase.firestore.model.FirestoreParam
 import com.wahidabd.onelibrary.presentation.firestore.adapter.FirestoreAdapter
 import org.koin.android.ext.android.inject
-import java.io.File
 
 class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
 

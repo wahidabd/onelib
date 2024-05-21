@@ -11,7 +11,7 @@ import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.utils.exts.toStringTrim
 import com.wahidabd.onelibrary.databinding.ActivityRealtimeBinding
-import com.wahidabd.onelibrary.domain.firebase.model.RealtimeParam
+import com.wahidabd.onelibrary.domain.firebase.realtime.model.RealtimeParam
 import com.wahidabd.onelibrary.presentation.realtime.adapter.RealtimeAdapter
 import org.koin.android.ext.android.inject
 
