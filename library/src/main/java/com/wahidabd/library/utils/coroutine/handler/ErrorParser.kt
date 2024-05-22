@@ -11,7 +11,19 @@ import retrofit2.Retrofit
  * Github wahidabd.
  */
 
+/**
+ * A utility class for parsing error responses using Retrofit.
+ *
+ * @param retrofit The Retrofit instance used to create the converter for parsing errors.
+ */
 class ErrorParser(private val retrofit: Retrofit) {
+
+    /**
+     * Converts a generic error response body into an `ApiError` object.
+     *
+     * @param error The error response body to be converted.
+     * @return An `ApiError` object if the conversion is successful, or null if the conversion fails.
+     */
     fun convertGenericError(error: ResponseBody): ApiError? {
         val converter: Converter<ResponseBody, ApiError> = retrofit
             .responseBodyConverter(ApiError::class.java, arrayOfNulls(0))

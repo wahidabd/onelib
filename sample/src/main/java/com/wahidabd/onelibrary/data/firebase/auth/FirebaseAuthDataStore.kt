@@ -35,6 +35,27 @@ class FirebaseAuthDataStore : OneFirebaseAuth, FirebaseAuthRepository {
             signUp(body.email, body.password) { body ->
                 trySend(body)
             }
+
+            awaitClose(this::close)
+        }
+    }
+
+    override suspend fun resetPassword(email: String): Flow<Resource<Boolean>> {
+        return callbackFlow {
+            resetPassword(email) { body ->
+                trySend(body)
+            }
+
+            awaitClose(this::close)
+        }
+    }
+
+    override suspend fun signOut(): Flow<Resource<Boolean>> {
+        return callbackFlow {
+            signOut { body ->
+                trySend(body)
+            }
+
             awaitClose(this::close)
         }
     }

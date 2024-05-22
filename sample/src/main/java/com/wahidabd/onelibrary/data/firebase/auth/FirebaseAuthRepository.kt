@@ -16,5 +16,6 @@ interface FirebaseAuthRepository {
 
     suspend fun login(body: FirebaseAuthRequest): Flow<Resource<FirebaseUser>>
     suspend fun register(body: FirebaseAuthRequest): Flow<Resource<FirebaseUser>>
-
+    suspend fun resetPassword(email: String): Flow<Resource<Boolean>>
+    suspend fun signOut(): Flow<Resource<Boolean>>
 }

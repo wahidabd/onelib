@@ -1,10 +1,8 @@
 package com.wahidabd.onelibrary.data.firebase.firestore
 
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.firebase.OneFirebaseFirestore
-import com.wahidabd.library.utils.firebase.OneFirebaseStorage
 import com.wahidabd.onelibrary.data.firebase.firestore.model.FirestoreRequest
 import com.wahidabd.onelibrary.data.firebase.firestore.model.FirestoreResponse
 import kotlinx.coroutines.channels.awaitClose
@@ -18,12 +16,9 @@ import kotlinx.coroutines.flow.callbackFlow
  */
 
 
-class OneFirebaseDataSource : FirebaseRepository, OneFirebaseFirestore(), OneFirebaseStorage {
+class OneFirebaseDataSource : FirebaseRepository, OneFirebaseFirestore() {
 
     override val databaseRef: FirebaseFirestore = FirebaseFirestore.getInstance()
-    override val storageReference: FirebaseStorage = FirebaseStorage.getInstance()
-    override val storage: String = "user"
-
 
     override suspend fun addData(request: FirestoreRequest): Flow<Resource<Boolean>> =
         callbackFlow {

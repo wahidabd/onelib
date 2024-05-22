@@ -36,6 +36,14 @@
         android:layout_marginHorizontal="@dimen/dimen_20dp"
         android:textSize="@dimen/text_size_16sp" />
 
+    <TextView
+        android:id="@+id/tv_notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:text="Permission notification"
+        android:layout_marginHorizontal="@dimen/dimen_20dp"
+        android:textSize="@dimen/text_size_16sp" />
 
     <Button
         android:id="@+id/btn_send_request"

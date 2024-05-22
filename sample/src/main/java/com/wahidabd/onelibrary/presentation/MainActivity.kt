@@ -20,6 +20,7 @@ import com.wahidabd.onelibrary.presentation.movie.MovieActivity
 import com.wahidabd.onelibrary.presentation.multistateview.MultiStateViewActivity
 import com.wahidabd.onelibrary.presentation.notification.NotificationActivity
 import com.wahidabd.onelibrary.presentation.paging.PagingActivity
+import com.wahidabd.onelibrary.presentation.permission.PermissionActivity
 import com.wahidabd.onelibrary.presentation.realtime.RealtimeActivity
 import com.wahidabd.onelibrary.presentation.rxdatabase.NoteActivity
 import com.wahidabd.onelibrary.presentation.selectable.SelectableAdapterActivity
@@ -90,6 +91,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             16 -> DialogActivity.start(this)
             17 -> FirebaseAuthActivity.start(this)
             18 -> FirebaseStorageActivity.start(this)
+            19 -> PermissionActivity.start(this)
         }
     }
 

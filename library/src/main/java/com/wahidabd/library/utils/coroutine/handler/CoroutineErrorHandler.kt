@@ -14,6 +14,13 @@ import javax.net.ssl.SSLPeerUnverifiedException
  */
 
 
+/**
+ * A utility function to handle exceptions in coroutines and map them to a `Resource` object.
+ *
+ * @param T The type of data that the `Resource` would contain if the operation were successful.
+ * @param e The exception that was thrown during the coroutine execution.
+ * @return A `Resource<T>` object representing the failure state with an appropriate error message.
+ */
 fun <T> coroutineErrorHandler(e: Throwable): Resource<T> =
     when(e){
         is SocketTimeoutException -> Resource.fail(e.message ?: "Connection Time Out")
