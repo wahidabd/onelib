@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--    <declare-styleable name="OneValidationAutoCompleteTextView">-->
-<!--        <attr format="string" name="one_actv_error_message"/>-->
-<!--        <attr format="string" name="one_actv_hint"/>-->
-<!--        <attr format="color|reference" name="one_actv_error_message_color"/>-->
-<!--        <attr format="dimension" name="one_actv_error_message_size"/>-->
-<!--    </declare-styleable>-->
+    
+    <declare-styleable name="OneStateView">
+        <attr name="osv_loading" format="reference"/>
+        <attr name="osv_empty" format="reference"/>
+        <attr name="osv_error" format="reference"/>
+        <attr name="osv_default" format="enum">
+            <enum name="content" value="0"/>
+            <enum name="loading" value="1"/>
+            <enum name="error" value="2"/>
+            <enum name="empty" value="3"/>
+        </attr>
+        <attr name="osv_animateChanges" format="boolean"/>
+    </declare-styleable>
 </resources>

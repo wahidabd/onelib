@@ -65,7 +65,7 @@
             android:name=".presentation.paging.PagingActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.multistateview.MultiStateViewActivity"
+            android:name=".presentation.onestateview.OneStateStateViewActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.imagepicker.OriginalImageActivity"

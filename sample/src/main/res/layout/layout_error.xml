@@ -4,8 +4,8 @@
     android:id="@+id/error_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     android:padding="@dimen/dimen_16dp">
 
     <ImageView
@@ -24,8 +24,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
-        android:textStyle="bold"
-        tools:text="Error" />
+        android:text="Error"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tv_error"
@@ -34,16 +34,14 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
-        tools:text="@string/error" />
-
+        android:text="@string/error" />
 
     <Button
         android:id="@+id/btn_error"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
-        android:textSize="14sp"
-        android:visibility="gone" />
+        android:text="Retry"
+        android:textSize="14sp" />
 </androidx.appcompat.widget.LinearLayoutCompat>

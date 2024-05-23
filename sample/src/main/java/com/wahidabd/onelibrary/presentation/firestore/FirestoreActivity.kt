@@ -3,10 +3,6 @@ package com.wahidabd.onelibrary.presentation.firestore
 import android.content.Context
 import android.content.Intent
 import com.wahidabd.library.presentation.activity.BaseActivity
-import com.wahidabd.library.utils.extensions.showDefaultState
-import com.wahidabd.library.utils.extensions.showEmptyState
-import com.wahidabd.library.utils.extensions.showErrorState
-import com.wahidabd.library.utils.extensions.showLoadingState
 import com.wahidabd.library.utils.exts.clear
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
@@ -81,39 +77,36 @@ class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
         with(binding) {
             viewModel.add.observerLiveData(
                 this@FirestoreActivity,
-                onLoading = { msv.showLoadingState() },
-                onFailure = { m -> msv.showErrorState(m) },
+                onLoading = { },
+                onFailure = { m -> },
                 onSuccess = {
-                    msv.showDefaultState()
                     clearText()
                 }
             )
 
             viewModel.list.observerLiveData(
                 this@FirestoreActivity,
-                onLoading = { msv.showLoadingState() },
-                onEmpty = { msv.showEmptyState() },
-                onFailure = { m -> msv.showErrorState(m) },
+                onLoading = { },
+                onEmpty = { },
+                onFailure = { m -> },
                 onSuccess = {
-                    msv.showDefaultState()
                     firestoreAdapter.setData = it
                 }
             )
 
             viewModel.remove.observerLiveData(
                 this@FirestoreActivity,
-                onLoading = { msv.showLoadingState() },
-                onFailure = { m -> msv.showErrorState(m) },
+                onLoading = { },
+                onFailure = { m -> },
                 onSuccess = {
-                    msv.showDefaultState()
                     viewModel.list()
                 }
             )
 
             viewModel.data.observerLiveData(
                 this@FirestoreActivity,
-                onLoading = { msv.showLoadingState() },
-                onFailure = { m -> msv.showErrorState(m) },
+                onLoading = { },
+                onFailure = { m -> },
                 onSuccess = {}
             )
         }

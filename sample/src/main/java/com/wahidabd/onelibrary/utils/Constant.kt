@@ -41,8 +41,8 @@ object Constant {
             ),
             TestModel(
                 7,
-                "Multi State View",
-                "Multi State View"
+                "One State View",
+                "One State View"
             ),
             TestModel(
                 8,

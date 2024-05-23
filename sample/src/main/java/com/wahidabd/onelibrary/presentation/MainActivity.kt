@@ -17,7 +17,7 @@ import com.wahidabd.onelibrary.presentation.filterable.FilterableActivity
 import com.wahidabd.onelibrary.presentation.firebaseauth.FirebaseAuthActivity
 import com.wahidabd.onelibrary.presentation.firestore.FirestoreActivity
 import com.wahidabd.onelibrary.presentation.movie.MovieActivity
-import com.wahidabd.onelibrary.presentation.multistateview.MultiStateViewActivity
+import com.wahidabd.onelibrary.presentation.onestateview.OneStateStateViewActivity
 import com.wahidabd.onelibrary.presentation.notification.NotificationActivity
 import com.wahidabd.onelibrary.presentation.paging.PagingActivity
 import com.wahidabd.onelibrary.presentation.permission.PermissionActivity
@@ -79,7 +79,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             4 -> startActivity(Intent(this, MovieActivity::class.java))
             5 -> NotificationActivity.start(this)
             6 -> NoteActivity.start(this)
-            7 -> MultiStateViewActivity.start(this)
+            7 -> OneStateStateViewActivity.start(this)
             8 -> PagingActivity.start(this)
             9 -> FirestoreActivity.start(this)
             10 -> RealtimeActivity.start(this)
