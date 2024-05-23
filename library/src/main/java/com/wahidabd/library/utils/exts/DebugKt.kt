@@ -1,4 +1,4 @@
-package com.wahidabd.library.utils.extensions
+package com.wahidabd.library.utils.exts
 
 import timber.log.Timber
 

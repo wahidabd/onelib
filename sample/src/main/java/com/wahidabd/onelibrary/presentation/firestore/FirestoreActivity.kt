@@ -2,6 +2,9 @@ package com.wahidabd.onelibrary.presentation.firestore
 
 import android.content.Context
 import android.content.Intent
+import com.wahidabd.library.decoration.onestateview.showContent
+import com.wahidabd.library.decoration.onestateview.showError
+import com.wahidabd.library.decoration.onestateview.showLoading
 import com.wahidabd.library.presentation.activity.BaseActivity
 import com.wahidabd.library.utils.exts.clear
 import com.wahidabd.library.utils.exts.observerLiveData
@@ -77,37 +80,39 @@ class FirestoreActivity : BaseActivity<ActivityFirestoreBinding>() {
         with(binding) {
             viewModel.add.observerLiveData(
                 this@FirestoreActivity,
-                onLoading = { },
-                onFailure = { m -> },
+                onLoading = { msv.showLoading()},
+                onFailure = { m -> msv.showError() },
                 onSuccess = {
+                    msv.showContent()
                     clearText()
                 }
             )
 
             viewModel.list.observerLiveData(
                 this@FirestoreActivity,
-                onLoading = { },
-                onEmpty = { },
-                onFailure = { m -> },
+                onLoading = { msv.showLoading()},
+                onFailure = { m -> msv.showError() },
                 onSuccess = {
+                    msv.showContent()
                     firestoreAdapter.setData = it
                 }
             )
 
             viewModel.remove.observerLiveData(
                 this@FirestoreActivity,
-                onLoading = { },
-                onFailure = { m -> },
+                onLoading = { msv.showLoading()},
+                onFailure = { m -> msv.showError() },
                 onSuccess = {
+                    msv.showContent()
                     viewModel.list()
                 }
             )
 
             viewModel.data.observerLiveData(
                 this@FirestoreActivity,
-                onLoading = { },
-                onFailure = { m -> },
-                onSuccess = {}
+                onLoading = { msv.showLoading()},
+                onFailure = { m -> msv.showError() },
+                onSuccess = { msv.showContent() }
             )
         }
     }

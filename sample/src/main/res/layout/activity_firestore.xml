@@ -58,14 +58,14 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_1_5dp" />
 
-    <com.kennyc.view.MultiStateView
+    <com.wahidabd.library.decoration.onestateview.OneStateView
         android:id="@+id/msv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:msv_loadingView="@layout/layout_loading"
-        app:msv_emptyView="@layout/layout_empty"
-        app:msv_errorView="@layout/layout_error"
-        app:msv_viewState="loading">
+        app:osv_empty="@layout/layout_empty"
+        app:osv_error="@layout/layout_error"
+        app:osv_loading="@layout/layout_loading"
+        app:osv_default="loading">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFirestore"
@@ -76,5 +76,5 @@
             android:paddingVertical="@dimen/dimen_12dp"
             android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-    </com.kennyc.view.MultiStateView>
+    </com.wahidabd.library.decoration.onestateview.OneStateView>
 </LinearLayout>

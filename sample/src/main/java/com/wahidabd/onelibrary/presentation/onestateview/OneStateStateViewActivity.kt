@@ -5,9 +5,9 @@ import android.content.Intent
 import com.wahidabd.library.presentation.activity.BaseActivity
 import com.wahidabd.library.utils.common.showToast
 import com.wahidabd.library.utils.exts.onClick
-import com.wahidabd.library.utils.onestateview.showContent
-import com.wahidabd.library.utils.onestateview.showEmpty
-import com.wahidabd.library.utils.onestateview.showLoading
+import com.wahidabd.library.decoration.onestateview.showContent
+import com.wahidabd.library.decoration.onestateview.showEmpty
+import com.wahidabd.library.decoration.onestateview.showLoading
 import com.wahidabd.onelibrary.databinding.ActivityOneStateViewBinding
 
 class OneStateStateViewActivity : BaseActivity<ActivityOneStateViewBinding>() {

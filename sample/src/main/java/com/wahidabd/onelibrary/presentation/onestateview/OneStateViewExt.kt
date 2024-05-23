@@ -3,7 +3,7 @@ package com.wahidabd.onelibrary.presentation.onestateview
 import com.wahidabd.library.utils.common.emptyString
 import com.wahidabd.library.utils.exts.layoutInflater
 import com.wahidabd.library.utils.exts.onClick
-import com.wahidabd.library.utils.onestateview.OneStateView
+import com.wahidabd.library.decoration.onestateview.OneStateView
 import com.wahidabd.onelibrary.databinding.LayoutErrorBinding
 
 

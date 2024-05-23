@@ -2,6 +2,9 @@ package com.wahidabd.onelibrary.presentation.realtime
 
 import android.content.Context
 import android.content.Intent
+import com.wahidabd.library.decoration.onestateview.showContent
+import com.wahidabd.library.decoration.onestateview.showError
+import com.wahidabd.library.decoration.onestateview.showLoading
 import com.wahidabd.library.presentation.activity.BaseActivity
 import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
@@ -57,12 +60,10 @@ class RealtimeActivity : BaseActivity<ActivityRealtimeBinding>() {
         with(binding) {
             viewModel.list.observerLiveData(
                 this@RealtimeActivity,
-                onLoading = { },
-                onFailure = { m ->
-                },
-                onEmpty = {
-                },
+                onLoading = { msv.showLoading()},
+                onFailure = { m -> msv.showError() },
                 onSuccess = {
+                    msv.showContent()
                     realtimeAdapter.setData = it
                 }
             )

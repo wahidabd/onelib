@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Build
 import com.wahidabd.library.presentation.activity.BaseActivity
 import com.wahidabd.library.presentation.dialog.materialAlertDialog
-import com.wahidabd.library.utils.extensions.debug
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.utils.permission.isPermissionGranted
 import com.wahidabd.library.utils.permission.oneRequestPermissions

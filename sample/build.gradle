@@ -119,9 +119,6 @@ dependencies {
     // google play core
     implementation("com.google.android.play:app-update-ktx:2.1.0")
 
-    // multi state view
-    implementation("com.github.Kennyc1012:MultiStateView:2.2.0")
-
     // jsoup
     implementation 'org.jsoup:jsoup:1.15.4'
 }

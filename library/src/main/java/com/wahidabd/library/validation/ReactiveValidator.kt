@@ -4,7 +4,6 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.RadioGroup
 import com.google.android.material.textfield.TextInputLayout
-import com.wahidabd.library.utils.extensions.debug
 import com.wahidabd.library.utils.exts.onTextChange
 import com.wahidabd.library.validation.view.ValidationAutoCompleteTextView
 

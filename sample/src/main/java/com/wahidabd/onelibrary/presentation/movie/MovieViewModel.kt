@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.wahidabd.library.data.Resource
-import com.wahidabd.library.utils.extensions.debug
 import com.wahidabd.onelibrary.domain.movie.MovieUseCase
 import com.wahidabd.onelibrary.domain.movie.model.MovieDetail
 import kotlinx.coroutines.flow.collectLatest

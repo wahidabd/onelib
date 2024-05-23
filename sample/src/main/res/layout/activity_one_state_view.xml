@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@id/btn_empty" />
 
 
-    <com.wahidabd.library.utils.onestateview.OneStateView
+    <com.wahidabd.library.decoration.onestateview.OneStateView
         android:id="@+id/view_state"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_height="@dimen/dimen_0dp"
@@ -78,5 +78,5 @@
             android:text="Default"
             android:layout_gravity="center"
             android:textSize="28sp" />
-    </com.wahidabd.library.utils.onestateview.OneStateView>
+    </com.wahidabd.library.decoration.onestateview.OneStateView>
 </androidx.constraintlayout.widget.ConstraintLayout>

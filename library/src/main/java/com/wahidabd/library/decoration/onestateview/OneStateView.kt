@@ -1,4 +1,4 @@
-package com.wahidabd.library.utils.onestateview
+package com.wahidabd.library.decoration.onestateview
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
