@@ -15,6 +15,13 @@ import com.bumptech.glide.request.RequestOptions
  */
 
 
+/**
+ * Extension function for ImageView to load an image from a URL with optional center cropping.
+ *
+ * @param context The context to use for loading the image.
+ * @param imageUrl The URL of the image to load.
+ * @param isCenterCrop Optional parameter to determine if the image should be center cropped. Defaults to false.
+ */
 @SuppressLint("CheckResult")
 fun ImageView.setImageUrl(context: Context, imageUrl: String, isCenterCrop: Boolean? = false){
     if (context.isValidContext()){
@@ -30,6 +37,15 @@ fun ImageView.setImageUrl(context: Context, imageUrl: String, isCenterCrop: Bool
     }
 }
 
+
+/**
+ * Extension function for ImageView to load an image from a URL with a placeholder and optional center cropping.
+ *
+ * @param context The context to use for loading the image.
+ * @param imageUrl The URL of the image to load.
+ * @param placeholder The resource ID of the placeholder image to show while the image loads.
+ * @param isCenterCrop Optional parameter to determine if the image should be center cropped. Defaults to false.
+ */
 @SuppressLint("CheckResult")
 fun ImageView.setImageUrl(context: Context, imageUrl: String, placeholder: Int, isCenterCrop: Boolean = false){
     if (context.isValidContext()){
@@ -43,6 +59,16 @@ fun ImageView.setImageUrl(context: Context, imageUrl: String, placeholder: Int, 
     }
 }
 
+
+/**
+ * Extension function for ImageView to load an image from a URL with a placeholder, error image, and optional center cropping.
+ *
+ * @param context The context to use for loading the image.
+ * @param imageUrl The URL of the image to load.
+ * @param placeholder The resource ID of the placeholder image to show while the image loads.
+ * @param error The resource ID of the error image to show if the image fails to load.
+ * @param isCenterCrop Optional parameter to determine if the image should be center cropped. Defaults to false.
+ */
 @SuppressLint("CheckResult")
 fun ImageView.setImageUrl(context: Context, imageUrl: String, placeholder: Int, error: Int, isCenterCrop: Boolean = false){
     if (context.isValidContext()){
@@ -58,6 +84,14 @@ fun ImageView.setImageUrl(context: Context, imageUrl: String, placeholder: Int, 
     }
 }
 
+
+/**
+ * Extension function for Context to check if it is still valid.
+ *
+ * This function checks if the context is an Activity and ensures that it is not destroyed or finishing.
+ *
+ * @return True if the context is valid, false otherwise.
+ */
 fun Context.isValidContext(): Boolean {
     val activity = if (this is Activity) this else null
     return if (activity != null) (!activity.isDestroyed && !activity.isFinishing) else true
