@@ -1,4 +1,4 @@
-package com.wahidabd.onelibrary.presentation.paging
+package com.wahidabd.onelibrary.presentation.paging.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,7 +14,7 @@ import com.wahidabd.onelibrary.domain.movie.model.Movie
  * Github github.com/wahidabd.
  */
 
-class TestPagingAdapter() : BasePagingRecyclerAdapter<Movie, TestPagingAdapter.ViewHolder>() {
+class TestPagingAdapter : BasePagingRecyclerAdapter<Movie, TestPagingAdapter.ViewHolder>() {
 
     override fun getViewBinding(parent: ViewGroup, viewType: Int): ViewBinding {
         return ItemRecyclerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -23,13 +23,13 @@ class TestPagingAdapter() : BasePagingRecyclerAdapter<Movie, TestPagingAdapter.V
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): TestPagingAdapter.ViewHolder {
+    ): ViewHolder {
         return ViewHolder(getViewBinding(parent, viewType))
     }
 
-    inner class ViewHolder(binding: ViewBinding) : BaseAsyncItemViewHolder<Movie>(binding){
+    inner class ViewHolder(binding: ViewBinding) : BaseAsyncItemViewHolder<Movie>(binding) {
         override fun bind(data: Movie) {
-            with(binding as ItemRecyclerBinding){
+            with(binding as ItemRecyclerBinding) {
                 tvTitle.text = data.title
             }
         }

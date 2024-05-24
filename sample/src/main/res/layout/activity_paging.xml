@@ -7,9 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".presentation.paging.PagingActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMovie"
+    <com.wahidabd.library.decoration.onestateview.OneStateView
+        android:id="@+id/state_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        app:osv_default="loading"
+        app:osv_loading="@layout/layout_loading"
+        app:osv_empty="@layout/layout_empty"
+        app:osv_error="@layout/layout_error">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMovie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    </com.wahidabd.library.decoration.onestateview.OneStateView>
+
 
 </LinearLayout>

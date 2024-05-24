@@ -60,7 +60,7 @@ class RealtimeActivity : BaseActivity<ActivityRealtimeBinding>() {
         with(binding) {
             viewModel.list.observerLiveData(
                 this@RealtimeActivity,
-                onLoading = { msv.showLoading()},
+                onLoading = { msv.showLoading() },
                 onFailure = { m -> msv.showError() },
                 onSuccess = {
                     msv.showContent()

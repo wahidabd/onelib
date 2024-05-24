@@ -2,9 +2,13 @@ package com.wahidabd.onelibrary.presentation.paging
 
 import android.content.Context
 import android.content.Intent
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.wahidabd.library.decoration.onestateview.showContent
+import com.wahidabd.library.decoration.onestateview.showLoading
 import com.wahidabd.library.presentation.activity.BaseActivity
+import com.wahidabd.library.utils.exts.loadStateListener
 import com.wahidabd.onelibrary.databinding.ActivityPagingBinding
+import com.wahidabd.onelibrary.presentation.paging.adapter.TestLoadStateAdapter
+import com.wahidabd.onelibrary.presentation.paging.adapter.TestPagingAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -20,22 +24,30 @@ class PagingActivity : BaseActivity<ActivityPagingBinding>() {
 
     override fun initUI() {
         binding.rvMovie.apply {
-            adapter = mAdapter
-            layoutManager = LinearLayoutManager(this@PagingActivity)
+            adapter = mAdapter.withLoadStateHeaderAndFooter(
+                header = TestLoadStateAdapter { mAdapter.retry() },
+                footer = TestLoadStateAdapter { mAdapter.retry() }
+            )
         }
+
+        mAdapter.loadStateListener(
+            notLoading = { binding.stateView.showContent() },
+            loading = { binding.stateView.showLoading() },
+            endOfPaging = { binding.stateView.showContent() }
+        )
     }
 
     override fun initAction() {
     }
 
     override fun initProcess() {
-//        viewModel.paging()
+        viewModel.paging()
     }
 
     override fun initObservers() {
-//        viewModel.paging.observe(this) {
-//            mAdapter.submitData(lifecycle, it)
-//        }
+        viewModel.paging.observe(this) {
+            mAdapter.submitData(lifecycle, it)
+        }
     }
 
     companion object {

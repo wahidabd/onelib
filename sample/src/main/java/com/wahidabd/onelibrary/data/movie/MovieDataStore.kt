@@ -1,10 +1,15 @@
 package com.wahidabd.onelibrary.data.movie
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.wahidabd.library.data.LocalDb
 import com.wahidabd.library.data.Resource
 import com.wahidabd.library.utils.coroutine.OneCall
 import com.wahidabd.library.utils.coroutine.handler.ErrorParser
 import com.wahidabd.onelibrary.data.movie.model.MovieDetailResultResponse
+import com.wahidabd.onelibrary.data.movie.model.MovieResultResponse
+import com.wahidabd.onelibrary.data.movie.model.wrapper.MoviePagingResponse
 import com.wahidabd.onelibrary.data.movie.remote.MovieApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -28,5 +33,12 @@ class MovieDataStore(
             onEmit = { emit(it) }
         )
     }.flowOn(Dispatchers.IO)
+
+    override suspend fun getMovies(): Flow<PagingData<MovieResultResponse>> {
+        return Pager(
+            config = PagingConfig(pageSize = 20, enablePlaceholders = false),
+            pagingSourceFactory = { MoviePagingDataStore(webService) }
+        ).flow
+    }
 
 }

@@ -1,12 +1,12 @@
 package com.wahidabd.library.utils.exts
 
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputLayout
 
 fun View.onClick(action: (View) -> Unit) {
@@ -33,17 +33,17 @@ fun View.gone() {
     this.visibility = View.GONE
 }
 
-fun View.onlyGoneIf(condition: () -> Boolean){
+fun View.onlyGoneIf(condition: () -> Boolean) {
     if (condition.invoke()) gone()
     else visible()
 }
 
-fun View.onlyVisibleIf(condition: () -> Boolean){
+fun View.onlyVisibleIf(condition: () -> Boolean) {
     if (condition.invoke()) visible()
     else gone()
 }
 
-fun View.onlyInvisibleIf(condition: () -> Boolean){
+fun View.onlyInvisibleIf(condition: () -> Boolean) {
     if (condition.invoke()) invisible()
     else visible()
 }
@@ -78,32 +78,46 @@ fun TextInputLayout.onTextChange(doOnChange: (String) -> Unit) {
     }
 }
 
-fun View.disableIf(condition: () -> Boolean){
+fun View.disableIf(condition: () -> Boolean) {
     if (condition.invoke()) disable()
     else enable()
 }
 
-fun View.enableIf(condition: () -> Boolean){
+fun View.enableIf(condition: () -> Boolean) {
     if (condition.invoke()) enable()
     else disable()
 }
 
-fun View.setHeight(value: Int){
+fun View.setHeight(value: Int) {
     val params = this.layoutParams
     params.height = value
     this.layoutParams = params
 }
 
-fun View.setWidth(value: Int){
+fun View.setWidth(value: Int) {
     val params = this.layoutParams
     params.width = value
     this.layoutParams = params
 }
 
-fun View.setMargins(left: Int, top: Int, right: Int, bottom: Int){
-    if (this.layoutParams is ViewGroup.MarginLayoutParams){
-        val params= this.layoutParams as ViewGroup.MarginLayoutParams
+fun View.setMargins(left: Int, top: Int, right: Int, bottom: Int) {
+    if (this.layoutParams is ViewGroup.MarginLayoutParams) {
+        val params = this.layoutParams as ViewGroup.MarginLayoutParams
         params.setMargins(left, top, right, bottom)
         this.requestLayout()
+    }
+}
+
+fun PagingDataAdapter<*, *>.loadStateListener(
+    notLoading: () -> Unit,
+    loading: () -> Unit,
+    endOfPaging: () -> Unit
+) {
+    this.addLoadStateListener { loadState ->
+        when {
+            loadState.refresh is androidx.paging.LoadState.NotLoading -> notLoading.invoke()
+            loadState.refresh is androidx.paging.LoadState.Loading -> loading.invoke()
+            loadState.append.endOfPaginationReached -> endOfPaging.invoke()
+        }
     }
 }

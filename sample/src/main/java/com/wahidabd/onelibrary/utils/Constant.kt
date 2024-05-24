@@ -46,8 +46,8 @@ object Constant {
             ),
             TestModel(
                 8,
-                "Rx Paging",
-                "Base RxPagingAdapter"
+                "Paging Adapter",
+                "Base Paging Adapter"
             ),
             TestModel(
                 9,

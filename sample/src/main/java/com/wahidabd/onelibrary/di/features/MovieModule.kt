@@ -10,6 +10,7 @@ import com.wahidabd.onelibrary.di.BASE_URL
 import com.wahidabd.onelibrary.domain.movie.MovieInteractor
 import com.wahidabd.onelibrary.domain.movie.MovieUseCase
 import com.wahidabd.onelibrary.presentation.movie.MovieViewModel
+import com.wahidabd.onelibrary.presentation.paging.PagingViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -30,4 +31,5 @@ val movieModule = module {
     single<MovieRepository> { MovieDataStore(get(), get()) }
     single<MovieUseCase> { MovieInteractor(get()) }
     viewModel { MovieViewModel(get()) }
+    viewModel { PagingViewModel(get()) }
 }
