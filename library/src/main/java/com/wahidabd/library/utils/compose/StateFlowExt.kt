@@ -13,6 +13,15 @@ import kotlinx.coroutines.flow.StateFlow
  */
 
 
+/**
+ * Extension function to collect StateFlow values and handle different Resource states.
+ *
+ * @param T The type of the data being observed.
+ * @param onLoading A composable function to be invoked when the Resource is in a loading state.
+ * @param onEmpty A composable function to be invoked when the Resource is empty. This parameter is optional.
+ * @param onFailure A composable function to be invoked when the Resource fails. Takes a nullable string message.
+ * @param onSuccess A composable function to be invoked when the Resource is successful. Takes the data of type T.
+ */
 @Composable
 fun <T> StateFlow<Resource<T>>.collectStateFlow(
     onLoading: @Composable (() -> Unit),
@@ -42,6 +51,15 @@ fun <T> StateFlow<Resource<T>>.collectStateFlow(
     }
 }
 
+/**
+ * Extension function to collect MutableStateFlow values and handle different Resource states.
+ *
+ * @param T The type of the data being observed.
+ * @param onLoading A composable function to be invoked when the Resource is in a loading state.
+ * @param onEmpty A composable function to be invoked when the Resource is empty. This parameter is optional.
+ * @param onFailure A composable function to be invoked when the Resource fails. Takes a nullable string message.
+ * @param onSuccess A composable function to be invoked when the Resource is successful. Takes the data of type T.
+ */
 @Composable
 fun <T> MutableStateFlow<Resource<T>>.collectStateFlow(
     onLoading: @Composable (() -> Unit),

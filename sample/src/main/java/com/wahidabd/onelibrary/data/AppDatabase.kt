@@ -10,6 +10,8 @@ import com.wahidabd.onelibrary.data.note.local.NoteEntity
 @Database(entities = [NoteEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
+    abstract fun noteDao(): NoteDao
+
     companion object{
         private var INSTANCE: AppDatabase? = null
 
@@ -26,9 +28,5 @@ abstract class AppDatabase : RoomDatabase() {
         fun destroyDatabase(){
             INSTANCE = null
         }
-
     }
-
-    abstract fun noteDao(): NoteDao
-
 }

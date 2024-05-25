@@ -5,7 +5,7 @@ import com.wahidabd.onelibrary.data.note.NoteDataStore
 import com.wahidabd.onelibrary.data.note.NoteRepository
 import com.wahidabd.onelibrary.domain.note.NoteInteractor
 import com.wahidabd.onelibrary.domain.note.NoteUseCase
-import com.wahidabd.onelibrary.presentation.rxdatabase.NoteViewModel
+import com.wahidabd.onelibrary.presentation.localdatabase.NoteViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -25,6 +25,6 @@ val noteModule = module {
 
     single<NoteRepository> { NoteDataStore(get()) }
     single<NoteUseCase> { NoteInteractor(get()) }
-    viewModel { NoteViewModel(get(), get()) }
+    viewModel { NoteViewModel(get()) }
 
 }

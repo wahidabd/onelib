@@ -22,7 +22,7 @@ import com.wahidabd.onelibrary.presentation.notification.NotificationActivity
 import com.wahidabd.onelibrary.presentation.paging.PagingActivity
 import com.wahidabd.onelibrary.presentation.permission.PermissionActivity
 import com.wahidabd.onelibrary.presentation.realtime.RealtimeActivity
-import com.wahidabd.onelibrary.presentation.rxdatabase.NoteActivity
+import com.wahidabd.onelibrary.presentation.localdatabase.NoteActivity
 import com.wahidabd.onelibrary.presentation.selectable.SelectableAdapterActivity
 import com.wahidabd.onelibrary.presentation.storage.FirebaseStorageActivity
 import com.wahidabd.onelibrary.presentation.validation.PassiveValidationActivity

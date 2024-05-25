@@ -1,8 +1,7 @@
 package com.wahidabd.onelibrary.domain.note
 
 import com.wahidabd.onelibrary.domain.note.model.Note
-import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Single
+import kotlinx.coroutines.flow.Flow
 
 
 /**
@@ -13,8 +12,10 @@ import io.reactivex.rxjava3.core.Single
 
 interface NoteUseCase {
 
-    fun addNote(note: Note): Completable
-    fun getNotes(): Single<List<Note>>
-    fun remove(id: Int): Completable
+    suspend fun save(data: Note)
+    suspend fun update(data: Note)
+    suspend fun get(id: Int): Flow<Note>
+    suspend fun getList(): Flow<List<Note>>
+    suspend fun remove(data: Note)
 
 }

@@ -1,3 +1,3 @@
 package com.wahidabd.library.data
 
-interface LocalDb {}
+interface LocalDb

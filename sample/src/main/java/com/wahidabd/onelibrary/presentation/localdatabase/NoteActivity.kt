@@ -1,21 +1,23 @@
-package com.wahidabd.onelibrary.presentation.rxdatabase
+package com.wahidabd.onelibrary.presentation.localdatabase
 
 import android.content.Context
 import android.content.Intent
 import com.wahidabd.library.presentation.activity.BaseActivity
-import com.wahidabd.library.utils.common.showToast
-import com.wahidabd.library.utils.exts.debug
-import com.wahidabd.library.utils.exts.clear
-import com.wahidabd.library.utils.exts.observerLiveData
 import com.wahidabd.library.utils.exts.onClick
 import com.wahidabd.library.utils.exts.toStringTrim
 import com.wahidabd.onelibrary.databinding.ActivityNoteBinding
 import com.wahidabd.onelibrary.domain.note.model.Note
+import com.wahidabd.onelibrary.presentation.localdatabase.adapter.NoteAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NoteActivity : BaseActivity<ActivityNoteBinding>() {
 
     private val viewModel: NoteViewModel by viewModel()
+    private val adapter by lazy {
+        NoteAdapter {
+
+        }
+    }
 
     companion object {
         fun start(context: Context) {
@@ -28,35 +30,31 @@ class NoteActivity : BaseActivity<ActivityNoteBinding>() {
 
     override fun initIntent() {}
 
-    override fun initUI() {}
+    override fun initUI() {
+        binding.rvNote.adapter = adapter
+    }
 
     override fun initAction() {
-        with(binding){
+        with(binding) {
             btnSave.onClick {
                 val title = etTitle.toStringTrim()
                 val desc = etDesc.toStringTrim()
 
                 val data = Note(title = title, description = desc)
                 viewModel.addNote(data)
+                viewModel.getNotes()
             }
         }
     }
 
-    override fun initProcess() {}
+    override fun initProcess() {
+        viewModel.getNotes()
+    }
 
     override fun initObservers() {
-        viewModel.addNote.observerLiveData(this,
-            onLoading = {},
-            onEmpty = {},
-            onFailure = {m ->
-                showToast(m.toString())
-            },
-            onSuccess = {
-                debug { "Success" }
-                binding.etTitle.clear()
-                binding.etDesc.clear()
-            }
-        )
+        viewModel.getNotes.observe(this) {
+            adapter.setData = it
+        }
     }
 
 }

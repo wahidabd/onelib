@@ -6,6 +6,16 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import com.wahidabd.library.data.Resource
 
+
+/**
+ * Observes a LiveData of type [Resource] and handles different states: loading, success, empty, and failure.
+ *
+ * @param owner The [LifecycleOwner] which controls the observer.
+ * @param onLoading Optional lambda invoked when the [Resource] is in the loading state.
+ * @param onSuccess Lambda invoked when the [Resource] is in the success state with the non-null data.
+ * @param onEmpty Optional lambda invoked when the [Resource] is in the empty state.
+ * @param onFailure Lambda invoked when the [Resource] is in the failure state with the error message.
+ */
 fun <T> LiveData<Resource<T>>.observerLiveData(
     owner: LifecycleOwner,
     onLoading: (() -> Unit)?,
@@ -36,6 +46,14 @@ fun <T> LiveData<Resource<T>>.observerLiveData(
 
 }
 
+/**
+ * Observes a LiveData of type [Resource] in a Composable function and handles different states: loading, success, empty, and failure.
+ *
+ * @param onLoading Optional composable lambda invoked when the [Resource] is in the loading state.
+ * @param onSuccess Composable lambda invoked when the [Resource] is in the success state with the non-null data.
+ * @param onEmpty Optional composable lambda invoked when the [Resource] is in the empty state.
+ * @param onFailure Composable lambda invoked when the [Resource] is in the failure state with the error message.
+ */
 @Composable
 fun <T> LiveData<Resource<T>>.observerLiveDataState(
     onLoading: @Composable (() -> Unit)?,

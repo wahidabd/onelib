@@ -83,10 +83,10 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx")
 
     // room
-    implementation("androidx.room:room-runtime:2.5.2")
-    implementation("androidx.room:room-rxjava3:2.5.2")
-    ksp("androidx.room:room-compiler:2.5.2")
-    ksp("androidx.lifecycle:lifecycle-compiler:2.6.2")
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
+    ksp("androidx.lifecycle:lifecycle-compiler:2.8.0")
 
     implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
 

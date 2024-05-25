@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".presentation.rxdatabase.NoteActivity">
+    tools:context=".presentation.localdatabase.NoteActivity">
 
     <EditText
         android:id="@+id/et_title"
@@ -28,5 +28,13 @@
         android:textAllCaps="false"
         android:text="save"
         android:layout_marginTop="@dimen/dimen_20dp"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_note"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 </LinearLayout>

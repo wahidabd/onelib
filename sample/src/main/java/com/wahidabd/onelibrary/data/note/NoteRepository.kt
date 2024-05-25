@@ -1,16 +1,13 @@
 package com.wahidabd.onelibrary.data.note
 
-import com.wahidabd.library.data.BaseRepository
 import com.wahidabd.onelibrary.data.note.local.NoteEntity
-import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Single
+import kotlinx.coroutines.flow.Flow
 
 interface NoteRepository {
 
-    fun addNote(noteEntity: NoteEntity): Completable
-
-    fun getNotes(): Single<List<NoteEntity>>
-
-    fun removeNote(id: Int): Completable
-
+    suspend fun save(data: NoteEntity)
+    suspend fun update(data: NoteEntity)
+    suspend fun get(id: Int): Flow<NoteEntity>
+    suspend fun getList(): Flow<List<NoteEntity>>
+    suspend fun remove(data: NoteEntity)
 }

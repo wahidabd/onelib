@@ -27,7 +27,7 @@ object Constant {
             TestModel(
                 4,
                 "Api with Coroutine",
-                "Base implement api with rx",
+                "Base implement api with coroutine",
             ),
             TestModel(
                 5,
@@ -36,8 +36,8 @@ object Constant {
             ),
             TestModel(
                 6,
-                "Rx Local Database",
-                "Base Local Database With Rx"
+                "Local Database",
+                "Base Local Database With Coroutine Flow"
             ),
             TestModel(
                 7,

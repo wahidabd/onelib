@@ -71,7 +71,7 @@
             android:name=".presentation.imagepicker.OriginalImageActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.rxdatabase.NoteActivity"
+            android:name=".presentation.localdatabase.NoteActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.notification.NotificationActivity"

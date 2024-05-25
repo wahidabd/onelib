@@ -4,10 +4,26 @@ import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
+
+/**
+ * OkHttpClientFactory is a utility object for creating instances of OkHttpClient with
+ * custom configurations. It allows the inclusion of interceptors, an authenticator,
+ * certificate pinning, and logging for debugging purposes.
+ */
 object OkHttpClientFactory {
 
+    // Default maximum number of requests allowed
     private const val DEFAULT_MAX_REQUEST = 30
 
+    /**
+     * Creates an instance of OkHttpClient with the specified configurations.
+     *
+     * @param interceptors A list of interceptors to be added to the OkHttpClient instance.
+     * @param authenticator An optional Authenticator for handling authentication challenges.
+     * @param certificatePinner An optional CertificatePinner for securing HTTPS connections with certificate pinning.
+     * @param showDebugLog A boolean flag indicating whether to enable HTTP request/response logging for debugging.
+     * @return An instance of OkHttpClient configured with the specified parameters.
+     */
     fun create(
         interceptors: List<Interceptor>,
         authenticator: Authenticator?,
