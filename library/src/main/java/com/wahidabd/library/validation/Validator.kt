@@ -2,11 +2,11 @@ package com.wahidabd.library.validation
 
 interface Validator  {
 
-    abstract var mListener: ValidationListener?
-    abstract val validations: MutableList<Validation>
+    var mListener: ValidationListener?
+    val validations: MutableList<Validation>
 
-    abstract fun addValidation(validation: Validation)
-    abstract fun setListener(listener: ValidationListener)
-    abstract fun validate(): Boolean
+    fun addValidation(validation: Validation)
+    fun setListener(listener: ValidationListener)
+    fun validate(): Boolean
 
 }

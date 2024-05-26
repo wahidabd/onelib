@@ -13,12 +13,9 @@ import androidx.core.app.NotificationCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.target.SimpleTarget
-import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
 import com.google.gson.Gson
 import com.wahidabd.library.R
-import org.jetbrains.annotations.NotNull
 
 var NOTIFICATION_CHANNEL_ID = "app_notification_channel_id"
 var NOTIFICATION_NAME = "notification_name"
@@ -49,8 +46,12 @@ private fun buildNotification(
     intent: PendingIntent,
     imageBitmap: Bitmap?
 ) {
-    if (VERSION.SDK_INT >= 26){
-        val notificationChannel = NotificationChannel(NOTIFICATION_CHANNEL_ID, title, NotificationManager.IMPORTANCE_DEFAULT)
+    if (VERSION.SDK_INT >= 26) {
+        val notificationChannel = NotificationChannel(
+            NOTIFICATION_CHANNEL_ID,
+            title,
+            NotificationManager.IMPORTANCE_DEFAULT
+        )
         notificationChannel.setSound(null, null)
     }
 
@@ -112,7 +113,7 @@ fun showNotification(
     intent: PendingIntent,
     imgUrl: String? = null
 ) {
-    if (imgUrl?.isNotEmpty() == true){
+    if (imgUrl?.isNotEmpty() == true) {
         Glide.with(context)
             .asBitmap()
             .load(imgUrl)
@@ -127,7 +128,7 @@ fun showNotification(
                 }
 
             })
-    }else{
+    } else {
         buildNotification(context, title, body, intent, null)
     }
 }
@@ -173,7 +174,7 @@ private fun Context.notificationManager(): Pair<NotificationManager, Uri> {
     return Pair(notificationManager, defaultSoundUri)
 }
 
-public inline fun <reified T> Map<String, String>.parseJsonDataToObject(): T {
+inline fun <reified T> Map<String, String>.parseJsonDataToObject(): T {
     val content = this["data"]
     val gson = Gson()
     return gson.fromJson(content, T::class.java)

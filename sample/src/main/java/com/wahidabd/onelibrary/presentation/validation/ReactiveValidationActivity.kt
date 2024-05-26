@@ -53,14 +53,14 @@ class ReactiveValidationActivity : ReactiveFormActivity<ActivityReactiveValidati
                 ),
                 Validation(
                     tilPassword, listOf(
-                        notEmptyRule("Wajib diisi")
+                        notEmptyRule(getString(R.string.error_field_required))
                     )
                 ),
                 Validation(
                     tilPhone, listOf(
-                        notEmptyRule("Wajib diisi"),
+                        notEmptyRule(getString(R.string.error_field_required)),
                         minMaxLengthRule(
-                            "masukan nomor telpon yang benar",
+                            getString(R.string.error_phone_number),
                             Constant.MIN_LENGTH,
                             Constant.MAX_LENGTH
                         )
@@ -68,18 +68,18 @@ class ReactiveValidationActivity : ReactiveFormActivity<ActivityReactiveValidati
                 ),
                 Validation(
                     tilName, listOf(
-                        notEmptyRule("Wajib diisi"),
-                        alphabetOnlyRule("alphabet only")
+                        notEmptyRule(getString(R.string.error_field_required)),
+                        alphabetOnlyRule(getString(R.string.error_alphabet))
                     )
                 ),
                 Validation(
                     tilLongName, listOf(
-                        alphabetSpaceOnly("alphabet space only")
+                        alphabetSpaceOnly(getString(R.string.error_field_required))
                     )
                 ),
                 Validation(
                     tilNotEmpty, listOf(
-                        notEmptyRule("Cannot be empty")
+                        notEmptyRule(getString(R.string.error_field_required))
                     )
                 )
             )

@@ -45,7 +45,7 @@ class MinMaxLengthRule(
      * @return `true` if the input length is within the specified range, `false` otherwise.
      */
     override fun isRulePassed(view: View): Boolean {
-        val regexRule = "^[\\s\\S]{$minLength,$maxLength}$";
+        val regexRule = "^[\\s\\S]{$minLength,$maxLength}$"
         val input = extractInputTypedView(view)
         return regexMatchers(input, regexRule)
     }

@@ -6,4 +6,4 @@ package com.wahidabd.library.base
  * Github wahidabd.
  */
 
-open class Model()
+open class Model

@@ -308,7 +308,7 @@ class OneStateView @JvmOverloads constructor(
     }
 
     private class SavedState : BaseSavedState {
-        internal val state: OneViewState
+        val state: OneViewState
 
         constructor(superState: Parcelable, state: OneViewState) : super(superState) {
             this.state = state

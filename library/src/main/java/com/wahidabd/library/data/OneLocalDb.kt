@@ -28,7 +28,7 @@ interface OneLocalDb<T : Model, K : Any> : LocalDb {
      * @param response the model instances to save.
      */
     @Insert(onConflict = 1)
-    abstract suspend fun save(vararg response: T)
+    suspend fun save(vararg response: T)
 
     /**
      * Updates one or more model instances in the local database.
@@ -36,7 +36,7 @@ interface OneLocalDb<T : Model, K : Any> : LocalDb {
      * @param response the model instances to update.
      */
     @Update
-    abstract suspend fun update(vararg response: T)
+    suspend fun update(vararg response: T)
 
     /**
      * Retrieves a model instance from the local database by its unique identifier.
@@ -45,14 +45,14 @@ interface OneLocalDb<T : Model, K : Any> : LocalDb {
      * @param id the unique identifier of the model instance to retrieve.
      * @return a Flow emitting the model instance.
      */
-    abstract fun get(id: K? = null): Flow<T>
+    fun get(id: K? = null): Flow<T>
 
     /**
      * Retrieves a list of all model instances from the local database.
      *
      * @return a Flow emitting the list of model instances.
      */
-    abstract fun getList(): Flow<List<T>>
+    fun getList(): Flow<List<T>>
 
     /**
      * Removes one or more model instances from the local database.
@@ -60,6 +60,6 @@ interface OneLocalDb<T : Model, K : Any> : LocalDb {
      * @param response the model instances to remove.
      */
     @Delete
-    abstract suspend fun remove(vararg response: T)
+    suspend fun remove(vararg response: T)
 
 }

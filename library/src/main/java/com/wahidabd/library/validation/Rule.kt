@@ -11,7 +11,7 @@ interface Rule {
     /**
      * The error message to be displayed if the rule is not passed.
      */
-    abstract val errorMessage: String
+    val errorMessage: String
 
     /**
      * Checks if the rule is passed for the given view.
@@ -19,5 +19,5 @@ interface Rule {
      * @param view The View to which the rule is applied.
      * @return Boolean indicating whether the rule is passed.
      */
-    abstract fun isRulePassed(view: View): Boolean
+    fun isRulePassed(view: View): Boolean
 }

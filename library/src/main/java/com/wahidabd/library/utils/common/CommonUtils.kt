@@ -58,14 +58,6 @@ fun hideSoftKeyboard(view: View, context: Context?) {
     imm?.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
-fun isMyAppRunning(context: Context, packageName: String): Boolean {
-    TODO()
-}
-
-fun isMyServiceRunning(context: Context, serviceClass: Class<*>): Boolean {
-    TODO()
-}
-
 fun isNetworkConnected(): Boolean {
     val connectivityManager = ContextProvider.get().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     val network = connectivityManager.activeNetwork ?: return false
@@ -91,7 +83,7 @@ fun loadJSONFromAsset(context: Context, jsonFileName: String): String {
 fun objectToMap(o: Any): Map<String, String>? {
     val gson = Gson()
     val json = gson.toJson(o, o.javaClass)
-    var map: Map<*, *>
+    val map: Map<*, *>
     val type = object : TypeToken<Any?>() {}.type
     val res = gson.fromJson<Map<String, String>>(json, type)
     map = res

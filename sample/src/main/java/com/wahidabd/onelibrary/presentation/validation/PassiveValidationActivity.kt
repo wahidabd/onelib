@@ -42,11 +42,11 @@ class PassiveValidationActivity : PassiveFormActivity<ActivityPassiveValidationB
     override fun initObservers() {}
 
     override fun onValidationSuccess() {
-        showToast("Success")
+        // Do something when validation success
     }
 
     override fun onValidationFailed() {
-        showToast("Failed")
+        // Do something when validation failed
     }
 
     override fun setupValidation() {
@@ -61,15 +61,15 @@ class PassiveValidationActivity : PassiveFormActivity<ActivityPassiveValidationB
                 ),
                 Validation(
                     tilPassword, listOf(
-                        notEmptyRule("Wajib diisi"),
-                        passwordRule("Password harus angka dan huruf")
+                        notEmptyRule(getString(R.string.error_field_required)),
+                        passwordRule(getString(R.string.error_password))
                     )
                 ),
                 Validation(
                     tilPhone, listOf(
-                        notEmptyRule("Wajib diisi"),
+                        notEmptyRule(getString(R.string.error_field_required)),
                         minMaxLengthRule(
-                            "masukan nomor telpon yang benar",
+                            getString(R.string.error_phone_number),
                             MIN_LENGTH,
                             MAX_LENGTH
                         )
@@ -77,18 +77,18 @@ class PassiveValidationActivity : PassiveFormActivity<ActivityPassiveValidationB
                 ),
                 Validation(
                     tilName, listOf(
-                        notEmptyRule("Wajib diisi"),
-                        alphabetOnlyRule("alphabet only")
+                        notEmptyRule(getString(R.string.error_field_required)),
+                        alphabetOnlyRule(getString(R.string.error_alphabet))
                     )
                 ),
                 Validation(
                     tilLongName, listOf(
-                        alphabetSpaceOnly("alphabet space only")
+                        alphabetSpaceOnly(getString(R.string.error_field_required))
                     )
                 ),
                 Validation(
                     tilNotEmpty, listOf(
-                        notEmptyRule("Cannot be empty")
+                        notEmptyRule(getString(R.string.error_empty))
                     )
                 )
             )

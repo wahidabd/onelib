@@ -86,7 +86,7 @@ class FirebaseStorageActivity : BaseActivity<ActivityFirebaseStorageBinding>() {
 
     private val storagePermissionRequest =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
-            val granted = permissions.getValue("android.permission.READ_EXTERNAL_STORAGE") ?: false
+            val granted = permissions.getValue("android.permission.READ_EXTERNAL_STORAGE")
             if (granted) {
                 // Access the file here (permission granted)
                 openSpecificFolder()

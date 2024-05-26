@@ -1,5 +1,5 @@
 package com.wahidabd.library.presentation.view
 
 interface InputView {
-    abstract fun getText(): String
+    fun getText(): String
 }

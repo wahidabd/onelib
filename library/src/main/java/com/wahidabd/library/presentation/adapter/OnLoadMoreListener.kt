@@ -9,6 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
  */
 
 interface OnLoadMoreListener {
-    abstract fun onLoadMore(skip: Int, limit: Int, page: Int, totalItemsCount: Int, view: RecyclerView)
-    abstract fun onLoadMoreRetryButtonClicked(skip: Int?, limit: Int?)
+    fun onLoadMore(skip: Int, limit: Int, page: Int, totalItemsCount: Int, view: RecyclerView)
+    fun onLoadMoreRetryButtonClicked(skip: Int?, limit: Int?)
 }
