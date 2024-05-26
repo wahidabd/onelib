@@ -67,11 +67,11 @@ class ValidationAutoCompleteTextView(
     }
 
     private fun parseAttrs(attrs: AttributeSet?){
-        val attributes = context.obtainStyledAttributes(attrs, R.styleable.ValidacionAutoCompleteTextView, 0, 0)
-        errorMessage = attributes.getString(R.styleable.ValidacionAutoCompleteTextView_actv_error_message).orEmpty()
-        hint = attributes.getString(R.styleable.ValidacionAutoCompleteTextView_actv_hint).orEmpty()
-        errorMessageColor = attributes.getColorStateList(R.styleable.ValidacionAutoCompleteTextView_actv_error_message_color)
-        errorMessageSize = attributes.getDimension(R.styleable.ValidacionAutoCompleteTextView_actv_error_message_size, resources.getDimension(R.dimen.text_size_12sp))
+        val attributes = context.obtainStyledAttributes(attrs, R.styleable.ValidationAutoCompleteTextView, 0, 0)
+        errorMessage = attributes.getString(R.styleable.ValidationAutoCompleteTextView_actv_error_message).orEmpty()
+        hint = attributes.getString(R.styleable.ValidationAutoCompleteTextView_actv_hint).orEmpty()
+        errorMessageColor = attributes.getColorStateList(R.styleable.ValidationAutoCompleteTextView_actv_error_message_color)
+        errorMessageSize = attributes.getDimension(R.styleable.ValidationAutoCompleteTextView_actv_error_message_size, resources.getDimension(R.dimen.text_size_12sp))
 
         if (errorMessageColor != null) tvError.setTextColor(errorMessageColor)
         if (errorMessageSize != null) tvError.setTextSize(0, errorMessageSize!!.toFloat())

@@ -12,6 +12,17 @@ import com.wahidabd.library.validation.RuleNotApplicableException
  * Github wahidabd.
  */
 
+
+/**
+ * Extracts and trims the input from the given view, removing leading spaces and newlines.
+ *
+ * This function handles different types of views such as EditText, TextInputLayout, and custom InputView.
+ * It converts the input to a string, removes all spaces and newlines, and trims leading whitespace.
+ *
+ * @param view The view from which the input is extracted.
+ * @return The extracted and trimmed input string.
+ * @throws RuleNotApplicableException if the view is not an applicable input view type.
+ */
 internal fun extractInputTypedViewTrimStart(view: View): String =
     when(view){
         is EditText -> {
@@ -26,6 +37,17 @@ internal fun extractInputTypedViewTrimStart(view: View): String =
         }
     }
 
+
+/**
+ * Extracts the input from the given view without trimming any characters.
+ *
+ * This function handles different types of views such as EditText, TextInputLayout, and custom InputView.
+ * It converts the input to a string without removing any spaces or newlines.
+ *
+ * @param view The view from which the input is extracted.
+ * @return The extracted input string.
+ * @throws RuleNotApplicableException if the view is not an applicable input view type.
+ */
 internal fun extractInputTypedViewTrim(view: View): String =
     when(view){
         is EditText -> {

@@ -14,12 +14,31 @@ import com.wahidabd.library.validation.view.ValidationAutoCompleteTextView
  */
 
 
+/**
+ * Class ReactiveValidator
+ *
+ * A reactive validator that dynamically validates inputs as they change.
+ * This validator supports various input views and triggers validation based on user interactions.
+ *
+ * @property validations A mutable list of validations to be executed.
+ *
+ * @constructor
+ * Creates a ReactiveValidator with a specified list of validations.
+ *
+ * @param validations The initial list of validations to be managed by this validator.
+ */
 class ReactiveValidator(override val validations: MutableList<Validation>) : Validator {
 
     private var validated = 0
 
     override var mListener: ValidationListener? = null
 
+    /**
+     * Adds a new validation to the validator and sets up the necessary listeners
+     * to reactively validate the input.
+     *
+     * @param validation The validation to be added.
+     */
     override fun addValidation(validation: Validation) {
         when (val view = validation.getView) {
             is EditText -> {
@@ -56,10 +75,20 @@ class ReactiveValidator(override val validations: MutableList<Validation>) : Val
         validations.add(validation)
     }
 
+    /**
+     * Sets a listener to receive validation events.
+     *
+     * @param listener The listener to be notified of validation events.
+     */
     override fun setListener(listener: ValidationListener) {
         mListener = listener
     }
 
+    /**
+     * Validates all managed validations.
+     *
+     * @return `true` if all validations pass, `false` otherwise.
+     */
     override fun validate(): Boolean {
         var isValid = true
 
@@ -72,6 +101,11 @@ class ReactiveValidator(override val validations: MutableList<Validation>) : Val
         return isValid
     }
 
+    /**
+     * Executes a single validation and updates the validation state.
+     *
+     * @param validation The validation to be executed.
+     */
     private fun executeValidation(validation: Validation) {
         val isValidate = validation.validate()
         var tempValidated = 0

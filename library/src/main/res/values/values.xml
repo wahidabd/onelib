@@ -72,7 +72,7 @@
         <attr format="integer" name="width_ratio"/>
         <attr format="integer" name="height_ratio"/>
     </declare-styleable>
-    <declare-styleable name="ValidacionAutoCompleteTextView">
+    <declare-styleable name="ValidationAutoCompleteTextView">
         <attr format="string" name="actv_error_message"/>
         <attr format="string" name="actv_hint"/>
         <attr format="color|reference" name="actv_error_message_color"/>
