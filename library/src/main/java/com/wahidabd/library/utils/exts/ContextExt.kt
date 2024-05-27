@@ -62,16 +62,8 @@ fun Context.getInteger(@IntegerRes resId: Int): Int =
 
 fun Context.isDarkTheme(): Boolean = (this.resources.configuration.uiMode) == 32
 
-fun Context.makeCall(number: String): Boolean {
-    TODO()
-}
-
 fun Context.rate(): Boolean =
     browse("http://play.google.com/store/apps/details?id=${this.packageManager}")
-
-fun Context.sendSms(number: String, text: String): Boolean {
-    TODO()
-}
 
 fun Context.share(text: String, subject: String): Boolean {
     val intent = Intent()
@@ -85,8 +77,4 @@ fun Context.share(text: String, subject: String): Boolean {
     }catch (e: Exception){
         false
     }
-}
-
-fun Context.tintedDrawable(@DrawableRes drawableId: Int, @ColorRes colorId: Int): Drawable? {
-    TODO()
 }
