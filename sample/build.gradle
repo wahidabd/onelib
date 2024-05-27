@@ -6,10 +6,6 @@ plugins {
     id "com.google.devtools.ksp" version "1.9.10-1.0.13"
 }
 
-def propertiesFile = rootProject.file("env.properties")
-def properties = new Properties()
-properties.load(new FileInputStream(propertiesFile))
-
 android {
     namespace "com.wahidabd.onelibrary"
     compileSdk 34
@@ -21,8 +17,8 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField("String", "BASE_URL", properties["BASE_URL"])
-        buildConfigField("String", "API_KEY", properties["API_KEY"])
+        buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+        buildConfigField("String", "API_KEY", "\"24149183601d3608dcc2154306619711\"")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
