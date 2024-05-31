@@ -1,8 +1,8 @@
 package com.wahidabd.onelibrary.domain.firebase.firestore
 
 import com.wahidabd.library.data.Resource
-import com.wahidabd.library.utils.coroutine.oneMap
-import com.wahidabd.library.utils.coroutine.oneMapList
+import com.wahidabd.library.utils.exts.oneMap
+import com.wahidabd.library.utils.exts.oneMapList
 import com.wahidabd.onelibrary.data.firebase.firestore.FirebaseRepository
 import com.wahidabd.onelibrary.data.firebase.firestore.model.FirestoreRequest
 import com.wahidabd.onelibrary.domain.firebase.firestore.model.FirestoreData

@@ -1,8 +1,8 @@
 package com.wahidabd.onelibrary.domain.firebase.realtime
 
 import com.wahidabd.library.data.Resource
-import com.wahidabd.library.utils.coroutine.oneMap
-import com.wahidabd.library.utils.coroutine.oneMapList
+import com.wahidabd.library.utils.exts.oneMap
+import com.wahidabd.library.utils.exts.oneMapList
 import com.wahidabd.onelibrary.data.firebase.raltime.RealtimeRepository
 import com.wahidabd.onelibrary.domain.firebase.realtime.model.RealtimeData
 import com.wahidabd.onelibrary.domain.firebase.realtime.model.RealtimeParam

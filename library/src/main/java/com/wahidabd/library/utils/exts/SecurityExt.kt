@@ -41,5 +41,5 @@ fun String.sha1(): String {
     val digest = MessageDigest.getInstance("SHA-1")
     val charset = this.toByteArray(Charsets.UTF_8)
     val bytes = digest.digest(charset)
-    return Arrays.toString(bytes)
+    return bytes.contentToString()
 }

@@ -1,4 +1,4 @@
-package com.wahidabd.library.utils.coroutine
+package com.wahidabd.library.utils.exts
 
 import com.wahidabd.library.data.Resource
 

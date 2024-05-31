@@ -3,7 +3,7 @@ package com.wahidabd.onelibrary.domain.movie
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.wahidabd.library.data.Resource
-import com.wahidabd.library.utils.coroutine.oneMap
+import com.wahidabd.library.utils.exts.oneMap
 import com.wahidabd.onelibrary.data.movie.MovieRepository
 import com.wahidabd.onelibrary.domain.movie.mapper.toDomain
 import com.wahidabd.onelibrary.domain.movie.model.Movie

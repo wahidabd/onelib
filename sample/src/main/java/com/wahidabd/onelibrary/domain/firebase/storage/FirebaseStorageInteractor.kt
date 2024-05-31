@@ -1,7 +1,7 @@
 package com.wahidabd.onelibrary.domain.firebase.storage
 
 import com.wahidabd.library.data.Resource
-import com.wahidabd.library.utils.coroutine.oneMapList
+import com.wahidabd.library.utils.exts.oneMapList
 import com.wahidabd.onelibrary.data.firebase.storage.FirebaseStorageRepository
 import com.wahidabd.onelibrary.domain.firebase.storage.model.StorageData
 import com.wahidabd.onelibrary.domain.firebase.storage.model.StorageParam
