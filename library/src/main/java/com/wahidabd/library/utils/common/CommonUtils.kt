@@ -19,13 +19,13 @@ import java.nio.charset.Charset
 import java.text.SimpleDateFormat
 import java.util.*
 
+fun emptyString(): String = ""
+
 fun convertDpToPixel(dp: Float, context: Context): Float {
     val resources = context.resources
     val metrics = resources.displayMetrics
     return dp * (metrics.densityDpi.toFloat() / 160f)
 }
-
-fun emptyString(): String = ""
 
 fun getBitmapFromDrawable(drawable: Drawable): Bitmap {
     val bmp = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
