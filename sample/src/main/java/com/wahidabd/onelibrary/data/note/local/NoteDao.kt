@@ -7,7 +7,7 @@ import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-abstract class NoteDao : OneLocalDb<NoteEntity, Int> {
+abstract class NoteDao : OneLocalDb<NoteEntity?, Int> {
 
     @Query("SELECT * FROM note")
     abstract override fun getList(): Flow<List<NoteEntity>>
