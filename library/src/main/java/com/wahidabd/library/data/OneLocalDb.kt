@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.Flow
  * @param T the type of the model that extends from the base Model class.
  * @param K the type of the key that uniquely identifies a model instance.
  */
-interface OneLocalDb<T : Model?, K : Any> : LocalDb {
+interface OneLocalDb<T : Model, K : Any> : LocalDb {
 
     /**
      * Saves one or more model instances into the local database.
