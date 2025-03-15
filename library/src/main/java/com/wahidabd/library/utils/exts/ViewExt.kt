@@ -6,6 +6,7 @@ import android.widget.CompoundButton
 import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
 import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputLayout
 
 fun View.onClick(action: (View) -> Unit) {

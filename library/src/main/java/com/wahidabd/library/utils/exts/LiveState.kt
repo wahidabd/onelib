@@ -43,6 +43,7 @@ fun <T> LiveData<Resource<T>>.observerLiveData(
             }
         }
     }
+
 }
 
 /**
