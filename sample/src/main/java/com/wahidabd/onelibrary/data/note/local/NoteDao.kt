@@ -3,7 +3,6 @@ package com.wahidabd.onelibrary.data.note.local
 import androidx.room.Dao
 import androidx.room.Query
 import com.wahidabd.library.data.OneLocalDb
-import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.flow.Flow
 
 @Dao

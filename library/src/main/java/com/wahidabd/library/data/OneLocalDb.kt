@@ -45,7 +45,7 @@ interface OneLocalDb<T : Model, K : Any> : LocalDb {
      * @param id the unique identifier of the model instance to retrieve.
      * @return a Flow emitting the model instance.
      */
-    fun get(id: K? = null): Flow<T>
+    fun get(id: K? = null): Flow<T?>
 
     /**
      * Retrieves a list of all model instances from the local database.
